@@ -4,8 +4,9 @@
  */
 window.LOJA = {
   nome: "mstag",
-  // Número com DDI + DDD, só dígitos. Ex.: 5541984699726
+  // Número com DDI + DDD, só dígitos. Ex.: 5511987654321
   whatsapp: "5541984699726",
+  whatsappExibicao: "(41) 98469-9726",
   instagram: "mstagbr",
   email: "contato@mstag.com.br",
   cidade: "Enviamos para todo o Brasil",

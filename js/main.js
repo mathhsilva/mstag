@@ -687,7 +687,7 @@
   function iniciarLoja() {
     $all("[data-whats]").forEach(function (a) { a.href = whatsLink(a.dataset.whats); });
     var ig = $("#linkInstagram");
-    if (ig && LOJA.instagram) ig.href = "https://instagram.com/" + LOJA.instagram;
+    if (ig && LOJA.instagram) { ig.href = "https://instagram.com/" + LOJA.instagram; ig.textContent = "Instagram @" + LOJA.instagram; }
     $all("[data-loja]").forEach(function (el) { if (LOJA[el.dataset.loja]) el.textContent = LOJA[el.dataset.loja]; });
     var ano = $("#ano"); if (ano) ano.textContent = new Date().getFullYear();
 

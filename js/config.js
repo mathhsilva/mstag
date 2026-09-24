@@ -3,10 +3,10 @@
  * Preços, número do WhatsApp e textos principais ficam todos neste arquivo.
  */
 window.LOJA = {
-  nome: "MS Tag",
+  nome: "mstag",
   // Número com DDI + DDD, só dígitos. Ex.: 5511987654321
   whatsapp: "5511999999999",
-  instagram: "mstag",
+  instagram: "mstagbr",
   email: "contato@mstag.com.br",
   cidade: "Enviamos para todo o Brasil",
   frete: "Frete calculado no WhatsApp conforme o seu CEP",
@@ -14,7 +14,7 @@ window.LOJA = {
 };
 
 /*
- * Linha Clássica: o design próprio da MS Tag, vendido com fotos reais das placas.
+ * Linha Clássica: o design próprio da mstag, vendido com fotos reais das placas.
  * Para adicionar uma cor nova, coloque a imagem em assets/placas/ e registre em "imagens".
  */
 window.CLASSICA = {

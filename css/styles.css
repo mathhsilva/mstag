@@ -115,6 +115,9 @@ button, input { font: inherit; color: inherit; }
 .topbar__in { display: flex; align-items: center; gap: 24px; height: 68px; }
 .logo { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); }
 .logo__mark { width: 32px; height: 32px; color: var(--cobalt); }
+.logo__img { display: block; height: 30px; width: auto; }
+.logo--sm .logo__img { height: 26px; }
+.final__logo { display: block; height: 30px; width: auto; position: relative; margin-bottom: 8px; }
 .logo__txt { font-family: var(--f-display); font-weight: 600; font-size: 19px; letter-spacing: -0.01em; }
 .logo__txt b { font-weight: 600; color: var(--cobalt); }
 .logo--sm .logo__txt { font-size: 17px; }

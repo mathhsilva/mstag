@@ -1,11 +1,11 @@
-# MS Tag · site de vendas das plaquinhas NFC
+# mstag · site de vendas das plaquinhas NFC
 
 Site estático (HTML + CSS + JS puro, sem build). É só abrir o `index.html` ou publicar a pasta em qualquer hospedagem estática (GitHub Pages, Netlify, Vercel, Hostinger).
 
 ## O que tem no site
 
 - **Demonstração interativa no topo**: o celular encosta na plaquinha e a tela abre Google, Instagram, WhatsApp, cardápio, Wi-Fi ou Pix.
-- **Duas linhas de produto**: a **Clássica** (fotos reais das placas da MS Tag, com escolha de tamanho 10 × 10 / 10 × 15 e cor) e a **Tech** (plaquinhas desenhadas pelo próprio site).
+- **Duas linhas de produto**: a **Clássica** (fotos reais das placas da mstag, com escolha de tamanho 10 × 10 / 10 × 15 e cor) e a **Tech** (plaquinhas desenhadas pelo próprio site).
 - **Catálogo** com preço, parcelamento e botão de adicionar ao carrinho.
 - **Personalizador** com prévia ao vivo (modelo, acabamento, nome do negócio e link).
 - **Carrinho** salvo no navegador, que fecha o pedido pelo **WhatsApp** com a mensagem já montada (itens, detalhes, subtotal e nome do cliente).
@@ -19,7 +19,7 @@ Tudo que muda com frequência está em **`js/config.js`**:
 | O quê | Campo |
 | --- | --- |
 | Número do WhatsApp (DDI + DDD, só dígitos) | `LOJA.whatsapp` |
-| Instagram, e-mail, prazo, frete | `LOJA.*` |
+| Instagram (hoje @mstagbr), e-mail, prazo, frete | `LOJA.*` |
 | Linha Clássica: tamanhos, preços, cores e fotos | `CLASSICA` |
 | Cartão NFC Google (dupla face): preço, textos e fotos | `CARTAO_GOOGLE` |
 | Linha Tech: produtos, preços, selos e medidas | `PRODUTOS` |
@@ -42,7 +42,7 @@ index.html        páginas e textos
 css/styles.css    visual
 js/config.js      dados da loja e produtos
 js/main.js        demo, carrinho, personalizador
-assets/favicon.svg
+assets/logo/       logos (preto, preto+azul, azul, branco+azul, branco) e favicon
 assets/placas/    fotos da Linha Clássica
 assets/cartao/    fotos do Cartão NFC Google
 ```

@@ -629,6 +629,9 @@ section[id] { scroll-margin-top: 76px; }
 .footer__links a { text-decoration: none; }
 @media (hover: hover) and (pointer: fine) { .footer__links a:hover { color: var(--cobalt); } }
 .footer__copy { grid-column: 1 / -1; font-size: 12.5px !important; }
+.footer__maker { font-size: 14px; font-weight: 600; }
+.footer__maker a { color: var(--cobalt); text-decoration: none; }
+@media (hover: hover) and (pointer: fine) { .footer__maker a:hover { text-decoration: underline; } }
 
 /* Floating WhatsApp */
 .float-whats {

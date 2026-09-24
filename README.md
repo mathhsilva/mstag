@@ -18,7 +18,8 @@ Tudo que muda com frequência está em **`js/config.js`**:
 
 | O quê | Campo |
 | --- | --- |
-| Número do WhatsApp (DDI + DDD, só dígitos) | `LOJA.whatsapp` |
+| Número do WhatsApp (DDI + DDD, só dígitos; hoje (41) 98469-9726) | `LOJA.whatsapp` e `LOJA.whatsappExibicao` |
+| Empresa por trás da marca (Hinnovation) | `LOJA.empresa` |
 | Instagram (hoje @mstagbr), e-mail, prazo, frete | `LOJA.*` |
 | Linha Clássica: tamanhos, preços, cores e fotos | `CLASSICA` |
 | Cartão NFC Google (dupla face): preço, textos e fotos | `CARTAO_GOOGLE` |
@@ -33,7 +34,7 @@ As artes usam os marcadores "logo oficial Google" e "QR dinâmico". O site coloc
 
 Textos das seções ficam no `index.html`, e as cores e fontes no topo do `css/styles.css` (variáveis `--cobalt`, `--ink`, etc.).
 
-> Os preços e o número do WhatsApp que vieram de exemplo precisam ser trocados pelos seus antes de publicar.
+> Confira os preços antes de publicar: alguns ainda são valores de exemplo.
 
 ## Estrutura
 

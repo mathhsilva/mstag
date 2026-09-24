@@ -689,6 +689,8 @@
     var ig = $("#linkInstagram");
     if (ig && LOJA.instagram) { ig.href = "https://instagram.com/" + LOJA.instagram; ig.textContent = "Instagram @" + LOJA.instagram; }
     $all("[data-loja]").forEach(function (el) { if (LOJA[el.dataset.loja]) el.textContent = LOJA[el.dataset.loja]; });
+    var emp = $("#linkEmpresa");
+    if (emp && LOJA.empresa) { emp.href = LOJA.empresa.site; emp.textContent = LOJA.empresa.nome; }
     var ano = $("#ano"); if (ano) ano.textContent = new Date().getFullYear();
 
     var topbar = $(".topbar");

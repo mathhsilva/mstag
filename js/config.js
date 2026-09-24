@@ -5,9 +5,11 @@
 window.LOJA = {
   nome: "mstag",
   // Número com DDI + DDD, só dígitos. Ex.: 5511987654321
-  whatsapp: "5511999999999",
+  whatsapp: "5541984699726",
+  whatsappExibicao: "(41) 98469-9726",
   instagram: "mstagbr",
   email: "contato@mstag.com.br",
+  empresa: { nome: "Hinnovation", site: "https://hinnovation.com.br" },
   cidade: "Enviamos para todo o Brasil",
   frete: "Frete calculado no WhatsApp conforme o seu CEP",
   prazo: "Produção em até 3 dias úteis",

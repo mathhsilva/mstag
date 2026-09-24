@@ -1,32 +1,36 @@
 # Posts do Instagram · mstag
 
-16 posts prontos para o @mstagbr, 4 por semana (segunda, quarta, sexta e sábado), cobrindo 4 semanas (28/09 a 24/10), todos com o mesmo objetivo: vender as plaquinhas.
+16 posts para o @mstagbr, um por dia de 24/09 a 09/10, todos com o mesmo objetivo: vender as plaquinhas.
 Esta pasta **não** vai para a Hostinger (veja "Publicar na Hostinger" no README principal).
 
 - `posts/`: as artes em 1080 × 1350 (formato retrato 4:5 do feed).
 - `legendas.md`: a legenda de cada post, pronta para colar.
 - `gerador/`: o código que desenha as artes, para mudar texto ou preço.
 
-## Calendário
+## Calendário (agendado no Metricool, @mstagbr)
 
-| # | Data (Brasília) | Formato | Tema | Produto em destaque |
-| --- | --- | --- | --- | --- |
-| 01 | Seg 28/09 · 11:30 | Foto + preço | "Seu cliente adorou. Agora avaliar é um toque." | Cartão NFC Google + base · R$ 19,90 |
-| 02 | Qua 30/09 · 11:30 | Carrossel (5) educativo | Por que o cliente feliz não te avalia | Placa Avaliação Google · R$ 69,90 (exclusivo do site) |
-| 03 | Sex 02/10 · 11:30 | Celular + placa | Cardápio plastificado? Aproxime o celular | Display de mesa · R$ 79,90 |
-| 04 | Sáb 03/10 · 10:00 | Conversa (humor) | O "faço em casa" nunca chega | Avaliação Google (a partir de R$ 19,90) |
-| 05 | Seg 05/10 · 11:30 | Carrossel (5) | Uma plaquinha, um minisite inteiro | Display de mesa multi-link · R$ 79,90 |
-| 06 | Qua 07/10 · 11:30 | Tabela comparativa | QR na folha A4 x plaquinha mstag | Linha toda (a partir de R$ 19,90) |
-| 07 | Sex 09/10 · 11:30 | Carrossel (4) com fotos | Serve pro seu negócio? | Tabela de preços |
-| 08 | Sáb 10/10 · 10:00 | Oferta | Google + Instagram + WhatsApp | Kit Negócio · R$ 159,90 |
-| 09 | Seg 12/10 · 11:30 | Celular + placa | Quem entra na loja, sai seguindo | Plaquinha Instagram · R$ 54,90 (exclusivo do site) |
-| 10 | Qua 14/10 · 11:30 | Carrossel (6) FAQ | As 5 dúvidas antes de comprar | Todos |
-| 11 | Sex 16/10 · 11:30 | Celular + placa | Pedido no WhatsApp sem digitar número | Plaquinha WhatsApp · R$ 54,90 (exclusivo do site) |
-| 12 | Sáb 17/10 · 10:00 | Enquete (comenta 1, 2 ou 3) | Qual combina com o seu balcão? | Placa Avaliação Google · R$ 69,90 (exclusivo do site) |
-| 13 | Seg 19/10 · 11:30 | Duas fotos | Um cartão, dois visuais | Cartão NFC Google + base · R$ 19,90 |
-| 14 | Qua 21/10 · 11:30 | Carrossel (3) passo a passo | Do clique ao balcão em 4 passos | Todos |
-| 15 | Sex 23/10 · 11:30 | Carrossel (5) de dicas | 3 jeitos de ganhar mais avaliações | Cartão R$ 19,90 e Placa R$ 69,90 |
-| 16 | Sáb 24/10 · 10:00 | Tipográfico | Custa menos que um almoço | Cartão NFC Google + base · R$ 19,90 |
+Um post por dia às 10h (Brasília), menos o primeiro, que saiu às 20h30.
+
+| Data | Post | Formato | Produto em destaque |
+| --- | --- | --- | --- |
+| Qui 24/09 · 20:30 | 01 · Seu cliente adorou | Foto + preço | Cartão NFC Google + base · R$ 19,90 |
+| Sex 25/09 | 02 · Por que o cliente feliz não avalia | Carrossel (5) | Placa Avaliação Google · R$ 69,90 (exclusivo do site) |
+| Sáb 26/09 | 04 · "Faço quando chegar em casa" | Humor | Avaliação Google (a partir de R$ 19,90) |
+| Dom 27/09 | 03 · Cardápio plastificado? | Celular + placa | Display de mesa · R$ 79,90 |
+| Seg 28/09 | 05 · Uma plaquinha, um minisite | Carrossel (5) | Display multi-link · R$ 79,90 |
+| Ter 29/09 | 09 · Quem entra, sai seguindo | Celular + placa | Plaquinha Instagram · R$ 54,90 (exclusivo do site) |
+| Qua 30/09 | 06 · QR na folha A4 x mstag | Comparativo | Linha toda |
+| Qui 01/10 | 07 · Serve pro seu negócio? | Carrossel (4) | Tabela de preços |
+| Sex 02/10 | 08 · Kit Negócio | Oferta | Kit · R$ 159,90 |
+| Sáb 03/10 | 12 · Qual combina com o seu balcão? | Enquete | Placa Avaliação Google · R$ 69,90 (exclusivo do site) |
+| Dom 04/10 | 13 · Um cartão, dois visuais | Duas fotos | Cartão · R$ 19,90 |
+| Seg 05/10 | 11 · Pedido no WhatsApp | Celular + placa | Plaquinha WhatsApp · R$ 54,90 (exclusivo do site) |
+| Ter 06/10 | 10 · Perguntas frequentes | Carrossel (6) | Todos |
+| Qua 07/10 | 15 · 3 jeitos de ganhar avaliações | Carrossel (5) | Cartão e Placa |
+| Qui 08/10 | 14 · Do clique ao balcão em 4 passos | Carrossel (3) | Todos |
+| Sex 09/10 | 16 · Custa menos que um almoço | Tipográfico | Cartão · R$ 19,90 |
+
+As datas e horários de `legendas.md` são do planejamento original (4 por semana). Vale o que está nesta tabela.
 
 A ordem alterna estilos (foto, carrossel, humor, oferta) e produtos (avaliação, cardápio, minisite, Instagram) para o feed não ficar repetitivo.
 

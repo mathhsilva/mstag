@@ -36,6 +36,25 @@ Textos das seções ficam no `index.html`, e as cores e fontes no topo do `css/s
 
 > Confira os preços antes de publicar: alguns ainda são valores de exemplo.
 
+## SEO e busca por IA
+
+O site já sai preparado para aparecer em buscas como "plaquinha NFC", "plaquinha de avaliação Google" e "placa NFC Instagram", e para ser citado por assistentes de IA (ChatGPT, Gemini, Perplexity, Claude).
+
+- Título, descrição, canonical e imagem de compartilhamento (`assets/og-image.jpg`) no `<head>`.
+- Dados estruturados (JSON-LD) com a empresa, os produtos com preço e as perguntas frequentes.
+- Bloco "Guia rápido" com explicação e tabela de preços em texto, que buscadores e IAs leem sem precisar rodar JavaScript.
+- `robots.txt` (libera buscadores e robôs de IA), `sitemap.xml` e `llms.txt` (resumo da loja para IAs).
+
+**Sempre que mudar preços, produtos ou perguntas**, rode:
+
+```bash
+node tools/seo.mjs
+```
+
+Ele regenera os dados estruturados, a tabela de preços, o `sitemap.xml`, o `robots.txt` e o `llms.txt` a partir do `js/config.js` e do FAQ do `index.html`.
+
+**Domínio:** o SEO usa `https://mstag.com.br`. Se o endereço for outro, troque em `LOJA.site` (`js/config.js`) e nas tags `canonical`, `og:url`, `og:image`, `twitter:image` e `llms.txt` do `<head>` do `index.html`, e rode o gerador.
+
 ## Estrutura
 
 ```
@@ -44,6 +63,8 @@ css/styles.css    visual
 js/config.js      dados da loja e produtos
 js/main.js        demo, carrinho, personalizador
 assets/logo/       logos (preto, preto+azul, azul, branco+azul, branco) e favicon
+tools/seo.mjs     gerador de SEO (node tools/seo.mjs)
+robots.txt  sitemap.xml  llms.txt
 assets/placas/    fotos da Linha Clássica
 assets/cartao/    fotos do Cartão NFC Google
 ```

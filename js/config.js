@@ -4,6 +4,8 @@
  */
 window.LOJA = {
   nome: "mstag",
+  // Endereço oficial do site (usado no SEO: canonical, sitemap, dados estruturados)
+  site: "https://mstag.com.br",
   // Número com DDI + DDD, só dígitos. Ex.: 5511987654321
   whatsapp: "5541984699726",
   whatsappExibicao: "(41) 98469-9726",
@@ -86,7 +88,7 @@ window.PRODUTOS = [
   },
   {
     id: "instagram",
-    nome: "Plaquinha Instagram",
+    nome: "Plaquinha NFC Instagram",
     resumo: "Um toque abre seu perfil pronto para seguir. Ideal para balcão e provador.",
     preco: 54.9,
     medida: "10 × 10 cm · acrílico 3 mm",
@@ -94,7 +96,7 @@ window.PRODUTOS = [
   },
   {
     id: "whatsapp",
-    nome: "Plaquinha WhatsApp",
+    nome: "Plaquinha NFC WhatsApp",
     resumo: "Abre a conversa com uma mensagem já escrita. Seu cliente só aperta enviar.",
     preco: 54.9,
     medida: "10 × 10 cm · acrílico 3 mm",
@@ -102,7 +104,7 @@ window.PRODUTOS = [
   },
   {
     id: "multilink",
-    nome: "Display de Mesa Multi-link",
+    nome: "Display de Mesa NFC Multi-link",
     resumo: "Uma página com cardápio, Wi-Fi, Pix, Instagram e WhatsApp. Troque os links quando quiser.",
     preco: 79.9,
     selo: "Para restaurantes",
@@ -119,7 +121,7 @@ window.PRODUTOS = [
   },
   {
     id: "kit",
-    nome: "Kit Negócio · 3 plaquinhas",
+    nome: "Kit Negócio · 3 plaquinhas NFC",
     resumo: "Google + Instagram + WhatsApp com o mesmo visual. O combo que mais gira no balcão.",
     preco: 149.9,
     precoDe: 169.7,

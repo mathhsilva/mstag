@@ -120,6 +120,21 @@
       "</div>";
   }
 
+  /* Linha Clássica: foto real da placa, com o logo e um QR por cima dos marcadores do arquivo */
+  var CLASSICA = window.CLASSICA;
+  function placaClassica(tam, cor, eager) {
+    var imgs = CLASSICA.imagens[tam] || CLASSICA.imagens[Object.keys(CLASSICA.imagens)[0]];
+    var src = imgs[cor] || imgs[Object.keys(imgs)[0]];
+    var alto = tam === "10x15";
+    var t = CLASSICA.tamanhos.find(function (x) { return x.id === tam; });
+    var c = CLASSICA.cores.find(function (x) { return x.id === cor; });
+    var alt = "Placa Avaliação Google, Linha Clássica, " + (t ? t.rotulo : tam) + ", " + (c ? c.rotulo.toLowerCase() : cor);
+    return '<div class="pc pc--' + (alto ? "tall" : "square") + '">' +
+      '<img src="' + src + '" alt="' + esc(alt) + '" width="800" height="' + (alto ? 1200 : 800) + '"' + (eager ? "" : ' loading="lazy"') + ' decoding="async">' +
+      '<span class="pc__logo">' + ICON.google + "</span>" +
+      '<span class="pc__qr">' + qr("classica" + tam) + "</span></div>";
+  }
+
   /* ------------------------------------------------------------
      Demonstração do hero
      ------------------------------------------------------------ */
@@ -218,7 +233,9 @@
       var cena = CENAS[i];
       $all(".demo__tab", elTabs).forEach(function (b, j) { b.setAttribute("aria-selected", j === i ? "true" : "false"); });
       demo.classList.remove("is-tapped", "is-approach");
-      elPlate.innerHTML = plate({ modelo: cena.id, cor: cena.id === "instagram" || cena.id === "wifi" ? "light" : "dark", nome: NEGOCIO });
+      elPlate.innerHTML = cena.id === "google"
+        ? placaClassica("10x10", "preto-azul", true)
+        : plate({ modelo: cena.id, cor: cena.id === "instagram" || cena.id === "wifi" ? "light" : "dark", nome: NEGOCIO });
 
       if (reduzMovimento) {
         trocarTela(tela(cena.id));
@@ -259,7 +276,7 @@
     }
 
     // Estado inicial já com uma tela preenchida
-    elPlate.innerHTML = plate({ modelo: "google", cor: "dark", nome: NEGOCIO });
+    elPlate.innerHTML = placaClassica("10x10", "preto-azul", true);
     elScreen.innerHTML = tela("google");
     elTabs.children[0].setAttribute("aria-selected", "true");
     var st = elScreen.querySelector(".scr__stars"); if (st) st.classList.add("on");
@@ -276,8 +293,25 @@
 
   var NOMES_COR = { dark: "Preto fosco", light: "Branco", clear: "Cristal" };
 
+  function rotulo(lista, id) {
+    var o = lista.find(function (x) { return x.id === id; });
+    return o ? o.rotulo : id;
+  }
+  // Linhas de detalhe de um item: [rótulo, valor]
+  function detalhes(c) {
+    var d = c.estilo === "classica"
+      ? [["Tamanho", rotulo(CLASSICA.tamanhos, c.tam)], ["Cor", rotulo(CLASSICA.cores, c.cor)]]
+      : [["Acabamento", NOMES_COR[c.cor]]];
+    if (c.nome) d.push(["Nome", c.nome]);
+    if (c.link) d.push(["Link", c.link]);
+    return d;
+  }
+  function miniatura(c) {
+    return c.estilo === "classica" ? placaClassica(c.tam, c.cor) : plate({ modelo: c.modelo, cor: c.cor, nome: c.nome });
+  }
+
   function adicionar(item) {
-    var chave = [item.id, item.cor, item.nome || "", item.link || ""].join("|");
+    var chave = [item.id, item.tam || "", item.cor, item.nome || "", item.link || ""].join("|");
     var existente = carrinho.find(function (c) { return c.chave === chave; });
     if (existente) existente.qtd += 1;
     else carrinho.push(Object.assign({ chave: chave, qtd: 1 }, item));
@@ -306,10 +340,8 @@
       return;
     }
     body.innerHTML = carrinho.map(function (c, i) {
-      var det = [NOMES_COR[c.cor]];
-      if (c.nome) det.push("Nome: " + esc(c.nome));
-      if (c.link) det.push("Link: " + esc(c.link));
-      return '<div class="line"><div class="line__art">' + plate({ modelo: c.modelo, cor: c.cor, nome: c.nome }) + "</div>" +
+      var det = detalhes(c).map(function (d) { return esc(d[0] ? d[0] + ": " + d[1] : d[1]); });
+      return '<div class="line"><div class="line__art">' + miniatura(c) + "</div>" +
         '<div class="line__info"><b>' + esc(c.titulo) + "</b><small>" + det.join(" · ") + "</small>" +
         '<div class="line__row"><div class="qty"><button type="button" data-menos="' + i + '" aria-label="Diminuir quantidade">−</button><span>' + c.qtd + '</span><button type="button" data-mais="' + i + '" aria-label="Aumentar quantidade">+</button></div>' +
         '<span class="line__price">' + preco(c.preco * c.qtd) + "</span></div></div></div>";
@@ -323,9 +355,7 @@
     var linhas = ["Olá! Quero fazer um pedido pelo site da " + (LOJA.nome || "loja") + ":", ""];
     carrinho.forEach(function (c) {
       linhas.push("• " + c.qtd + "× " + c.titulo + " = " + preco(c.preco * c.qtd));
-      var det = ["Acabamento: " + NOMES_COR[c.cor]];
-      if (c.nome) det.push("Nome: " + c.nome);
-      if (c.link) det.push("Link: " + c.link);
+      var det = detalhes(c).map(function (d) { return (d[0] || "Cor") + ": " + d[1]; });
       linhas.push("   " + det.join(" | "));
     });
     linhas.push("", "Subtotal: " + preco(total()));
@@ -376,10 +406,65 @@
      Produtos
      ------------------------------------------------------------ */
   var PERSONALIZAVEIS = { google: 1, instagram: 1, whatsapp: 1, multilink: 1 };
+  var sel = { tam: CLASSICA.tamanhos[0].id, cor: CLASSICA.cores[0].id };
+
+  function tamanhoAtual() { return CLASSICA.tamanhos.find(function (t) { return t.id === sel.tam; }); }
+  function corDisponivel(tam, cor) { return !!(CLASSICA.imagens[tam] && CLASSICA.imagens[tam][cor]); }
+  function outroTamanhoCom(cor) {
+    var t = CLASSICA.tamanhos.find(function (x) { return corDisponivel(x.id, cor); });
+    return t ? t.rotulo : "";
+  }
+  function amostra(c) {
+    return '<span class="dot2" style="--a:' + c.amostra[0] + ";--b:" + c.amostra[1] + '"></span>';
+  }
+
+  function cardClassica() {
+    return '<article class="product product--featured" id="cardClassica">' +
+      '<div class="product__art product__art--photo">' + (CLASSICA.selo ? '<span class="product__badge">' + esc(CLASSICA.selo) + "</span>" : "") +
+        '<div class="photo-slot" id="fotoClassica"></div></div>' +
+      '<div class="product__body">' +
+        '<span class="product__meta">Linha Clássica · ' + esc(CLASSICA.material) + "</span>" +
+        "<h3>" + esc(CLASSICA.nome) + "</h3>" +
+        "<p>" + esc(CLASSICA.resumo) + "</p>" +
+        '<div class="opts">' +
+          '<div class="opt"><span class="opt__label">Tamanho</span><div class="seg" role="group" aria-label="Tamanho">' +
+            CLASSICA.tamanhos.map(function (t) {
+              return '<button type="button" data-tam="' + t.id + '"><b>' + t.rotulo + "</b><small>" + esc(t.uso) + "</small></button>";
+            }).join("") + "</div></div>" +
+          '<div class="opt"><span class="opt__label">Cor · <b id="nomeCorClassica"></b></span><div class="colors" role="group" aria-label="Cor">' +
+            CLASSICA.cores.map(function (c) {
+              return '<button type="button" class="color" data-ccor="' + c.id + '" aria-label="' + esc(c.rotulo) + '">' + amostra(c) + "</button>";
+            }).join("") + '</div><span class="opt__note" id="notaCorClassica"></span></div>' +
+        "</div>" +
+        '<div class="product__buy"><div class="price"><b id="precoClassica"></b><small id="parcelaClassica"></small></div>' +
+          '<button class="btn btn--primary add-btn" type="button" data-add-classica>' + ICON.plus + "Adicionar</button></div>" +
+        '<a class="muted small" href="#personalize" data-personalizar="classica" style="font-weight:700">Adicionar o meu link e nome</a>' +
+      "</div></article>";
+  }
+
+  function atualizarCardClassica(animar) {
+    var card = $("#cardClassica");
+    if (!card) return;
+    $all("[data-tam]", card).forEach(function (b) { b.setAttribute("aria-pressed", b.dataset.tam === sel.tam ? "true" : "false"); });
+    $all("[data-ccor]", card).forEach(function (b) {
+      var ok = corDisponivel(sel.tam, b.dataset.ccor);
+      b.setAttribute("aria-pressed", b.dataset.ccor === sel.cor ? "true" : "false");
+      b.classList.toggle("is-off", !ok);
+      b.title = ok ? rotulo(CLASSICA.cores, b.dataset.ccor) : "Disponível em " + outroTamanhoCom(b.dataset.ccor);
+    });
+    $("#nomeCorClassica").textContent = rotulo(CLASSICA.cores, sel.cor);
+    $("#notaCorClassica").textContent = "";
+    var t = tamanhoAtual();
+    $("#precoClassica").textContent = preco(t.preco);
+    $("#parcelaClassica").textContent = "ou 3× de " + preco(t.preco / 3);
+    var slot = $("#fotoClassica");
+    slot.innerHTML = placaClassica(sel.tam, sel.cor, true);
+    if (animar && !reduzMovimento) { slot.classList.remove("swap"); void slot.offsetWidth; slot.classList.add("swap"); }
+  }
 
   function iniciarProdutos() {
     var lista = $("#listaProdutos");
-    lista.innerHTML = PRODUTOS.map(function (p) {
+    lista.innerHTML = cardClassica() + PRODUTOS.map(function (p) {
       var wide = p.visual.modelo === "cartao" || p.visual.modelo === "kit";
       var artCls = "product__art" + (wide ? " product__art--wide" : "");
       var artStyle = p.visual.modelo === "multilink" ? ' style="padding-inline:28%"' : "";
@@ -387,7 +472,7 @@
         '<div class="' + artCls + '"' + artStyle + ">" + (p.selo ? '<span class="product__badge">' + esc(p.selo) + "</span>" : "") +
           "<div>" + plate({ modelo: p.visual.modelo, cor: p.visual.cor, nome: "Seu negócio" }) + "</div></div>" +
         '<div class="product__body">' +
-          '<span class="product__meta">' + esc(p.medida) + "</span>" +
+          '<span class="product__meta">Linha Tech · ' + esc(p.medida) + "</span>" +
           "<h3>" + esc(p.nome) + "</h3>" +
           "<p>" + esc(p.resumo) + "</p>" +
           '<div class="product__buy"><div class="price">' +
@@ -399,18 +484,54 @@
           (PERSONALIZAVEIS[p.id] ? '<a class="muted small" href="#personalize" data-personalizar="' + p.id + '" style="font-weight:700">Personalizar com o meu nome</a>' : "") +
         "</div></article>";
     }).join("");
+    atualizarCardClassica(false);
 
     lista.addEventListener("click", function (e) {
+      var tam = e.target.closest("[data-tam]");
+      if (tam) {
+        sel.tam = tam.dataset.tam;
+        if (!corDisponivel(sel.tam, sel.cor)) sel.cor = Object.keys(CLASSICA.imagens[sel.tam])[0];
+        atualizarCardClassica(true);
+        return;
+      }
+      var cc = e.target.closest("[data-ccor]");
+      if (cc) {
+        if (!corDisponivel(sel.tam, cc.dataset.ccor)) {
+          // cor só existe no outro tamanho: troca o tamanho junto
+          var t = CLASSICA.tamanhos.find(function (x) { return corDisponivel(x.id, cc.dataset.ccor); });
+          if (!t) return;
+          sel.tam = t.id;
+          sel.cor = cc.dataset.ccor;
+          atualizarCardClassica(true);
+          $("#notaCorClassica").textContent = rotulo(CLASSICA.cores, sel.cor) + " só existe em " + t.rotulo + ". Trocamos o tamanho para você.";
+          return;
+        }
+        sel.cor = cc.dataset.ccor;
+        atualizarCardClassica(true);
+        return;
+      }
+      if (e.target.closest("[data-add-classica]")) {
+        adicionar({ id: CLASSICA.id, estilo: "classica", titulo: CLASSICA.nome, preco: tamanhoAtual().preco, tam: sel.tam, cor: sel.cor });
+        return;
+      }
       var add = e.target.closest("[data-add]");
       if (add) {
         var p = PRODUTOS.find(function (x) { return x.id === add.dataset.add; });
-        adicionar({ id: p.id, titulo: p.nome, preco: p.preco, modelo: p.visual.modelo, cor: p.visual.cor });
+        adicionar({ id: p.id, estilo: "tech", titulo: p.nome, preco: p.preco, modelo: p.visual.modelo, cor: p.visual.cor });
         return;
       }
       var per = e.target.closest("[data-personalizar]");
       if (per) {
-        var r = $('#cfgModelo input[value="' + per.dataset.personalizar + '"]');
-        if (r) { r.checked = true; atualizarPrevia(true); }
+        var alvo = per.dataset.personalizar;
+        if (alvo === "classica") {
+          marcar("estilo", "classica");
+          marcar("tam", sel.tam);
+          marcar("ccor", sel.cor);
+        } else {
+          marcar("estilo", "tech");
+          marcar("modelo", alvo);
+        }
+        atualizarPrevia(true);
       }
     });
   }
@@ -418,40 +539,86 @@
   /* ------------------------------------------------------------
      Personalizador
      ------------------------------------------------------------ */
-  var ultimoModelo;
+  var ultimaPrevia;
+  function marcar(nome, valor) {
+    var r = $('#formConfig input[name="' + nome + '"][value="' + valor + '"]');
+    if (r) r.checked = true;
+  }
+  function marcado(nome) {
+    var r = $('#formConfig input[name="' + nome + '"]:checked');
+    return r ? r.value : "";
+  }
   function valoresConfig() {
-    var f = $("#formConfig");
     return {
-      modelo: f.querySelector('input[name="modelo"]:checked').value,
-      cor: f.querySelector('input[name="cor"]:checked').value,
+      estilo: marcado("estilo"),
+      modelo: marcado("modelo"),
+      cor: marcado("cor"),
+      tam: marcado("tam"),
+      ccor: marcado("ccor"),
       nome: $("#cfgNome").value.trim(),
       link: $("#cfgLink").value.trim(),
     };
   }
   function atualizarPrevia(animar) {
     var v = valoresConfig();
-    var p = PRODUTOS.find(function (x) { return x.id === v.modelo; });
-    var box = $("#previewPlate");
-    box.innerHTML = plate({ modelo: v.modelo, cor: v.cor, nome: v.nome || "Seu negócio" });
-    box.classList.toggle("is-tall", v.modelo === "multilink");
-    if (animar && !reduzMovimento && ultimoModelo !== undefined) {
+    var classica = v.estilo === "classica";
+    $("#grupoTech").hidden = classica;
+    $("#grupoClassica").hidden = !classica;
+
+    var box = $("#previewPlate"), valor, legenda, chavePrevia;
+    if (classica) {
+      if (!corDisponivel(v.tam, v.ccor)) {
+        v.ccor = Object.keys(CLASSICA.imagens[v.tam])[0];
+        marcar("ccor", v.ccor);
+      }
+      $all('#cfgCCor input').forEach(function (r) {
+        var ok = corDisponivel(v.tam, r.value);
+        r.disabled = !ok;
+        r.closest(".swatch").title = ok ? "" : "Disponível em " + outroTamanhoCom(r.value);
+      });
+      var t = CLASSICA.tamanhos.find(function (x) { return x.id === v.tam; });
+      box.innerHTML = placaClassica(v.tam, v.ccor);
+      box.classList.toggle("is-tall", v.tam === "10x15");
+      valor = t.preco;
+      legenda = "Linha Clássica · " + t.rotulo + " · logo e QR finais na produção";
+      chavePrevia = "c" + v.tam + v.ccor;
+    } else {
+      var p = PRODUTOS.find(function (x) { return x.id === v.modelo; });
+      box.innerHTML = plate({ modelo: v.modelo, cor: v.cor, nome: v.nome || "Seu negócio" });
+      box.classList.toggle("is-tall", v.modelo === "multilink");
+      valor = p.preco;
+      legenda = "Linha Tech · prévia ilustrativa · " + p.medida;
+      chavePrevia = "t" + v.modelo + v.cor;
+    }
+    if (animar && !reduzMovimento && ultimaPrevia !== undefined && ultimaPrevia !== chavePrevia) {
       box.classList.remove("swap"); void box.offsetWidth; box.classList.add("swap");
     }
-    ultimoModelo = v.modelo;
-    $("#cfgPreco").textContent = preco(p.preco);
-    $("#previewCaption").textContent = "Prévia ilustrativa · " + p.medida;
+    ultimaPrevia = chavePrevia;
+    $("#cfgPreco").textContent = preco(valor);
+    $("#previewCaption").textContent = legenda;
     var ph = { google: "Ex.: link do seu perfil no Google", instagram: "Ex.: @cafedapraca", whatsapp: "Ex.: (11) 98765-4321", multilink: "Ex.: seus links, a gente monta a página" };
-    $("#cfgLink").placeholder = ph[v.modelo];
+    $("#cfgLink").placeholder = classica ? ph.google : ph[v.modelo];
   }
   function iniciarConfig() {
     var f = $("#formConfig");
-    f.addEventListener("change", function (e) { atualizarPrevia(e.target.name === "modelo" || e.target.name === "cor"); });
+    $("#cfgTam").innerHTML = CLASSICA.tamanhos.map(function (t, i) {
+      return '<label class="chip"><input type="radio" name="tam" value="' + t.id + '"' + (i ? "" : " checked") + "><span>" + t.rotulo + "</span></label>";
+    }).join("");
+    $("#cfgCCor").innerHTML = CLASSICA.cores.map(function (c, i) {
+      return '<label class="swatch"><input type="radio" name="ccor" value="' + c.id + '"' + (i ? "" : " checked") + ">" + amostra(c) + "<span>" + esc(c.rotulo) + "</span></label>";
+    }).join("");
+    f.addEventListener("change", function (e) { atualizarPrevia(e.target.type === "radio"); });
     $("#cfgNome").addEventListener("input", function () { atualizarPrevia(false); });
     f.addEventListener("submit", function (e) {
       e.preventDefault();
       var v = valoresConfig();
+      if (v.estilo === "classica") {
+        var t = CLASSICA.tamanhos.find(function (x) { return x.id === v.tam; });
+        adicionar({ id: CLASSICA.id, estilo: "classica", titulo: CLASSICA.nome, preco: t.preco, tam: v.tam, cor: v.ccor, nome: v.nome, link: v.link });
+        return;
+      }
       var p = PRODUTOS.find(function (x) { return x.id === v.modelo; });
-      adicionar({ id: p.id, titulo: p.nome, preco: p.preco, modelo: v.modelo, cor: v.cor, nome: v.nome, link: v.link });
+      adicionar({ id: p.id, estilo: "tech", titulo: p.nome, preco: p.preco, modelo: v.modelo, cor: v.cor, nome: v.nome, link: v.link });
     });
     atualizarPrevia(false);
   }

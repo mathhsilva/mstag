@@ -13,13 +13,45 @@ window.LOJA = {
   prazo: "Produção em até 3 dias úteis",
 };
 
+/*
+ * Linha Clássica: o design próprio da MS Tag, vendido com fotos reais das placas.
+ * Para adicionar uma cor nova, coloque a imagem em assets/placas/ e registre em "imagens".
+ */
+window.CLASSICA = {
+  id: "classica-google",
+  nome: "Avaliação Google · Linha Clássica",
+  resumo: "O nosso design mais pedido. Aproximou o celular ou apontou a câmera, o cliente cai direto na tela de 5 estrelas do seu perfil.",
+  selo: "Mais vendida",
+  material: "acrílico 3 mm · NFC + QR dinâmico",
+  tamanhos: [
+    { id: "10x10", rotulo: "10 × 10 cm", uso: "Balcão e caixa", preco: 59.9 },
+    { id: "10x15", rotulo: "10 × 15 cm", uso: "Parede e mesa", preco: 69.9 },
+  ],
+  cores: [
+    { id: "preto-azul", rotulo: "Preto e azul", amostra: ["#121212", "#3057FF"] },
+    { id: "azul", rotulo: "Azul", amostra: ["#1E3FD0", "#C9D1F4"] },
+    { id: "preto-cinza", rotulo: "Preto e cinza", amostra: ["#121212", "#C2C2C2"] },
+  ],
+  imagens: {
+    "10x10": {
+      "preto-azul": "assets/placas/google-10x10-preto-azul.webp",
+      "azul": "assets/placas/google-10x10-azul.webp",
+    },
+    "10x15": {
+      "preto-azul": "assets/placas/google-10x15-preto-azul.webp",
+      "azul": "assets/placas/google-10x15-azul.webp",
+      "preto-cinza": "assets/placas/google-10x15-preto-cinza.webp",
+    },
+  },
+};
+
+/* Linha Tech: plaquinhas desenhadas pelo próprio site */
 window.PRODUTOS = [
   {
     id: "google",
-    nome: "Plaquinha Avaliação Google",
-    resumo: "O cliente aproxima o celular e já cai na tela de 5 estrelas do seu perfil.",
+    nome: "Avaliação Google · Linha Tech",
+    resumo: "Visual minimalista com o nome do seu negócio em destaque. Um toque e o cliente já está nas estrelas.",
     preco: 59.9,
-    selo: "Mais vendida",
     medida: "10 × 10 cm · acrílico 3 mm",
     visual: { modelo: "google", cor: "dark" },
   },

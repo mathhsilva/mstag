@@ -163,7 +163,7 @@
             <p class="eyebrow">Produtos</p>
             <h2>Escolha a sua plaquinha</h2>
           </div>
-          <p class="section__lead">Todas chegam com o seu link gravado, QR code impresso e fita dupla-face para fixar.</p>
+          <p class="section__lead">Dois estilos para combinar com o seu espaço: a <b>Linha Clássica</b>, com a nossa faixa em onda, e a <b>Linha Tech</b>, minimalista e com o nome do seu negócio. Todas chegam com o link gravado, QR code e fita dupla-face.</p>
         </header>
         <div class="grid-products" id="listaProdutos"></div>
       </div>
@@ -176,30 +176,51 @@
           <div class="config__stage">
             <div id="previewPlate"></div>
           </div>
-          <p class="config__caption mono" id="previewCaption">Prévia ilustrativa · 10 × 10 cm</p>
+          <p class="config__caption mono" id="previewCaption">Linha Clássica · 10 × 10 cm</p>
         </div>
         <form class="config__form" id="formConfig" novalidate>
           <p class="eyebrow eyebrow--inv">Personalize</p>
           <h2>Monte a plaquinha com a cara do seu negócio</h2>
 
           <fieldset class="field">
-            <legend>O que ela abre</legend>
-            <div class="chips" id="cfgModelo">
-              <label class="chip"><input type="radio" name="modelo" value="google" checked><span>Google</span></label>
-              <label class="chip"><input type="radio" name="modelo" value="instagram"><span>Instagram</span></label>
-              <label class="chip"><input type="radio" name="modelo" value="whatsapp"><span>WhatsApp</span></label>
-              <label class="chip"><input type="radio" name="modelo" value="multilink"><span>Multi-link</span></label>
+            <legend>Estilo</legend>
+            <div class="styles" id="cfgEstilo">
+              <label class="style-opt"><input type="radio" name="estilo" value="classica" checked><span><b>Clássica</b><small>Faixa em onda, NFC e QR dinâmico</small></span></label>
+              <label class="style-opt"><input type="radio" name="estilo" value="tech"><span><b>Tech</b><small>Minimalista, com o nome do seu negócio</small></span></label>
             </div>
           </fieldset>
 
-          <fieldset class="field">
-            <legend>Acabamento</legend>
-            <div class="swatches" id="cfgCor">
-              <label class="swatch"><input type="radio" name="cor" value="dark" checked><span class="swatch__dot swatch__dot--dark"></span><span>Preto fosco</span></label>
-              <label class="swatch"><input type="radio" name="cor" value="light"><span class="swatch__dot swatch__dot--light"></span><span>Branco</span></label>
-              <label class="swatch"><input type="radio" name="cor" value="clear"><span class="swatch__dot swatch__dot--clear"></span><span>Cristal</span></label>
-            </div>
-          </fieldset>
+          <div class="cfg-group" id="grupoClassica">
+            <fieldset class="field">
+              <legend>Tamanho</legend>
+              <div class="chips" id="cfgTam"></div>
+            </fieldset>
+            <fieldset class="field">
+              <legend>Cor</legend>
+              <div class="swatches" id="cfgCCor"></div>
+            </fieldset>
+          </div>
+
+          <div class="cfg-group" id="grupoTech" hidden>
+            <fieldset class="field">
+              <legend>O que ela abre</legend>
+              <div class="chips" id="cfgModelo">
+                <label class="chip"><input type="radio" name="modelo" value="google" checked><span>Google</span></label>
+                <label class="chip"><input type="radio" name="modelo" value="instagram"><span>Instagram</span></label>
+                <label class="chip"><input type="radio" name="modelo" value="whatsapp"><span>WhatsApp</span></label>
+                <label class="chip"><input type="radio" name="modelo" value="multilink"><span>Multi-link</span></label>
+              </div>
+            </fieldset>
+
+            <fieldset class="field">
+              <legend>Acabamento</legend>
+              <div class="swatches" id="cfgCor">
+                <label class="swatch"><input type="radio" name="cor" value="dark" checked><span class="swatch__dot swatch__dot--dark"></span><span>Preto fosco</span></label>
+                <label class="swatch"><input type="radio" name="cor" value="light"><span class="swatch__dot swatch__dot--light"></span><span>Branco</span></label>
+                <label class="swatch"><input type="radio" name="cor" value="clear"><span class="swatch__dot swatch__dot--clear"></span><span>Cristal</span></label>
+              </div>
+            </fieldset>
+          </div>
 
           <div class="field">
             <label for="cfgNome">Nome do seu negócio</label>
@@ -281,7 +302,7 @@
           </details>
           <details>
             <summary>Posso trocar o link depois?</summary>
-            <p>Sim. No display multi-link você troca os links quando quiser, sem mexer na plaquinha. Nas plaquinhas de link único, a gente regrava para você.</p>
+            <p>Sim. Na Linha Clássica o QR code é dinâmico, então o destino pode ser trocado sem imprimir outra placa. No display multi-link você troca os links quando quiser. Nas demais, a gente regrava o chip para você.</p>
           </details>
           <details>
             <summary>Precisa de bateria ou internet na plaquinha?</summary>

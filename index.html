@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>MS Tag · Plaquinhas NFC</title>
+  <meta name="description" content="Plaquinhas NFC para o seu negócio: o cliente aproxima o celular e já avalia no Google, segue no Instagram, chama no WhatsApp ou abre o cardápio. Sem app, com QR code de reserva.">
+  <meta property="og:title" content="MS Tag · Plaquinhas NFC">
+  <meta property="og:description" content="Um toque do celular e seu cliente já está onde você quer: avaliação no Google, Instagram, WhatsApp, cardápio, Wi-Fi e Pix.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#0B1220">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@500;600;700&display=swap">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<!--SITE-START-->
+  <a class="skip" href="#produtos">Pular para os produtos</a>
+
+  <header class="topbar" id="topo">
+    <div class="wrap topbar__in">
+      <a class="logo" href="#topo" aria-label="MS Tag, início">
+        <span class="logo__mark" aria-hidden="true">
+          <svg viewBox="0 0 32 32"><rect x="3" y="3" width="26" height="26" rx="8" fill="currentColor"/><path d="M12 11c2.6 2.8 2.6 7.2 0 10M16.5 8.5c4 4.2 4 10.8 0 15M21 6c5.4 5.6 5.4 14.4 0 20" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>
+        </span>
+        <span class="logo__txt">MS<b>Tag</b></span>
+      </a>
+      <nav class="nav" aria-label="Seções">
+        <a href="#como-funciona">Como funciona</a>
+        <a href="#produtos">Produtos</a>
+        <a href="#personalize">Personalize</a>
+        <a href="#duvidas">Dúvidas</a>
+      </nav>
+      <button class="cart-btn" type="button" id="abrirCarrinho" aria-label="Abrir carrinho">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.4 11.2a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.5L21 8H6.2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="10" cy="20" r="1.4" fill="currentColor"/><circle cx="17" cy="20" r="1.4" fill="currentColor"/></svg>
+        <span>Carrinho</span>
+        <b class="cart-btn__count" id="contadorCarrinho" data-zero="true">0</b>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="wrap hero__in">
+        <div class="hero__copy">
+          <p class="eyebrow"><span class="pulse" aria-hidden="true"></span> Plaquinhas NFC + QR code</p>
+          <h1 class="hero__title">Um toque do celular. <span>Seu cliente já está onde você quer.</span></h1>
+          <p class="hero__lead">Avaliação no Google, Instagram, WhatsApp, cardápio, Wi-Fi ou Pix. O cliente encosta o celular na plaquinha e o link abre na hora, sem baixar aplicativo.</p>
+          <div class="hero__ctas">
+            <a class="btn btn--primary" href="#produtos">Ver plaquinhas
+              <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11m-4-4 4 4-4 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a class="btn btn--ghost" href="#personalize">Montar a minha</a>
+          </div>
+          <ul class="hero__proof">
+            <li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m5 10.5 3 3 7-7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Funciona em iPhone e Android</li>
+            <li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m5 10.5 3 3 7-7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>QR code incluso</li>
+            <li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m5 10.5 3 3 7-7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Chega configurada</li>
+          </ul>
+        </div>
+
+        <div class="demo" id="demo" aria-label="Demonstração: escolha o que a plaquinha abre">
+          <div class="demo__stage">
+            <div class="demo__glow" aria-hidden="true"></div>
+            <div class="demo__plate" id="demoPlate"></div>
+            <div class="demo__waves" aria-hidden="true"><i></i><i></i><i></i></div>
+            <div class="phone" id="demoPhone">
+              <div class="phone__notch" aria-hidden="true"></div>
+              <div class="phone__screen" id="demoScreen" aria-live="polite"></div>
+            </div>
+          </div>
+          <div class="demo__tabs" role="tablist" aria-label="O que a plaquinha abre" id="demoTabs"></div>
+          <p class="demo__hint">Toque numa opção para ver o que o seu cliente vê.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SPECS STRIP -->
+    <section class="specs" aria-label="Especificações técnicas">
+      <div class="wrap specs__in">
+        <div class="spec"><b class="mono">13,56 MHz</b><span>Chip NFC NTAG213, o padrão dos celulares</span></div>
+        <div class="spec"><b class="mono">1 a 4 cm</b><span>Basta aproximar a parte de cima do celular</span></div>
+        <div class="spec"><b class="mono">0 apps</b><span>Abre direto no navegador do cliente</span></div>
+        <div class="spec"><b class="mono">Sem bateria</b><span>O chip é alimentado pelo próprio celular</span></div>
+      </div>
+    </section>
+
+    <!-- COMO FUNCIONA -->
+    <section class="section" id="como-funciona">
+      <div class="wrap">
+        <header class="section__head">
+          <p class="eyebrow">Como funciona</p>
+          <h2>Do pedido ao balcão em três passos</h2>
+          <p class="section__lead">Você não precisa entender nada de tecnologia. A gente grava o seu link no chip e manda a plaquinha pronta para usar.</p>
+        </header>
+        <ol class="steps">
+          <li class="step">
+            <span class="step__n mono">1</span>
+            <div class="step__art" aria-hidden="true">
+              <svg viewBox="0 0 120 80"><rect x="18" y="10" width="40" height="60" rx="8" class="s-fill"/><rect x="62" y="10" width="40" height="60" rx="8" class="s-line"/><path d="M30 30h16M30 38h10" class="s-stroke-inv"/><path d="M74 30h16M74 38h10" class="s-stroke"/><circle cx="96" cy="16" r="8" class="s-accent"/><path d="m92.5 16 2.4 2.4 4.4-4.6" class="s-stroke-inv"/></svg>
+            </div>
+            <h3>Escolha a plaquinha</h3>
+            <p>Google, Instagram, WhatsApp ou o display multi-link. Escolha a cor e escreva o nome do seu negócio.</p>
+          </li>
+          <li class="step">
+            <span class="step__n mono">2</span>
+            <div class="step__art" aria-hidden="true">
+              <svg viewBox="0 0 120 80"><rect x="20" y="22" width="80" height="36" rx="18" class="s-line"/><path d="M36 40h48" class="s-stroke" stroke-dasharray="3 5"/><circle cx="36" cy="40" r="6" class="s-fill"/><circle cx="84" cy="40" r="6" class="s-accent"/></svg>
+            </div>
+            <h3>Mande o seu link</h3>
+            <p>Pelo WhatsApp você envia o link do perfil. Se não souber qual é, a gente encontra para você.</p>
+          </li>
+          <li class="step">
+            <span class="step__n mono">3</span>
+            <div class="step__art" aria-hidden="true">
+              <svg viewBox="0 0 120 80"><rect x="16" y="30" width="44" height="40" rx="6" class="s-fill"/><rect x="66" y="6" width="30" height="52" rx="7" class="s-line"/><path d="M62 26c3 3 3 8 0 11M56 20c6 5 6 17 0 22" class="s-stroke-accent"/></svg>
+            </div>
+            <h3>O cliente aproxima</h3>
+            <p>A plaquinha chega gravada e testada. Coloque no balcão, na mesa ou no caixa e pronto.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- COMPARATIVO -->
+    <section class="section section--tight">
+      <div class="wrap compare">
+        <div class="compare__col compare__col--before">
+          <p class="compare__label">Pedir avaliação do jeito antigo</p>
+          <ol class="compare__list">
+            <li>Abrir o Google</li>
+            <li>Pesquisar o nome da loja</li>
+            <li>Achar o perfil certo</li>
+            <li>Rolar até as avaliações</li>
+            <li>Tocar em "Escrever avaliação"</li>
+            <li>Desistir no meio do caminho</li>
+          </ol>
+        </div>
+        <div class="compare__col compare__col--after">
+          <p class="compare__label">Com a plaquinha</p>
+          <div class="compare__one">
+            <span class="compare__tap" aria-hidden="true">
+              <svg viewBox="0 0 48 48"><path d="M17 16c4 4.4 4 11.6 0 16M24 11c6.6 7 6.6 19 0 26M31 6c9.2 9.6 9.2 26.4 0 36" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+            </span>
+            <div>
+              <b>1 toque</b>
+              <span>e a tela de estrelas já está aberta</span>
+            </div>
+          </div>
+          <p class="compare__note">Quanto menos passos, mais gente termina. É por isso que a plaquinha funciona tão bem no balcão, logo depois de um bom atendimento.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRODUTOS -->
+    <section class="section" id="produtos">
+      <div class="wrap">
+        <header class="section__head section__head--row">
+          <div>
+            <p class="eyebrow">Produtos</p>
+            <h2>Escolha a sua plaquinha</h2>
+          </div>
+          <p class="section__lead">Todas chegam com o seu link gravado, QR code impresso e fita dupla-face para fixar.</p>
+        </header>
+        <div class="grid-products" id="listaProdutos"></div>
+      </div>
+    </section>
+
+    <!-- PERSONALIZE -->
+    <section class="section section--ink" id="personalize">
+      <div class="wrap config">
+        <div class="config__preview">
+          <div class="config__stage">
+            <div id="previewPlate"></div>
+          </div>
+          <p class="config__caption mono" id="previewCaption">Prévia ilustrativa · 10 × 10 cm</p>
+        </div>
+        <form class="config__form" id="formConfig" novalidate>
+          <p class="eyebrow eyebrow--inv">Personalize</p>
+          <h2>Monte a plaquinha com a cara do seu negócio</h2>
+
+          <fieldset class="field">
+            <legend>O que ela abre</legend>
+            <div class="chips" id="cfgModelo">
+              <label class="chip"><input type="radio" name="modelo" value="google" checked><span>Google</span></label>
+              <label class="chip"><input type="radio" name="modelo" value="instagram"><span>Instagram</span></label>
+              <label class="chip"><input type="radio" name="modelo" value="whatsapp"><span>WhatsApp</span></label>
+              <label class="chip"><input type="radio" name="modelo" value="multilink"><span>Multi-link</span></label>
+            </div>
+          </fieldset>
+
+          <fieldset class="field">
+            <legend>Acabamento</legend>
+            <div class="swatches" id="cfgCor">
+              <label class="swatch"><input type="radio" name="cor" value="dark" checked><span class="swatch__dot swatch__dot--dark"></span><span>Preto fosco</span></label>
+              <label class="swatch"><input type="radio" name="cor" value="light"><span class="swatch__dot swatch__dot--light"></span><span>Branco</span></label>
+              <label class="swatch"><input type="radio" name="cor" value="clear"><span class="swatch__dot swatch__dot--clear"></span><span>Cristal</span></label>
+            </div>
+          </fieldset>
+
+          <div class="field">
+            <label for="cfgNome">Nome do seu negócio</label>
+            <input class="input" id="cfgNome" name="nome" type="text" maxlength="28" placeholder="Ex.: Café da Praça" autocomplete="organization">
+          </div>
+          <div class="field">
+            <label for="cfgLink">Link, @ ou número <span class="muted">(opcional, pode mandar depois)</span></label>
+            <input class="input" id="cfgLink" name="link" type="text" maxlength="120" placeholder="Ex.: @cafedapraca">
+          </div>
+
+          <div class="config__buy">
+            <div class="config__price">
+              <span class="muted">Valor</span>
+              <b id="cfgPreco">R$ 59,90</b>
+            </div>
+            <button class="btn btn--primary btn--lg" type="submit">Adicionar ao carrinho</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- PARA QUEM -->
+    <section class="section">
+      <div class="wrap">
+        <header class="section__head">
+          <p class="eyebrow">Para quem é</p>
+          <h2>Feita para quem atende gente todo dia</h2>
+        </header>
+        <div class="uses">
+          <article class="use"><h3>Restaurantes e cafés</h3><p>Cardápio na mesa, Wi-Fi sem soletrar senha e avaliação na hora da conta.</p><span class="use__tag mono">Multi-link</span></article>
+          <article class="use"><h3>Salões e barbearias</h3><p>Cliente saiu satisfeito do espelho? É o momento de pedir a avaliação e o follow.</p><span class="use__tag mono">Google + Instagram</span></article>
+          <article class="use"><h3>Lojas e provadores</h3><p>Quem segue a loja volta. Deixe o Instagram a um toque de distância.</p><span class="use__tag mono">Instagram</span></article>
+          <article class="use"><h3>Clínicas e consultórios</h3><p>Agendamento pelo WhatsApp com a mensagem pronta e avaliações que passam confiança.</p><span class="use__tag mono">WhatsApp</span></article>
+          <article class="use"><h3>Hotéis e pousadas</h3><p>Wi-Fi, guia da cidade e contato da recepção direto do quarto.</p><span class="use__tag mono">Multi-link</span></article>
+          <article class="use"><h3>Autônomos</h3><p>Corretor, personal, fotógrafo: o cartão NFC passa seu contato inteiro em um segundo.</p><span class="use__tag mono">Cartão NFC</span></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- GARANTIAS -->
+    <section class="section section--tight">
+      <div class="wrap perks">
+        <div class="perk">
+          <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M5 10h15v12H5zM20 14h4.5l3 4v4H20" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="10" cy="23" r="2.5" fill="var(--paper)" stroke="currentColor" stroke-width="2"/><circle cx="23" cy="23" r="2.5" fill="var(--paper)" stroke="currentColor" stroke-width="2"/></svg>
+          <div><b>Envio para todo o Brasil</b><span data-loja="prazo">Produção em até 3 dias úteis</span></div>
+        </div>
+        <div class="perk">
+          <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 4 6 8v7c0 6.5 4.3 11 10 13 5.7-2 10-6.5 10-13V8z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="m11.5 16 3 3 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <div><b>Testada antes de sair</b><span>Cada chip é gravado e lido por nós</span></div>
+        </div>
+        <div class="perk">
+          <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M26 16a10 10 0 1 1-3-7.1M26 6v5h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <div><b>Link errado? A gente regrava</b><span>Suporte direto pelo WhatsApp</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section" id="duvidas">
+      <div class="wrap faq">
+        <header class="section__head">
+          <p class="eyebrow">Dúvidas</p>
+          <h2>Perguntas frequentes</h2>
+          <p class="section__lead">Não achou a sua? Chame a gente no WhatsApp e respondemos rapidinho.</p>
+          <a class="btn btn--ghost" data-whats="Olá! Tenho uma dúvida sobre as plaquinhas NFC." href="#" target="_blank" rel="noopener">Falar no WhatsApp</a>
+        </header>
+        <div class="faq__list">
+          <details open>
+            <summary>Meu cliente precisa baixar algum aplicativo?</summary>
+            <p>Não. Os celulares com NFC leem a plaquinha sozinhos e abrem o link no navegador. No iPhone (do XS em diante) funciona com a tela desbloqueada. No Android, basta o NFC estar ligado, o que já vem ativado na maioria dos aparelhos.</p>
+          </details>
+          <details>
+            <summary>E se o celular do cliente não tiver NFC?</summary>
+            <p>Toda plaquinha vem com QR code impresso. Quem não tem NFC aponta a câmera e cai no mesmo link.</p>
+          </details>
+          <details>
+            <summary>Onde eu aproximo o celular?</summary>
+            <p>No iPhone, a antena fica na parte de cima, perto da câmera. Na maioria dos Android, fica no meio das costas do aparelho. A distância é de 1 a 4 cm e funciona mesmo com capinha.</p>
+          </details>
+          <details>
+            <summary>Posso trocar o link depois?</summary>
+            <p>Sim. No display multi-link você troca os links quando quiser, sem mexer na plaquinha. Nas plaquinhas de link único, a gente regrava para você.</p>
+          </details>
+          <details>
+            <summary>Precisa de bateria ou internet na plaquinha?</summary>
+            <p>Não. O chip não tem bateria: ele é ativado pelo próprio celular no momento da leitura. Quem precisa de internet é o celular do cliente, para abrir o link.</p>
+          </details>
+          <details>
+            <summary>Como faço o pagamento?</summary>
+            <p>Monte o carrinho aqui no site e finalize pelo WhatsApp. Lá confirmamos o seu link, calculamos o frete pelo CEP e você paga por Pix ou cartão.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA FINAL -->
+    <section class="section section--tight">
+      <div class="wrap">
+        <div class="final">
+          <div class="final__waves" aria-hidden="true"><i></i><i></i><i></i></div>
+          <h2>Seu próximo cliente está a um toque de avaliar você.</h2>
+          <p>Escolha a plaquinha, mande o seu link e receba pronta para usar.</p>
+          <div class="hero__ctas">
+            <a class="btn btn--light btn--lg" href="#produtos">Comprar agora</a>
+            <a class="btn btn--outline-light btn--lg" data-whats="Olá! Quero saber mais sobre as plaquinhas NFC." href="#" target="_blank" rel="noopener">Tirar dúvidas no WhatsApp</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer__in">
+      <div>
+        <a class="logo logo--sm" href="#topo"><span class="logo__txt">MS<b>Tag</b></span></a>
+        <p class="muted">Plaquinhas NFC para negócios que querem ser encontrados.</p>
+      </div>
+      <ul class="footer__links">
+        <li><a data-whats="Olá! Vim pelo site da MS Tag." href="#" target="_blank" rel="noopener">WhatsApp</a></li>
+        <li><a id="linkInstagram" href="#" target="_blank" rel="noopener">Instagram</a></li>
+        <li><span data-loja="email">contato@mstag.com.br</span></li>
+      </ul>
+      <p class="footer__copy muted">© <span id="ano">2026</span> MS Tag. Google, Instagram e WhatsApp são marcas de seus respectivos donos.</p>
+    </div>
+  </footer>
+
+  <!-- WhatsApp flutuante -->
+  <a class="float-whats" data-whats="Olá! Vim pelo site e quero uma plaquinha NFC." href="#" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+    <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 4a12 12 0 0 0-10.4 18L4 28l6.2-1.6A12 12 0 1 0 16 4Z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><path d="M11.6 10.8c.3-.6.6-.6 1-.6h.8c.2 0 .5 0 .7.6l1 2.4c.1.3 0 .6-.1.8l-.7.9c-.2.2-.2.5 0 .8.5.9 1.9 2.6 3.8 3.3.3.1.5 0 .7-.2l.9-1.1c.2-.3.5-.3.8-.2l2.3 1.1c.3.2.5.3.5.5 0 .6-.2 1.6-1 2.2-.9.7-2.3.8-4.2 0-3.4-1.5-5.6-4.7-6.1-5.6-.5-.8-1.3-2.6-.4-4.9Z" fill="currentColor"/></svg>
+  </a>
+
+  <!-- Carrinho -->
+  <div class="drawer" id="carrinho" hidden>
+    <div class="drawer__scrim" data-fechar></div>
+    <aside class="drawer__panel" role="dialog" aria-modal="true" aria-labelledby="tituloCarrinho">
+      <header class="drawer__head">
+        <h2 id="tituloCarrinho">Seu carrinho</h2>
+        <button class="icon-btn" type="button" data-fechar aria-label="Fechar carrinho">
+          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="m5 5 10 10M15 5 5 15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+      </header>
+      <div class="drawer__body" id="itensCarrinho"></div>
+      <footer class="drawer__foot" id="rodapeCarrinho">
+        <div class="field">
+          <label for="clienteNome">Seu nome</label>
+          <input class="input input--light" id="clienteNome" type="text" maxlength="60" placeholder="Para a gente te chamar pelo nome" autocomplete="name">
+        </div>
+        <div class="drawer__total">
+          <span>Subtotal</span>
+          <b id="totalCarrinho">R$ 0,00</b>
+        </div>
+        <p class="muted small" data-loja="frete">Frete calculado no WhatsApp conforme o seu CEP</p>
+        <a class="btn btn--whats btn--lg btn--block" id="finalizar" href="#" target="_blank" rel="noopener">
+          <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 4a12 12 0 0 0-10.4 18L4 28l6.2-1.6A12 12 0 1 0 16 4Z" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/></svg>
+          Finalizar pedido no WhatsApp
+        </a>
+      </footer>
+    </aside>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+<!--SITE-END-->
+
+  <script src="js/config.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -2,6 +2,18 @@
  * Configuração da loja — edite aqui sem mexer no resto do site.
  * Preços, número do WhatsApp e textos principais ficam todos neste arquivo.
  */
+/*
+ * Endereço base do site, descoberto a partir deste próprio arquivo.
+ * Faz as imagens funcionarem tanto na página principal quanto nas páginas em subpastas.
+ */
+(function () {
+  var base = "";
+  if (typeof document !== "undefined" && document.currentScript) {
+    base = new URL("..", document.currentScript.src).href;
+  }
+  window.ASSET = function (caminho) { return /^(https?:|data:|\/)/.test(caminho) ? caminho : base + caminho; };
+})();
+
 window.LOJA = {
   nome: "mstag",
   // Endereço oficial do site (usado no SEO: canonical, sitemap, dados estruturados)

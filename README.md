@@ -45,13 +45,29 @@ O site já sai preparado para aparecer em buscas como "plaquinha NFC", "plaquinh
 - Bloco "Guia rápido" com explicação e tabela de preços em texto, que buscadores e IAs leem sem precisar rodar JavaScript.
 - `robots.txt` (libera buscadores e robôs de IA), `sitemap.xml` e `llms.txt` (resumo da loja para IAs).
 
-**Sempre que mudar preços, produtos ou perguntas**, rode:
+### Páginas de busca
+
+Além da página principal, o site tem páginas focadas em cada busca importante. Todas usam o mesmo topo, rodapé e carrinho:
+
+| Endereço | Busca principal |
+| --- | --- |
+| `/plaquinha-avaliacao-google/` | plaquinha / placa de avaliação Google |
+| `/plaquinha-nfc/` | plaquinha NFC, placa NFC, o que é NFC |
+| `/plaquinha-nfc-instagram/` | plaquinha NFC Instagram |
+| `/cartao-nfc-avaliacao-google/` | cartão NFC avaliação Google |
+| `/cardapio-digital-nfc/` | cardápio digital NFC / QR code na mesa |
+
+O conteúdo delas fica em **`tools/paginas.mjs`** (textos, perguntas, produtos exibidos e arte do topo). Não edite os `index.html` das pastas: eles são gerados. Para criar uma página nova, copie um bloco em `tools/paginas.mjs`, troque o `slug` e o texto e rode o gerador.
+
+Cada página tem uma imagem de compartilhamento própria em `assets/og/`. Se mudar o título de uma página, gere de novo com `node tools/og.mjs` (precisa do Playwright; as instruções estão no topo do arquivo).
+
+**Sempre que mudar preços, produtos, perguntas ou páginas**, rode:
 
 ```bash
 node tools/seo.mjs
 ```
 
-Ele regenera os dados estruturados, a tabela de preços, o `sitemap.xml`, o `robots.txt` e o `llms.txt` a partir do `js/config.js` e do FAQ do `index.html`.
+Ele regenera as páginas de busca, os dados estruturados, as tabelas de preços, os links dos guias no rodapé, o `sitemap.xml`, o `robots.txt` e o `llms.txt` a partir do `js/config.js`, do FAQ do `index.html` e de `tools/paginas.mjs`.
 
 **Domínio:** o SEO usa `https://mstag.com.br`. Se o endereço for outro, troque em `LOJA.site` (`js/config.js`) e nas tags `canonical`, `og:url`, `og:image`, `twitter:image` e `llms.txt` do `<head>` do `index.html`, e rode o gerador.
 
@@ -63,7 +79,11 @@ css/styles.css    visual
 js/config.js      dados da loja e produtos
 js/main.js        demo, carrinho, personalizador
 assets/logo/       logos (preto, preto+azul, azul, branco+azul, branco) e favicon
-tools/seo.mjs     gerador de SEO (node tools/seo.mjs)
+tools/seo.mjs     gerador de SEO e das páginas de busca (node tools/seo.mjs)
+tools/paginas.mjs conteúdo das páginas de busca
+tools/og.mjs      imagens de compartilhamento das páginas (opcional)
+<slug>/index.html páginas de busca geradas
+assets/og/        imagens de compartilhamento
 robots.txt  sitemap.xml  llms.txt
 assets/placas/    fotos da Linha Clássica
 assets/cartao/    fotos do Cartão NFC Google

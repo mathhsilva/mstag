@@ -4,6 +4,9 @@
   var LOJA = window.LOJA || {};
   var PRODUTOS = window.PRODUTOS || [];
   var reduzMovimento = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var ASSET = window.ASSET || function (p) { return p; };
+  // Nas páginas em subpastas, <body data-home="../"> aponta para a página principal
+  var HOME = document.body.getAttribute("data-home") || "";
   document.documentElement.classList.add("js");
 
   var brl = new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL" });
@@ -124,7 +127,7 @@
   var CLASSICA = window.CLASSICA;
   function placaClassica(tam, cor, eager) {
     var imgs = CLASSICA.imagens[tam] || CLASSICA.imagens[Object.keys(CLASSICA.imagens)[0]];
-    var src = imgs[cor] || imgs[Object.keys(imgs)[0]];
+    var src = ASSET(imgs[cor] || imgs[Object.keys(imgs)[0]]);
     var alto = tam === "10x15";
     var t = CLASSICA.tamanhos.find(function (x) { return x.id === tam; });
     var c = CLASSICA.cores.find(function (x) { return x.id === cor; });
@@ -299,7 +302,7 @@
     var d = c.estilo === "classica"
       ? [["Tamanho", rotulo(CLASSICA.tamanhos, c.tam)], ["Cor", rotulo(CLASSICA.cores, c.cor)]]
       : c.estilo === "cartao-google"
-        ? [["Faces", "preta e branca"]]
+        ? [["Faces", "preta e branca"], ["Inclui", "base de madeira"]]
         : [["Acabamento", NOMES_COR[c.cor]]];
     if (c.nome) d.push(["Nome", c.nome]);
     if (c.link) d.push(["Link", c.link]);
@@ -307,7 +310,7 @@
   }
   function miniatura(c) {
     if (c.estilo === "classica") return placaClassica(c.tam, c.cor);
-    if (c.estilo === "cartao-google") return '<img class="line__photo" src="' + CARTAO.fotos[0].src + '" alt="">';
+    if (c.estilo === "cartao-google") return '<img class="line__photo" src="' + ASSET(CARTAO.fotos[0].src) + '" alt="">';
     return plate({ modelo: c.modelo, cor: c.cor, nome: c.nome });
   }
 
@@ -439,7 +442,7 @@
         "</div>" +
         '<div class="product__buy"><div class="price"><b id="precoClassica"></b><small id="parcelaClassica"></small></div>' +
           '<button class="btn btn--primary add-btn" type="button" data-add-classica>' + ICON.plus + "Adicionar</button></div>" +
-        '<a class="muted small" href="#personalize" data-personalizar="classica" style="font-weight:700">Adicionar o meu link e nome</a>' +
+        '<a class="muted small" href="' + HOME + '#personalize" data-personalizar="classica" style="font-weight:700">Adicionar o meu link e nome</a>' +
       "</div></article>";
   }
 
@@ -449,11 +452,11 @@
     return '<article class="product product--featured product--flip" id="cardCartao">' +
       '<div class="product__art product__art--gallery">' + (CARTAO.selo ? '<span class="product__badge">' + esc(CARTAO.selo) + "</span>" : "") +
         '<div class="gallery">' +
-          '<div class="gallery__main"><img id="fotoCartao" src="' + f[0].src + '" alt="' + esc(f[0].alt) + '" width="900" height="900" loading="lazy" decoding="async"></div>' +
+          '<div class="gallery__main"><img id="fotoCartao" src="' + ASSET(f[0].src) + '" alt="' + esc(f[0].alt) + '" width="900" height="900" loading="lazy" decoding="async"></div>' +
           '<div class="gallery__thumbs" role="group" aria-label="Fotos do cartão">' +
             f.map(function (x, i) {
               return '<button type="button" data-foto="' + i + '" aria-label="Ver foto ' + (i + 1) + '" aria-pressed="' + (i ? "false" : "true") + '">' +
-                '<img src="' + x.src + '" alt="" width="900" height="900" loading="lazy" decoding="async"></button>';
+                '<img src="' + ASSET(x.src) + '" alt="" width="900" height="900" loading="lazy" decoding="async"></button>';
             }).join("") +
           "</div></div></div>" +
       '<div class="product__body">' +
@@ -464,20 +467,21 @@
           '<svg viewBox="0 0 24 24"><path d="M4 9h13l-3-3M20 15H7l3 3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>' +
           '<span class="faces__card faces__card--light">' + ICON.google + "</span><small>Frente e verso</small></div>" +
         '<ul class="ticks">' + CARTAO.destaques.map(function (d) { return "<li>" + esc(d) + "</li>"; }).join("") + "</ul>" +
-        '<div class="product__buy"><div class="price"><b>' + preco(CARTAO.preco) + "</b><small>no Pix ou no cartão</small></div>" +
+        '<div class="product__buy"><div class="price"><b>' + preco(CARTAO.preco) + "</b><small>" + esc(CARTAO.inclui || "no Pix ou no cartão") + "</small></div>" +
           '<button class="btn btn--primary add-btn" type="button" data-add-cartao>' + ICON.plus + "Adicionar</button></div>" +
       "</div></article>";
   }
   function mostrarFotoCartao(i) {
     var img = $("#fotoCartao"), foto = CARTAO.fotos[i];
-    if (!img || img.getAttribute("src") === foto.src) return;
+    var src = ASSET(foto.src);
+    if (!img || img.getAttribute("src") === src) return;
     $all("#cardCartao [data-foto]").forEach(function (b) { b.setAttribute("aria-pressed", +b.dataset.foto === i ? "true" : "false"); });
-    function trocar() { img.src = foto.src; img.alt = foto.alt; img.classList.remove("is-fading"); }
+    function trocar() { img.src = src; img.alt = foto.alt; img.classList.remove("is-fading"); }
     if (reduzMovimento) { trocar(); return; }
     img.classList.add("is-fading");
     var pre = new Image();
     pre.onload = pre.onerror = function () { setTimeout(trocar, 120); };
-    pre.src = foto.src;
+    pre.src = src;
   }
 
   function atualizarCardClassica(animar) {
@@ -502,7 +506,11 @@
 
   function iniciarProdutos() {
     var lista = $("#listaProdutos");
-    lista.innerHTML = cardClassica() + (CARTAO ? cardCartao() : "") + PRODUTOS.map(function (p) {
+    if (!lista) return;
+    // data-mostrar="classica,cartao,instagram" limita os produtos exibidos (páginas de busca)
+    var filtro = (lista.getAttribute("data-mostrar") || "").split(",").filter(Boolean);
+    function mostra(id) { return !filtro.length || filtro.indexOf(id) >= 0; }
+    lista.innerHTML = (mostra("classica") ? cardClassica() : "") + (CARTAO && mostra(CARTAO.id) ? cardCartao() : "") + PRODUTOS.filter(function (p) { return mostra(p.id); }).map(function (p) {
       var wide = p.visual.modelo === "cartao" || p.visual.modelo === "kit";
       var artCls = "product__art" + (wide ? " product__art--wide" : "");
       var artStyle = p.visual.modelo === "multilink" ? ' style="padding-inline:28%"' : "";
@@ -519,10 +527,11 @@
             "<small>ou 3× de " + preco(p.preco / 3) + "</small></div>" +
             '<button class="btn btn--primary add-btn" type="button" data-add="' + p.id + '">' + ICON.plus + "Adicionar</button>" +
           "</div>" +
-          (PERSONALIZAVEIS[p.id] ? '<a class="muted small" href="#personalize" data-personalizar="' + p.id + '" style="font-weight:700">Personalizar com o meu nome</a>' : "") +
+          (PERSONALIZAVEIS[p.id] ? '<a class="muted small" href="' + HOME + '#personalize" data-personalizar="' + p.id + '" style="font-weight:700">Personalizar com o meu nome</a>' : "") +
         "</div></article>";
     }).join("");
     atualizarCardClassica(false);
+    lista.setAttribute("data-qtd", lista.children.length);
 
     lista.addEventListener("click", function (e) {
       var tam = e.target.closest("[data-tam]");
@@ -567,6 +576,11 @@
       var per = e.target.closest("[data-personalizar]");
       if (per) {
         var alvo = per.dataset.personalizar;
+        if (!$("#formConfig")) {
+          // outra página: guarda a escolha e deixa o link levar ao personalizador da página principal
+          try { sessionStorage.setItem("mstag-personalizar", JSON.stringify({ alvo: alvo, tam: sel.tam, cor: sel.cor })); } catch (err) {}
+          return;
+        }
         if (alvo === "classica") {
           marcar("estilo", "classica");
           marcar("tam", sel.tam);
@@ -645,6 +659,7 @@
   }
   function iniciarConfig() {
     var f = $("#formConfig");
+    if (!f) return;
     $("#cfgTam").innerHTML = CLASSICA.tamanhos.map(function (t, i) {
       return '<label class="chip"><input type="radio" name="tam" value="' + t.id + '"' + (i ? "" : " checked") + "><span>" + t.rotulo + "</span></label>";
     }).join("");
@@ -665,6 +680,15 @@
       adicionar({ id: p.id, estilo: "tech", titulo: p.nome, preco: p.preco, modelo: v.modelo, cor: v.cor, nome: v.nome, link: v.link });
     });
     atualizarPrevia(false);
+
+    // veio de uma página de busca pelo link "Personalizar"
+    var pedido = null;
+    try { pedido = JSON.parse(sessionStorage.getItem("mstag-personalizar")); sessionStorage.removeItem("mstag-personalizar"); } catch (err) {}
+    if (pedido) {
+      if (pedido.alvo === "classica") { marcar("estilo", "classica"); marcar("tam", pedido.tam); marcar("ccor", pedido.cor); }
+      else { marcar("estilo", "tech"); marcar("modelo", pedido.alvo); }
+      atualizarPrevia(false);
+    }
   }
 
   /* ------------------------------------------------------------
@@ -689,6 +713,8 @@
     var ig = $("#linkInstagram");
     if (ig && LOJA.instagram) { ig.href = "https://instagram.com/" + LOJA.instagram; ig.textContent = "Instagram @" + LOJA.instagram; }
     $all("[data-loja]").forEach(function (el) { if (LOJA[el.dataset.loja]) el.textContent = LOJA[el.dataset.loja]; });
+    var emp = $("#linkEmpresa");
+    if (emp && LOJA.empresa) { emp.href = LOJA.empresa.site; emp.textContent = LOJA.empresa.nome; }
     var ano = $("#ano"); if (ano) ano.textContent = new Date().getFullYear();
 
     var topbar = $(".topbar");
@@ -718,7 +744,15 @@
     });
   }
 
+  /* Plaquinhas ilustrativas das páginas de busca: <div data-plate="instagram" data-cor="light"> */
+  function iniciarPlacas() {
+    $all("[data-plate]").forEach(function (el) {
+      el.innerHTML = plate({ modelo: el.getAttribute("data-plate"), cor: el.getAttribute("data-cor") || "dark", nome: el.getAttribute("data-nome") || "Seu negócio" });
+    });
+  }
+
   iniciarLoja();
+  iniciarPlacas();
   iniciarDemo();
   iniciarProdutos();
   iniciarCarrinho();

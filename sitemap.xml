@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://mstag.com.br/</loc>
+    <lastmod>2026-09-24</lastmod>
+    <image:image><image:loc>https://mstag.com.br/assets/cartao/cartao-google-preto-suporte.webp</image:loc></image:image>
+    <image:image><image:loc>https://mstag.com.br/assets/placas/google-10x10-preto-azul.webp</image:loc></image:image>
+    <image:image><image:loc>https://mstag.com.br/assets/placas/google-10x15-preto-azul.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://mstag.com.br/plaquinha-avaliacao-google/</loc>
+    <lastmod>2026-09-24</lastmod>
+  </url>
+  <url>
+    <loc>https://mstag.com.br/plaquinha-nfc/</loc>
+    <lastmod>2026-09-24</lastmod>
+  </url>
+  <url>
+    <loc>https://mstag.com.br/plaquinha-nfc-instagram/</loc>
+    <lastmod>2026-09-24</lastmod>
+  </url>
+  <url>
+    <loc>https://mstag.com.br/cartao-nfc-avaliacao-google/</loc>
+    <lastmod>2026-09-24</lastmod>
+  </url>
+  <url>
+    <loc>https://mstag.com.br/cardapio-digital-nfc/</loc>
+    <lastmod>2026-09-24</lastmod>
+  </url>
+</urlset>

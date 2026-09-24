@@ -18,7 +18,8 @@ Tudo que muda com frequência está em **`js/config.js`**:
 
 | O quê | Campo |
 | --- | --- |
-| Número do WhatsApp (DDI + DDD, só dígitos) | `LOJA.whatsapp` |
+| Número do WhatsApp (DDI + DDD, só dígitos; hoje (41) 98469-9726) | `LOJA.whatsapp` e `LOJA.whatsappExibicao` |
+| Empresa por trás da marca (Hinnovation) | `LOJA.empresa` |
 | Instagram (hoje @mstagbr), e-mail, prazo, frete | `LOJA.*` |
 | Linha Clássica: tamanhos, preços, cores e fotos | `CLASSICA` |
 | Cartão NFC Google (dupla face): preço, textos e fotos | `CARTAO_GOOGLE` |
@@ -33,7 +34,42 @@ As artes usam os marcadores "logo oficial Google" e "QR dinâmico". O site coloc
 
 Textos das seções ficam no `index.html`, e as cores e fontes no topo do `css/styles.css` (variáveis `--cobalt`, `--ink`, etc.).
 
-> Os preços e o número do WhatsApp que vieram de exemplo precisam ser trocados pelos seus antes de publicar.
+> Confira os preços antes de publicar: alguns ainda são valores de exemplo.
+
+## SEO e busca por IA
+
+O site já sai preparado para aparecer em buscas como "plaquinha NFC", "plaquinha de avaliação Google" e "placa NFC Instagram", e para ser citado por assistentes de IA (ChatGPT, Gemini, Perplexity, Claude).
+
+- Título, descrição, canonical e imagem de compartilhamento (`assets/og-image.jpg`) no `<head>`.
+- Dados estruturados (JSON-LD) com a empresa, os produtos com preço e as perguntas frequentes.
+- Bloco "Guia rápido" com explicação e tabela de preços em texto, que buscadores e IAs leem sem precisar rodar JavaScript.
+- `robots.txt` (libera buscadores e robôs de IA), `sitemap.xml` e `llms.txt` (resumo da loja para IAs).
+
+### Páginas de busca
+
+Além da página principal, o site tem páginas focadas em cada busca importante. Todas usam o mesmo topo, rodapé e carrinho:
+
+| Endereço | Busca principal |
+| --- | --- |
+| `/plaquinha-avaliacao-google/` | plaquinha / placa de avaliação Google |
+| `/plaquinha-nfc/` | plaquinha NFC, placa NFC, o que é NFC |
+| `/plaquinha-nfc-instagram/` | plaquinha NFC Instagram |
+| `/cartao-nfc-avaliacao-google/` | cartão NFC avaliação Google |
+| `/cardapio-digital-nfc/` | cardápio digital NFC / QR code na mesa |
+
+O conteúdo delas fica em **`tools/paginas.mjs`** (textos, perguntas, produtos exibidos e arte do topo). Não edite os `index.html` das pastas: eles são gerados. Para criar uma página nova, copie um bloco em `tools/paginas.mjs`, troque o `slug` e o texto e rode o gerador.
+
+Cada página tem uma imagem de compartilhamento própria em `assets/og/`. Se mudar o título de uma página, gere de novo com `node tools/og.mjs` (precisa do Playwright; as instruções estão no topo do arquivo).
+
+**Sempre que mudar preços, produtos, perguntas ou páginas**, rode:
+
+```bash
+node tools/seo.mjs
+```
+
+Ele regenera as páginas de busca, os dados estruturados, as tabelas de preços, os links dos guias no rodapé, o `sitemap.xml`, o `robots.txt` e o `llms.txt` a partir do `js/config.js`, do FAQ do `index.html` e de `tools/paginas.mjs`.
+
+**Domínio:** o SEO usa `https://mstag.com.br`. Se o endereço for outro, troque em `LOJA.site` (`js/config.js`) e nas tags `canonical`, `og:url`, `og:image`, `twitter:image` e `llms.txt` do `<head>` do `index.html`, e rode o gerador.
 
 ## Estrutura
 
@@ -43,6 +79,12 @@ css/styles.css    visual
 js/config.js      dados da loja e produtos
 js/main.js        demo, carrinho, personalizador
 assets/logo/       logos (preto, preto+azul, azul, branco+azul, branco) e favicon
+tools/seo.mjs     gerador de SEO e das páginas de busca (node tools/seo.mjs)
+tools/paginas.mjs conteúdo das páginas de busca
+tools/og.mjs      imagens de compartilhamento das páginas (opcional)
+<slug>/index.html páginas de busca geradas
+assets/og/        imagens de compartilhamento
+robots.txt  sitemap.xml  llms.txt
 assets/placas/    fotos da Linha Clássica
 assets/cartao/    fotos do Cartão NFC Google
 ```

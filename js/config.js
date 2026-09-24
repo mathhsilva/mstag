@@ -2,13 +2,28 @@
  * Configuração da loja — edite aqui sem mexer no resto do site.
  * Preços, número do WhatsApp e textos principais ficam todos neste arquivo.
  */
+/*
+ * Endereço base do site, descoberto a partir deste próprio arquivo.
+ * Faz as imagens funcionarem tanto na página principal quanto nas páginas em subpastas.
+ */
+(function () {
+  var base = "";
+  if (typeof document !== "undefined" && document.currentScript && document.currentScript.src) {
+    base = new URL("..", document.currentScript.src).href;
+  }
+  window.ASSET = function (caminho) { return /^(https?:|data:|\/)/.test(caminho) ? caminho : base + caminho; };
+})();
+
 window.LOJA = {
   nome: "mstag",
+  // Endereço oficial do site (usado no SEO: canonical, sitemap, dados estruturados)
+  site: "https://mstag.com.br",
   // Número com DDI + DDD, só dígitos. Ex.: 5511987654321
   whatsapp: "5541984699726",
   whatsappExibicao: "(41) 98469-9726",
   instagram: "mstagbr",
   email: "contato@mstag.com.br",
+  empresa: { nome: "Hinnovation", site: "https://hinnovation.com.br" },
   cidade: "Enviamos para todo o Brasil",
   frete: "Frete calculado no WhatsApp conforme o seu CEP",
   prazo: "Produção em até 3 dias úteis",
@@ -53,19 +68,21 @@ window.CLASSICA = {
 window.CARTAO_GOOGLE = {
   id: "cartao-google",
   nome: "Cartão NFC Avaliação Google",
-  resumo: "Um cartão com duas faces: preta de um lado, branca do outro. Vire para combinar com o seu balcão. Um toque do celular e o cliente já está nas 5 estrelas.",
+  resumo: "Um cartão com duas faces, preta de um lado e branca do outro, que já vem com base de madeira para ficar em pé no balcão. Vire para combinar com o seu espaço. Um toque do celular e o cliente já está nas 5 estrelas.",
   preco: 19.9,
-  selo: "Novo · dupla face",
-  material: "Formato cartão · NFC · face preta + face branca",
+  selo: "Novo · base inclusa",
+  material: "Cartão NFC dupla face + base de madeira",
+  inclui: "Cartão dupla face + base de madeira",
   destaques: [
-    "Duas cores no mesmo cartão",
-    "Fica em pé no suporte, deitado no balcão ou na mão do atendente",
+    "Base de madeira inclusa, sem custo extra",
+    "Duas cores no mesmo cartão: preta e branca",
+    "Use em pé na base, deitado no balcão ou na mão do atendente",
     "Chega com o link do seu perfil gravado",
   ],
   fotos: [
+    { src: "assets/cartao/cartao-google-preto-suporte.webp", alt: "Face preta do cartão em pé na base de madeira que acompanha o produto" },
     { src: "assets/cartao/cartao-google-balcao.webp", alt: "Cartão NFC Avaliação Google, face preta, na mão de um atendente no balcão" },
-    { src: "assets/cartao/cartao-google-preto-suporte.webp", alt: "Face preta do cartão em pé num suporte de madeira" },
-    { src: "assets/cartao/cartao-google-branco-suporte.webp", alt: "Face branca do cartão em pé num suporte de madeira" },
+    { src: "assets/cartao/cartao-google-branco-suporte.webp", alt: "Face branca do cartão em pé na base de madeira que acompanha o produto" },
     { src: "assets/cartao/cartao-google-preto.webp", alt: "Face preta do cartão deitada sobre uma bancada de pedra" },
     { src: "assets/cartao/cartao-google-branco.webp", alt: "Face branca do cartão deitada sobre uma bancada de pedra" },
   ],
@@ -83,7 +100,7 @@ window.PRODUTOS = [
   },
   {
     id: "instagram",
-    nome: "Plaquinha Instagram",
+    nome: "Plaquinha NFC Instagram",
     resumo: "Um toque abre seu perfil pronto para seguir. Ideal para balcão e provador.",
     preco: 54.9,
     medida: "10 × 10 cm · acrílico 3 mm",
@@ -91,7 +108,7 @@ window.PRODUTOS = [
   },
   {
     id: "whatsapp",
-    nome: "Plaquinha WhatsApp",
+    nome: "Plaquinha NFC WhatsApp",
     resumo: "Abre a conversa com uma mensagem já escrita. Seu cliente só aperta enviar.",
     preco: 54.9,
     medida: "10 × 10 cm · acrílico 3 mm",
@@ -99,7 +116,7 @@ window.PRODUTOS = [
   },
   {
     id: "multilink",
-    nome: "Display de Mesa Multi-link",
+    nome: "Display de Mesa NFC Multi-link",
     resumo: "Uma página com cardápio, Wi-Fi, Pix, Instagram e WhatsApp. Troque os links quando quiser.",
     preco: 79.9,
     selo: "Para restaurantes",
@@ -116,7 +133,7 @@ window.PRODUTOS = [
   },
   {
     id: "kit",
-    nome: "Kit Negócio · 3 plaquinhas",
+    nome: "Kit Negócio · 3 plaquinhas NFC",
     resumo: "Google + Instagram + WhatsApp com o mesmo visual. O combo que mais gira no balcão.",
     preco: 149.9,
     precoDe: 169.7,

@@ -8,7 +8,7 @@
  */
 (function () {
   var base = "";
-  if (typeof document !== "undefined" && document.currentScript) {
+  if (typeof document !== "undefined" && document.currentScript && document.currentScript.src) {
     base = new URL("..", document.currentScript.src).href;
   }
   window.ASSET = function (caminho) { return /^(https?:|data:|\/)/.test(caminho) ? caminho : base + caminho; };

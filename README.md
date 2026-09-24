@@ -115,4 +115,5 @@ assets/og/        imagens de compartilhamento
 robots.txt  sitemap.xml  llms.txt
 assets/placas/    fotos da Linha Clássica
 assets/cartao/    fotos do Cartão NFC Google
+social/           posts do Instagram: artes, legendas e calendário (não vai para a Hostinger)
 ```

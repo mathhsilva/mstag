@@ -299,7 +299,7 @@
     var d = c.estilo === "classica"
       ? [["Tamanho", rotulo(CLASSICA.tamanhos, c.tam)], ["Cor", rotulo(CLASSICA.cores, c.cor)]]
       : c.estilo === "cartao-google"
-        ? [["Faces", "preta e branca"]]
+        ? [["Faces", "preta e branca"], ["Inclui", "base de madeira"]]
         : [["Acabamento", NOMES_COR[c.cor]]];
     if (c.nome) d.push(["Nome", c.nome]);
     if (c.link) d.push(["Link", c.link]);
@@ -464,7 +464,7 @@
           '<svg viewBox="0 0 24 24"><path d="M4 9h13l-3-3M20 15H7l3 3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>' +
           '<span class="faces__card faces__card--light">' + ICON.google + "</span><small>Frente e verso</small></div>" +
         '<ul class="ticks">' + CARTAO.destaques.map(function (d) { return "<li>" + esc(d) + "</li>"; }).join("") + "</ul>" +
-        '<div class="product__buy"><div class="price"><b>' + preco(CARTAO.preco) + "</b><small>no Pix ou no cartão</small></div>" +
+        '<div class="product__buy"><div class="price"><b>' + preco(CARTAO.preco) + "</b><small>" + esc(CARTAO.inclui || "no Pix ou no cartão") + "</small></div>" +
           '<button class="btn btn--primary add-btn" type="button" data-add-cartao>' + ICON.plus + "Adicionar</button></div>" +
       "</div></article>";
   }

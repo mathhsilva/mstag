@@ -97,7 +97,7 @@ export const PAGINAS = [
     lead: "Uma plaquinha NFC guarda um link num chip. Quando o cliente aproxima o celular, o link abre sozinho no navegador. Serve para pedir avaliação no Google, ganhar seguidores no Instagram, abrir o WhatsApp, mostrar o cardápio, liberar o Wi-Fi ou receber Pix.",
     destaques: ["Sem aplicativo e sem bateria", "Funciona em iPhone e Android", "QR code de reserva em toda placa"],
     visual: { tipo: "duo", placa: { modelo: "instagram", cor: "light" } },
-    mostrar: ["classica", "cartao-google", "instagram", "whatsapp", "multilink", "cartao", "kit"],
+    mostrar: ["classica", "cartao-google", "instagram", "whatsapp", "multilink", "kit"],
     passos: [
       ["Escolha o que a placa abre", "Avaliação no Google, perfil do Instagram, conversa no WhatsApp, cardápio ou uma página com vários links."],
       ["A gente grava o chip", "O seu link vai para o chip NFC e para o QR code. A placa chega pronta para usar."],
@@ -120,7 +120,7 @@ export const PAGINAS = [
 <li><b>WhatsApp</b><span>Abre a conversa com uma mensagem já escrita.</span></li>
 <li><b>Cardápio digital</b><span>Mostra o cardápio na mesa, sem papel. <a href="../cardapio-digital-nfc/">Ver cardápio NFC</a></span></li>
 <li><b>Wi-Fi e Pix</b><span>Rede, senha e chave Pix sem precisar soletrar.</span></li>
-<li><b>Cartão de visita</b><span>Seu contato inteiro no celular de quem você conheceu.</span></li>
+<li><b>Cartão de avaliação</b><span>Dupla face, com base de madeira, vai até a mesa do cliente. <a href="../cartao-nfc-avaliacao-google/">Ver cartão NFC</a></span></li>
 </ul>`,
       },
       {

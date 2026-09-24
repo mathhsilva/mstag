@@ -1,6 +1,6 @@
 # mstag
 
-> A mstag vende plaquinhas e cartões NFC com QR code para negócios: avaliação no Google, Instagram, WhatsApp, cardápio digital, Wi-Fi e Pix. O cliente aproxima o celular (ou aponta a câmera) e o link abre na hora, sem aplicativo. Preços de R$ 19,90 a R$ 149,90, com envio para todo o Brasil. A mstag é um produto da Hinnovation (https://hinnovation.com.br).
+> A mstag vende plaquinhas e cartões NFC com QR code para negócios: avaliação no Google, Instagram, WhatsApp, cardápio digital, Wi-Fi e Pix. O cliente aproxima o celular (ou aponta a câmera) e o link abre na hora, sem aplicativo. Preços de R$ 19,90 a R$ 159,90, com envio para todo o Brasil. A mstag é um produto da Hinnovation (https://hinnovation.com.br).
 
 ## Contato e compra
 
@@ -15,19 +15,18 @@
 - [O que é plaquinha NFC](https://mstag.com.br/plaquinha-nfc/): Plaquinha NFC para empresas: abre avaliação no Google, Instagram, WhatsApp, cardápio ou Pix com um toque do celular, sem aplicativo. A partir de R$ 19,90.
 - [Plaquinha NFC Instagram](https://mstag.com.br/plaquinha-nfc-instagram/): Plaquinha NFC para Instagram com QR code: o cliente aproxima o celular e abre o seu perfil pronto para seguir. Para balcão e provador. A partir de R$ 54,90.
 - [Cartão NFC avaliação Google](https://mstag.com.br/cartao-nfc-avaliacao-google/): Cartão NFC de avaliação Google dupla face (preta e branca) com base de madeira inclusa. O cliente aproxima o celular e avalia na hora. Por R$ 19,90.
-- [Cardápio digital NFC para mesa](https://mstag.com.br/cardapio-digital-nfc/): Display de mesa com NFC e QR code: cardápio digital, Wi-Fi, Pix, Instagram e avaliação no Google numa placa só, para restaurantes e cafés. A partir de R$ 59,90.
+- [Cardápio digital NFC para mesa](https://mstag.com.br/cardapio-digital-nfc/): Display de mesa com NFC e QR code: cardápio digital, Wi-Fi, Pix, Instagram e avaliação no Google numa placa só, para restaurantes e cafés. A partir de R$ 69,00.
 
 ## Produtos e preços
 
 - **Cartão NFC Avaliação Google com base de madeira**: R$ 19,90. Cartão dupla face + base de madeira. Um cartão com duas faces, preta de um lado e branca do outro, que já vem com base de madeira para ficar em pé no balcão. Vire para combinar com o seu espaço. Um toque do celular e o cliente já está nas 5 estrelas.
-- **Cartão de Visita NFC**: R$ 39,90. 8,5 × 5,4 cm · PVC. Seu contato inteiro no celular do cliente com um toque. Nunca mais acaba o estoque.
 - **Plaquinha NFC Instagram**: R$ 54,90. 10 × 10 cm · acrílico 3 mm. Um toque abre seu perfil pronto para seguir. Ideal para balcão e provador.
 - **Plaquinha NFC WhatsApp**: R$ 54,90. 10 × 10 cm · acrílico 3 mm. Abre a conversa com uma mensagem já escrita. Seu cliente só aperta enviar.
-- **Placa NFC Avaliação Google 10 × 10 cm · Linha Clássica**: R$ 59,90. Acrílico com NFC e QR code · 2 cores. O nosso design mais pedido. Aproximou o celular ou apontou a câmera, o cliente cai direto na tela de 5 estrelas do seu perfil.
-- **Plaquinha NFC Avaliação Google · Linha Tech**: R$ 59,90. 10 × 10 cm · acrílico 3 mm. Visual minimalista com o nome do seu negócio em destaque. Um toque e o cliente já está nas estrelas.
-- **Placa NFC Avaliação Google 10 × 15 cm · Linha Clássica**: R$ 69,90. Acrílico com NFC e QR code · 3 cores. O nosso design mais pedido. Aproximou o celular ou apontou a câmera, o cliente cai direto na tela de 5 estrelas do seu perfil.
+- **Placa NFC Avaliação Google 10 × 10 cm · Linha Clássica**: R$ 69,00. Acrílico com NFC e QR code · 2 cores. O nosso design mais pedido. Aproximou o celular ou apontou a câmera, o cliente cai direto na tela de 5 estrelas do seu perfil.
+- **Placa NFC Avaliação Google 10 × 15 cm · Linha Clássica**: R$ 69,00. Acrílico com NFC e QR code · 3 cores. O nosso design mais pedido. Aproximou o celular ou apontou a câmera, o cliente cai direto na tela de 5 estrelas do seu perfil.
+- **Plaquinha NFC Avaliação Google · Linha Tech**: R$ 69,00. 10 × 10 cm · acrílico 3 mm. Visual minimalista com o nome do seu negócio em destaque. Um toque e o cliente já está nas estrelas.
 - **Display de Mesa NFC Multi-link**: R$ 79,90. 10 × 15 cm · em pé, com base. Uma página com cardápio, Wi-Fi, Pix, Instagram e WhatsApp. Troque os links quando quiser.
-- **Kit Negócio · 3 plaquinhas NFC**: R$ 149,90. 3 × 10 × 10 cm · acrílico 3 mm. Google + Instagram + WhatsApp com o mesmo visual. O combo que mais gira no balcão.
+- **Kit Negócio · 3 plaquinhas NFC**: R$ 159,90. 3 × 10 × 10 cm · acrílico 3 mm. Google + Instagram + WhatsApp com o mesmo visual. O combo que mais gira no balcão.
 
 ## Perguntas frequentes
 

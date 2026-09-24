@@ -40,8 +40,8 @@ window.CLASSICA = {
   selo: "Mais vendida",
   material: "acrílico 3 mm · NFC + QR dinâmico",
   tamanhos: [
-    { id: "10x10", rotulo: "10 × 10 cm", uso: "Balcão e caixa", preco: 59.9 },
-    { id: "10x15", rotulo: "10 × 15 cm", uso: "Parede e mesa", preco: 69.9 },
+    { id: "10x10", rotulo: "10 × 10 cm", uso: "Balcão e caixa", preco: 69, precoDe: 80 },
+    { id: "10x15", rotulo: "10 × 15 cm", uso: "Parede e mesa", preco: 69, precoDe: 80 },
   ],
   cores: [
     { id: "preto-azul", rotulo: "Preto e azul", amostra: ["#121212", "#3057FF"] },
@@ -94,7 +94,8 @@ window.PRODUTOS = [
     id: "google",
     nome: "Avaliação Google · Linha Tech",
     resumo: "Visual minimalista com o nome do seu negócio em destaque. Um toque e o cliente já está nas estrelas.",
-    preco: 59.9,
+    preco: 69,
+    precoDe: 80,
     medida: "10 × 10 cm · acrílico 3 mm",
     visual: { modelo: "google", cor: "dark" },
   },
@@ -128,6 +129,7 @@ window.PRODUTOS = [
     nome: "Cartão de Visita NFC",
     resumo: "Seu contato inteiro no celular do cliente com um toque. Nunca mais acaba o estoque.",
     preco: 39.9,
+    indisponivel: true, // aparece no site, mas não pode ser comprado (tire esta linha para voltar a vender)
     medida: "8,5 × 5,4 cm · PVC",
     visual: { modelo: "cartao", cor: "dark" },
   },
@@ -135,9 +137,9 @@ window.PRODUTOS = [
     id: "kit",
     nome: "Kit Negócio · 3 plaquinhas NFC",
     resumo: "Google + Instagram + WhatsApp com o mesmo visual. O combo que mais gira no balcão.",
-    preco: 149.9,
-    precoDe: 169.7,
-    selo: "Economize R$ 19,80",
+    preco: 159.9,
+    precoDe: 178.8, // soma das três avulsas: 69,00 + 54,90 + 54,90
+    selo: "Economize R$ 18,90",
     medida: "3 × 10 × 10 cm · acrílico 3 mm",
     visual: { modelo: "kit", cor: "dark" },
   },

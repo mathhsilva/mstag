@@ -304,7 +304,7 @@
       : c.estilo === "cartao-google"
         ? [["Faces", "preta e branca"], ["Inclui", "base de madeira"]]
         : [["Acabamento", NOMES_COR[c.cor]]];
-    if (c.nome) d.push(["Nome", c.nome]);
+    if (c.nome) d.push(["Nome na placa", c.nome]);
     if (c.link) d.push(["Link", c.link]);
     return d;
   }
@@ -354,18 +354,53 @@
     atualizarLinkPedido();
   }
 
-  function atualizarLinkPedido() {
-    var nome = ($("#clienteNome").value || "").trim();
-    var linhas = ["Olá! Quero fazer um pedido pelo site da " + (LOJA.nome || "loja") + ":", ""];
-    carrinho.forEach(function (c) {
-      linhas.push("• " + c.qtd + "× " + c.titulo + " = " + preco(c.preco * c.qtd));
-      var det = detalhes(c).map(function (d) { return d[0] + ": " + d[1]; });
-      linhas.push("   " + det.join(" | "));
+  /* ---------- Fechamento do pedido pelo WhatsApp ---------- */
+  var CHAVE_CLIENTE = "mstag-cliente-v1";
+  function soDigitos(v) { return String(v || "").replace(/\D/g, ""); }
+  function formatarCep(v) { var d = soDigitos(v).slice(0, 8); return d.length > 5 ? d.slice(0, 5) + "-" + d.slice(5) : d; }
+  function dadosCliente() {
+    return { nome: ($("#clienteNome").value || "").trim().replace(/\s+/g, " "), cep: formatarCep($("#clienteCep").value) };
+  }
+
+  function mensagemPedido() {
+    var cli = dadosCliente();
+    var L = ["Olá! 👋 Quero fazer um pedido pelo site da *" + (LOJA.nome || "loja") + "*.", "", "🛒 *MEU PEDIDO*", ""];
+    carrinho.forEach(function (c, i) {
+      L.push("*" + (i + 1) + ". " + c.titulo + "*");
+      L.push("   ▫️ Quantidade: " + c.qtd);
+      detalhes(c).forEach(function (d) { L.push("   ▫️ " + d[0] + ": " + d[1]); });
+      L.push("   💲 " + preco(c.preco * c.qtd) + (c.qtd > 1 ? " (" + preco(c.preco) + " cada)" : ""));
+      L.push("");
     });
-    linhas.push("", "Subtotal: " + preco(total()));
-    if (nome) linhas.push("Meu nome: " + nome);
-    linhas.push("", "Pode calcular o frete para o meu CEP?");
-    $("#finalizar").href = whatsLink(linhas.join("\n"));
+    L.push("💰 *Subtotal:* " + preco(total()));
+    L.push("🚚 *Frete:* a calcular pelo CEP");
+    L.push("");
+    L.push("👤 *Nome:* " + (cli.nome || "—"));
+    L.push("📍 *CEP:* " + (cli.cep || "—"));
+    L.push("");
+    L.push("Pode me passar o valor do frete e as formas de pagamento? 😊");
+    return L.join("\n");
+  }
+
+  function atualizarLinkPedido() {
+    $("#finalizar").href = whatsLink(mensagemPedido());
+    try { localStorage.setItem(CHAVE_CLIENTE, JSON.stringify(dadosCliente())); } catch (e) {}
+  }
+
+  // Mostra ou esconde o aviso de um campo; devolve true se estiver certo
+  function validarCampo(input, erro, ok) {
+    input.setAttribute("aria-invalid", ok ? "false" : "true");
+    erro.hidden = ok;
+    return ok;
+  }
+  function validarPedido(mostrar) {
+    var cli = dadosCliente();
+    var nomeOk = cli.nome.length >= 2, cepOk = soDigitos(cli.cep).length === 8;
+    if (mostrar) {
+      validarCampo($("#clienteNome"), $("#erroNome"), nomeOk);
+      validarCampo($("#clienteCep"), $("#erroCep"), cepOk);
+    }
+    return { ok: nomeOk && cepOk, primeiro: !nomeOk ? $("#clienteNome") : !cepOk ? $("#clienteCep") : null };
   }
 
   var drawer, ultimoFoco;
@@ -402,7 +437,32 @@
     document.addEventListener("keydown", function (e) {
       if (e.key === "Escape" && drawer.classList.contains("is-open")) fecharCarrinho();
     });
-    $("#clienteNome").addEventListener("input", atualizarLinkPedido);
+    // Nome e CEP ficam guardados neste navegador para a próxima compra
+    try {
+      var salvo = JSON.parse(localStorage.getItem(CHAVE_CLIENTE)) || {};
+      if (salvo.nome) $("#clienteNome").value = salvo.nome;
+      if (salvo.cep) $("#clienteCep").value = salvo.cep;
+    } catch (e) {}
+    var tentou = false;
+    $("#clienteNome").addEventListener("input", function () { if (tentou) validarPedido(true); atualizarLinkPedido(); });
+    $("#clienteCep").addEventListener("input", function (e) {
+      var el = e.target, fim = el.selectionStart === el.value.length;
+      el.value = formatarCep(el.value);
+      if (fim) el.setSelectionRange(el.value.length, el.value.length);
+      if (tentou) validarPedido(true);
+      atualizarLinkPedido();
+    });
+    $("#finalizar").addEventListener("click", function (e) {
+      var v = validarPedido(true);
+      tentou = true;
+      if (!v.ok) {
+        e.preventDefault();
+        v.primeiro.focus();
+        return;
+      }
+      atualizarLinkPedido();
+      toast("Abrindo o WhatsApp com o seu pedido");
+    });
     renderCarrinho();
   }
 
@@ -440,7 +500,7 @@
               return '<button type="button" class="color" data-ccor="' + c.id + '" aria-label="' + esc(c.rotulo) + '">' + amostra(c) + "</button>";
             }).join("") + '</div><span class="opt__note" id="notaCorClassica"></span></div>' +
         "</div>" +
-        '<div class="product__buy"><div class="price"><b id="precoClassica"></b><small id="parcelaClassica"></small></div>' +
+        '<div class="product__buy"><div class="price"><s id="precoDeClassica"></s><b id="precoClassica"></b><small id="parcelaClassica"></small></div>' +
           '<button class="btn btn--primary add-btn" type="button" data-add-classica>' + ICON.plus + "Adicionar</button></div>" +
         '<a class="muted small" href="' + HOME + '#personalize" data-personalizar="classica" style="font-weight:700">Adicionar o meu link e nome</a>' +
       "</div></article>";
@@ -498,6 +558,7 @@
     $("#notaCorClassica").textContent = "";
     var t = tamanhoAtual();
     $("#precoClassica").textContent = preco(t.preco);
+    $("#precoDeClassica").textContent = t.precoDe ? preco(t.precoDe) : "";
     $("#parcelaClassica").textContent = "ou 3× de " + preco(t.preco / 3);
     var slot = $("#fotoClassica");
     slot.innerHTML = placaClassica(sel.tam, sel.cor, true);
@@ -514,8 +575,10 @@
       var wide = p.visual.modelo === "cartao" || p.visual.modelo === "kit";
       var artCls = "product__art" + (wide ? " product__art--wide" : "");
       var artStyle = p.visual.modelo === "multilink" ? ' style="padding-inline:28%"' : "";
-      return '<article class="product">' +
-        '<div class="' + artCls + '"' + artStyle + ">" + (p.selo ? '<span class="product__badge">' + esc(p.selo) + "</span>" : "") +
+      var off = !!p.indisponivel;
+      var selo = off ? '<span class="product__badge product__badge--off">Indisponível</span>' : p.selo ? '<span class="product__badge">' + esc(p.selo) + "</span>" : "";
+      return '<article class="product' + (off ? " product--off" : "") + '">' +
+        '<div class="' + artCls + '"' + artStyle + ">" + selo +
           "<div>" + plate({ modelo: p.visual.modelo, cor: p.visual.cor, nome: "Seu negócio" }) + "</div></div>" +
         '<div class="product__body">' +
           '<span class="product__meta">Linha Tech · ' + esc(p.medida) + "</span>" +
@@ -524,10 +587,12 @@
           '<div class="product__buy"><div class="price">' +
             (p.precoDe ? "<s>" + preco(p.precoDe) + "</s>" : "") +
             "<b>" + preco(p.preco) + "</b>" +
-            "<small>ou 3× de " + preco(p.preco / 3) + "</small></div>" +
-            '<button class="btn btn--primary add-btn" type="button" data-add="' + p.id + '">' + ICON.plus + "Adicionar</button>" +
+            "<small>" + (off ? "Voltamos a vender em breve" : "ou 3× de " + preco(p.preco / 3)) + "</small></div>" +
+            (off
+              ? '<button class="btn add-btn add-btn--off" type="button" disabled>Indisponível</button>'
+              : '<button class="btn btn--primary add-btn" type="button" data-add="' + p.id + '">' + ICON.plus + "Adicionar</button>") +
           "</div>" +
-          (PERSONALIZAVEIS[p.id] ? '<a class="muted small" href="' + HOME + '#personalize" data-personalizar="' + p.id + '" style="font-weight:700">Personalizar com o meu nome</a>' : "") +
+          (PERSONALIZAVEIS[p.id] && !off ? '<a class="muted small" href="' + HOME + '#personalize" data-personalizar="' + p.id + '" style="font-weight:700">Personalizar com o meu nome</a>' : "") +
         "</div></article>";
     }).join("");
     atualizarCardClassica(false);
@@ -570,6 +635,7 @@
       var add = e.target.closest("[data-add]");
       if (add) {
         var p = PRODUTOS.find(function (x) { return x.id === add.dataset.add; });
+        if (!p || p.indisponivel) return;
         adicionar({ id: p.id, estilo: "tech", titulo: p.nome, preco: p.preco, modelo: p.visual.modelo, cor: p.visual.cor });
         return;
       }
@@ -623,7 +689,7 @@
     $("#grupoTech").hidden = classica;
     $("#grupoClassica").hidden = !classica;
 
-    var box = $("#previewPlate"), valor, legenda, chavePrevia;
+    var box = $("#previewPlate"), valor, valorDe, legenda, chavePrevia;
     if (classica) {
       if (!corDisponivel(v.tam, v.ccor)) {
         v.ccor = Object.keys(CLASSICA.imagens[v.tam])[0];
@@ -638,6 +704,7 @@
       box.innerHTML = placaClassica(v.tam, v.ccor);
       box.classList.toggle("is-tall", v.tam === "10x15");
       valor = t.preco;
+      valorDe = t.precoDe;
       legenda = "Linha Clássica · " + t.rotulo + " · logo e QR finais na produção";
       chavePrevia = "c" + v.tam + v.ccor;
     } else {
@@ -645,6 +712,7 @@
       box.innerHTML = plate({ modelo: v.modelo, cor: v.cor, nome: v.nome || "Seu negócio" });
       box.classList.toggle("is-tall", v.modelo === "multilink");
       valor = p.preco;
+      valorDe = p.precoDe;
       legenda = "Linha Tech · prévia ilustrativa · " + p.medida;
       chavePrevia = "t" + v.modelo + v.cor;
     }
@@ -653,6 +721,8 @@
     }
     ultimaPrevia = chavePrevia;
     $("#cfgPreco").textContent = preco(valor);
+    var de = $("#cfgPrecoDe");
+    if (de) de.textContent = valorDe ? preco(valorDe) : "";
     $("#previewCaption").textContent = legenda;
     var ph = { google: "Ex.: link do seu perfil no Google", instagram: "Ex.: @cafedapraca", whatsapp: "Ex.: (11) 98765-4321", multilink: "Ex.: seus links, a gente monta a página" };
     $("#cfgLink").placeholder = classica ? ph.google : ph[v.modelo];

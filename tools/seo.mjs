@@ -48,14 +48,15 @@ for (const t of CLASSICA.tamanhos) {
   catalogo.push({
     id: `${CLASSICA.id}-${t.id}`, grupo: "classica", nome: `Placa NFC Avaliação Google ${t.rotulo} · Linha Clássica`,
     detalhe: `Acrílico com NFC e QR code · ${Object.keys(imgs).length} cores`,
-    descricao: CLASSICA.resumo, preco: t.preco, imagem: imgs[Object.keys(imgs)[0]],
+    descricao: CLASSICA.resumo, preco: t.preco, precoDe: t.precoDe, imagem: imgs[Object.keys(imgs)[0]],
   });
 }
 for (const p of PRODUTOS) {
+  if (p.indisponivel) continue; // fora de venda: não entra em preços nem dados estruturados
   catalogo.push({
     // no catálogo de busca, todo nome leva "NFC" (é assim que as pessoas pesquisam)
     id: p.id, grupo: p.id, nome: /NFC/.test(p.nome) ? p.nome : /^(Plaquinha|Display|Kit)/.test(p.nome) ? p.nome.replace(/^(\S+)/, "$1 NFC") : "Plaquinha NFC " + p.nome,
-    detalhe: p.medida, descricao: p.resumo, preco: p.preco, imagem: null,
+    detalhe: p.medida, descricao: p.resumo, preco: p.preco, precoDe: p.precoDe, imagem: null,
   });
 }
 catalogo.sort((a, b) => a.preco - b.preco);
@@ -89,7 +90,7 @@ function tabelaPrecos(itens, recuo = "          ") {
   return `${recuo}<table class="price-table">\n` +
     `${recuo}  <thead><tr><th scope="col">Produto</th><th scope="col">Preço</th></tr></thead>\n` +
     `${recuo}  <tbody>\n` +
-    itens.map((c) => `${recuo}    <tr><th scope="row">${esc(c.nome)}${c.detalhe ? `<small>${esc(c.detalhe)}</small>` : ""}</th><td>${brl(c.preco)}</td></tr>\n`).join("") +
+    itens.map((c) => `${recuo}    <tr><th scope="row">${esc(c.nome)}${c.detalhe ? `<small>${esc(c.detalhe)}</small>` : ""}</th><td>${c.precoDe ? `<s>${brl(c.precoDe)}</s>` : ""}${brl(c.preco)}</td></tr>\n`).join("") +
     `${recuo}  </tbody>\n${recuo}</table>\n`;
 }
 

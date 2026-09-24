@@ -190,9 +190,7 @@
     return "";
   }
   function telaInicial() {
-    var d = new Date();
-    var hh = String(d.getHours()).padStart(2, "0") + ":" + String(d.getMinutes()).padStart(2, "0");
-    return '<div class="scr scr--idle"><div class="clock">' + hh + '</div><div>Aproxime da plaquinha</div></div>';
+    return '<div class="scr scr--idle"><span class="idle__nfc">' + ICON.nfc + "</span><div>Aproxime da plaquinha</div></div>";
   }
 
   function iniciarDemo() {
@@ -210,21 +208,20 @@
     function depois(ms, fn) { timers.push(setTimeout(fn, ms)); }
 
     function trocarTela(html) {
-      var velho = elScreen.firstElementChild;
       var wrap = document.createElement("div");
       wrap.innerHTML = html;
       var novo = wrap.firstElementChild;
+      // Tudo que já está no celular fica por baixo, parado, até a tela nova cobrir; depois sai do DOM.
+      $all(".scr", elScreen).forEach(function (velho) {
+        velho.classList.add("is-leaving");
+        setTimeout(function () { if (velho.parentNode) velho.parentNode.removeChild(velho); }, 320);
+      });
       novo.classList.add("is-entering");
       elScreen.appendChild(novo);
-      if (velho) {
-        velho.classList.add("is-leaving");
-        setTimeout(function () { if (velho.parentNode) velho.parentNode.removeChild(velho); }, 300);
-      }
-      requestAnimationFrame(function () { requestAnimationFrame(function () {
-        novo.classList.remove("is-entering");
-        var st = novo.querySelector(".scr__stars");
-        if (st) setTimeout(function () { st.classList.add("on"); }, 250);
-      }); });
+      void novo.offsetWidth;
+      novo.classList.remove("is-entering");
+      var st = novo.querySelector(".scr__stars");
+      if (st) setTimeout(function () { st.classList.add("on"); }, 250);
     }
 
     function tocar(i) {

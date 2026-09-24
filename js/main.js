@@ -301,13 +301,17 @@
   function detalhes(c) {
     var d = c.estilo === "classica"
       ? [["Tamanho", rotulo(CLASSICA.tamanhos, c.tam)], ["Cor", rotulo(CLASSICA.cores, c.cor)]]
-      : [["Acabamento", NOMES_COR[c.cor]]];
+      : c.estilo === "cartao-google"
+        ? [["Faces", "preta e branca"]]
+        : [["Acabamento", NOMES_COR[c.cor]]];
     if (c.nome) d.push(["Nome", c.nome]);
     if (c.link) d.push(["Link", c.link]);
     return d;
   }
   function miniatura(c) {
-    return c.estilo === "classica" ? placaClassica(c.tam, c.cor) : plate({ modelo: c.modelo, cor: c.cor, nome: c.nome });
+    if (c.estilo === "classica") return placaClassica(c.tam, c.cor);
+    if (c.estilo === "cartao-google") return '<img class="line__photo" src="' + CARTAO.fotos[0].src + '" alt="">';
+    return plate({ modelo: c.modelo, cor: c.cor, nome: c.nome });
   }
 
   function adicionar(item) {
@@ -340,7 +344,7 @@
       return;
     }
     body.innerHTML = carrinho.map(function (c, i) {
-      var det = detalhes(c).map(function (d) { return esc(d[0] ? d[0] + ": " + d[1] : d[1]); });
+      var det = detalhes(c).map(function (d) { return esc(d[0] + ": " + d[1]); });
       return '<div class="line"><div class="line__art">' + miniatura(c) + "</div>" +
         '<div class="line__info"><b>' + esc(c.titulo) + "</b><small>" + det.join(" · ") + "</small>" +
         '<div class="line__row"><div class="qty"><button type="button" data-menos="' + i + '" aria-label="Diminuir quantidade">−</button><span>' + c.qtd + '</span><button type="button" data-mais="' + i + '" aria-label="Aumentar quantidade">+</button></div>' +
@@ -355,7 +359,7 @@
     var linhas = ["Olá! Quero fazer um pedido pelo site da " + (LOJA.nome || "loja") + ":", ""];
     carrinho.forEach(function (c) {
       linhas.push("• " + c.qtd + "× " + c.titulo + " = " + preco(c.preco * c.qtd));
-      var det = detalhes(c).map(function (d) { return (d[0] || "Cor") + ": " + d[1]; });
+      var det = detalhes(c).map(function (d) { return d[0] + ": " + d[1]; });
       linhas.push("   " + det.join(" | "));
     });
     linhas.push("", "Subtotal: " + preco(total()));
@@ -442,6 +446,43 @@
       "</div></article>";
   }
 
+  var CARTAO = window.CARTAO_GOOGLE;
+  function cardCartao() {
+    var f = CARTAO.fotos;
+    return '<article class="product product--featured product--flip" id="cardCartao">' +
+      '<div class="product__art product__art--gallery">' + (CARTAO.selo ? '<span class="product__badge">' + esc(CARTAO.selo) + "</span>" : "") +
+        '<div class="gallery">' +
+          '<div class="gallery__main"><img id="fotoCartao" src="' + f[0].src + '" alt="' + esc(f[0].alt) + '" width="900" height="900" loading="lazy" decoding="async"></div>' +
+          '<div class="gallery__thumbs" role="group" aria-label="Fotos do cartão">' +
+            f.map(function (x, i) {
+              return '<button type="button" data-foto="' + i + '" aria-label="Ver foto ' + (i + 1) + '" aria-pressed="' + (i ? "false" : "true") + '">' +
+                '<img src="' + x.src + '" alt="" width="900" height="900" loading="lazy" decoding="async"></button>';
+            }).join("") +
+          "</div></div></div>" +
+      '<div class="product__body">' +
+        '<span class="product__meta">' + esc(CARTAO.material) + "</span>" +
+        "<h3>" + esc(CARTAO.nome) + "</h3>" +
+        "<p>" + esc(CARTAO.resumo) + "</p>" +
+        '<div class="faces" aria-hidden="true"><span class="faces__card faces__card--dark">' + ICON.google + '</span><span class="faces__flip">' +
+          '<svg viewBox="0 0 24 24"><path d="M4 9h13l-3-3M20 15H7l3 3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>' +
+          '<span class="faces__card faces__card--light">' + ICON.google + "</span><small>Frente e verso</small></div>" +
+        '<ul class="ticks">' + CARTAO.destaques.map(function (d) { return "<li>" + esc(d) + "</li>"; }).join("") + "</ul>" +
+        '<div class="product__buy"><div class="price"><b>' + preco(CARTAO.preco) + "</b><small>no Pix ou no cartão</small></div>" +
+          '<button class="btn btn--primary add-btn" type="button" data-add-cartao>' + ICON.plus + "Adicionar</button></div>" +
+      "</div></article>";
+  }
+  function mostrarFotoCartao(i) {
+    var img = $("#fotoCartao"), foto = CARTAO.fotos[i];
+    if (!img || img.getAttribute("src") === foto.src) return;
+    $all("#cardCartao [data-foto]").forEach(function (b) { b.setAttribute("aria-pressed", +b.dataset.foto === i ? "true" : "false"); });
+    function trocar() { img.src = foto.src; img.alt = foto.alt; img.classList.remove("is-fading"); }
+    if (reduzMovimento) { trocar(); return; }
+    img.classList.add("is-fading");
+    var pre = new Image();
+    pre.onload = pre.onerror = function () { setTimeout(trocar, 120); };
+    pre.src = foto.src;
+  }
+
   function atualizarCardClassica(animar) {
     var card = $("#cardClassica");
     if (!card) return;
@@ -464,7 +505,7 @@
 
   function iniciarProdutos() {
     var lista = $("#listaProdutos");
-    lista.innerHTML = cardClassica() + PRODUTOS.map(function (p) {
+    lista.innerHTML = cardClassica() + (CARTAO ? cardCartao() : "") + PRODUTOS.map(function (p) {
       var wide = p.visual.modelo === "cartao" || p.visual.modelo === "kit";
       var artCls = "product__art" + (wide ? " product__art--wide" : "");
       var artStyle = p.visual.modelo === "multilink" ? ' style="padding-inline:28%"' : "";
@@ -508,6 +549,12 @@
         }
         sel.cor = cc.dataset.ccor;
         atualizarCardClassica(true);
+        return;
+      }
+      var foto = e.target.closest("[data-foto]");
+      if (foto) { mostrarFotoCartao(+foto.dataset.foto); return; }
+      if (e.target.closest("[data-add-cartao]")) {
+        adicionar({ id: CARTAO.id, estilo: "cartao-google", titulo: CARTAO.nome, preco: CARTAO.preco });
         return;
       }
       if (e.target.closest("[data-add-classica]")) {

@@ -45,6 +45,31 @@ window.CLASSICA = {
   },
 };
 
+/*
+ * Cartão NFC Avaliação Google: um cartão só, com uma face preta e outra branca.
+ * A primeira foto da lista é a capa do card.
+ */
+window.CARTAO_GOOGLE = {
+  id: "cartao-google",
+  nome: "Cartão NFC Avaliação Google",
+  resumo: "Um cartão com duas faces: preta de um lado, branca do outro. Vire para combinar com o seu balcão. Um toque do celular e o cliente já está nas 5 estrelas.",
+  preco: 19.9,
+  selo: "Novo · dupla face",
+  material: "Formato cartão · NFC · face preta + face branca",
+  destaques: [
+    "Duas cores no mesmo cartão",
+    "Fica em pé no suporte, deitado no balcão ou na mão do atendente",
+    "Chega com o link do seu perfil gravado",
+  ],
+  fotos: [
+    { src: "assets/cartao/cartao-google-balcao.webp", alt: "Cartão NFC Avaliação Google, face preta, na mão de um atendente no balcão" },
+    { src: "assets/cartao/cartao-google-preto-suporte.webp", alt: "Face preta do cartão em pé num suporte de madeira" },
+    { src: "assets/cartao/cartao-google-branco-suporte.webp", alt: "Face branca do cartão em pé num suporte de madeira" },
+    { src: "assets/cartao/cartao-google-preto.webp", alt: "Face preta do cartão deitada sobre uma bancada de pedra" },
+    { src: "assets/cartao/cartao-google-branco.webp", alt: "Face branca do cartão deitada sobre uma bancada de pedra" },
+  ],
+};
+
 /* Linha Tech: plaquinhas desenhadas pelo próprio site */
 window.PRODUTOS = [
   {

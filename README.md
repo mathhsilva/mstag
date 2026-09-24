@@ -21,6 +21,7 @@ Tudo que muda com frequência está em **`js/config.js`**:
 | Número do WhatsApp (DDI + DDD, só dígitos) | `LOJA.whatsapp` |
 | Instagram, e-mail, prazo, frete | `LOJA.*` |
 | Linha Clássica: tamanhos, preços, cores e fotos | `CLASSICA` |
+| Cartão NFC Google (dupla face): preço, textos e fotos | `CARTAO_GOOGLE` |
 | Linha Tech: produtos, preços, selos e medidas | `PRODUTOS` |
 
 ### Adicionar uma cor ou tamanho na Linha Clássica
@@ -43,4 +44,5 @@ js/config.js      dados da loja e produtos
 js/main.js        demo, carrinho, personalizador
 assets/favicon.svg
 assets/placas/    fotos da Linha Clássica
+assets/cartao/    fotos do Cartão NFC Google
 ```

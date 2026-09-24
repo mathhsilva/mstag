@@ -95,6 +95,11 @@ const TELA = {
     <div class="ms__av">CA</div><b class="ms__name">Café Aurora</b><small class="ms__sub">Cafeteria · aberto até 20h</small>
     ${[["menu", "Ver cardápio"], ["wifi", "Conectar no Wi-Fi"], ["pix", "Pagar com Pix"], ["insta", "Seguir no Instagram"], ["whats", "Chamar no WhatsApp"]].map(([i, t]) => `<div class="ms__btn">${I[i]}<span>${t}</span></div>`).join("")}
     <div class="ms__btn ms__btn--g">${G}<span>Avaliar no Google</span></div><small class="ms__sub" style="margin-top:auto">Rua das Flores, 120 · Curitiba</small></div>`,
+  whatsapp: `<div class="scr scr--wa">
+    <div class="wa__bar"><div class="wa__av">CA</div><div><b>Café Aurora</b><small>conta comercial</small></div></div>
+    <div class="wa__chat"><div class="wa__day">HOJE</div>
+      <div class="wa__msg">Olá! Seja bem-vindo ao Café Aurora. Como podemos ajudar?</div></div>
+    <div class="wa__input"><span>Oi! Vim pela plaquinha da loja e quero fazer um pedido.</span><i>${I.arrow}</i></div></div>`,
   instagram: `<div class="scr scr--ig">
     <div class="ig__bar"><b>cafeaurora</b></div>
     <div class="ig__row"><div class="ig__av">CA</div><div class="ig__nums"><div><b>184</b><small>posts</small></div><div><b>2.418</b><small>seguidores</small></div><div><b>312</b><small>seguindo</small></div></div></div>
@@ -195,6 +200,13 @@ p{font-size:34px;line-height:1.32;letter-spacing:-.01em}
 .ig__name{margin-top:.8em}.ig__bio{font-size:.85em;color:#333;line-height:1.35}
 .ig__btns{display:flex;gap:.4em;margin-top:.9em}.ig__btns span{flex:1;text-align:center;padding:.55em;border-radius:.6em;background:#efefef;font-weight:700;font-size:.9em}.ig__btns .ig__follow{background:#0095f6;color:#fff}
 .ig__grid{margin-top:1em;display:grid;grid-template-columns:repeat(3,1fr);gap:3px;margin-inline:calc(-18px*var(--s))}
+.scr--wa{padding:0;background:#efe7dd}
+.wa__bar{display:flex;align-items:center;gap:.7em;background:#075E54;color:#fff;padding:calc(56px*var(--s)) 1em .8em}.wa__bar b{display:block}.wa__bar small{opacity:.75;font-size:.8em}
+.wa__av{width:2.6em;height:2.6em;border-radius:50%;background:#fff;color:#075E54;display:grid;place-items:center;font-weight:700;font-size:.9em}
+.wa__chat{flex:1;padding:1em;display:flex;flex-direction:column;gap:.6em}.wa__day{align-self:center;background:#fff;border-radius:.5em;padding:.2em .7em;font-size:.75em;color:#666;font-weight:700}
+.wa__msg{align-self:flex-start;background:#fff;border-radius:.8em;border-top-left-radius:.2em;padding:.7em .8em;max-width:85%;font-size:.95em;line-height:1.35}
+.wa__input{display:flex;align-items:flex-end;gap:.5em;padding:.7em}.wa__input span{flex:1;background:#fff;border-radius:1.2em;padding:.7em .9em;font-size:.95em;line-height:1.35;box-shadow:0 0 0 3px #25D366}
+.wa__input i{flex:none;width:2.6em;height:2.6em;border-radius:50%;background:#25D366;color:#fff;display:grid;place-items:center}.wa__input i svg{width:55%}
 .ig__grid i{aspect-ratio:1;background:linear-gradient(135deg,#d8c3a5,#8e6e53)}.ig__grid i:nth-child(3n+2){background:linear-gradient(135deg,#c9d1f4,#2F5BFF)}.ig__grid i:nth-child(4n){background:linear-gradient(135deg,#f1e3d3,#b98b62)}
 `;
 
@@ -482,6 +494,119 @@ post("09-instagram", [
       ${rodape()}</div>`,
   ]);
 }
+
+
+/* 11 · WhatsApp */
+post("11-whatsapp", [
+  `<div class="art" style="background:linear-gradient(180deg,#F1F3F8,#fff)">
+    ${logo("escuro", 44)}
+    <h1 style="margin-top:50px;font-size:92px">Pedido no WhatsApp<br><span class="blue">sem digitar número.</span></h1>
+    <div style="position:absolute;left:84px;top:540px">${tech("whatsapp", 400, "Café Aurora", -4)}</div>
+    <div style="position:absolute;right:100px;top:480px">${phone(TELA.whatsapp, 330, 5)}</div>
+    <div style="position:absolute;left:84px;top:990px;width:460px">${selo(false)}
+      <div style="margin-top:22px;font-size:30px;line-height:1.3">A conversa abre com a mensagem <b class="blue">já escrita</b>. O cliente só aperta enviar.</div></div>
+    <div class="foot"><span class="pill" style="background:var(--tinta);color:#fff;font-size:26px;white-space:nowrap">Plaquinha WhatsApp · R$ 54,90</span><span>mstag.com.br</span></div>
+  </div>`,
+]);
+
+/* 12 · Enquete de cores (Linha Clássica) */
+post("12-qual-cor", [
+  `<div class="art" style="background:var(--tinta);color:#fff">
+    ${logo("claro", 44)}
+    <h1 style="margin-top:50px;font-size:88px">Qual combina com<br>o seu balcão?</h1>
+    <div style="position:absolute;left:60px;right:60px;top:470px;display:flex;justify-content:space-between;align-items:flex-start">
+      ${[["preto-azul", "Preto e azul", -4], ["azul", "Azul", 0], ["preta", "Preto e cinza", 4]].map(([c, n, r], k) => `<div style="display:flex;flex-direction:column;align-items:center;gap:26px"><div style="transform:rotate(${r}deg)">${classica(c, 300)}</div><div style="display:flex;align-items:center;gap:14px"><span style="width:56px;height:56px;border-radius:50%;background:var(--azul);display:grid;place-items:center;font-size:30px;font-weight:700">${k + 1}</span><b style="font-size:28px">${n}</b></div></div>`).join("")}
+    </div>
+    <div style="position:absolute;left:84px;right:84px;top:1110px;display:flex;justify-content:space-between;align-items:center">
+      <b style="font-size:40px">Comenta 1, 2 ou 3 👇</b>${selo(true)}</div>
+    <div class="foot foot--claro"><span style="font-weight:500;font-size:26px;opacity:.8">Placa Avaliação Google · R$ 69,90</span><span>mstag.com.br</span></div>
+  </div>`,
+]);
+
+/* 13 · Cartão dupla face */
+post("13-dupla-face", [
+  `<div class="art" style="background:#fff">
+    ${logo("escuro", 44)}
+    <h1 style="margin-top:50px;font-size:96px">Um cartão.<br><span class="blue">Dois visuais.</span></h1>
+    <div style="position:absolute;left:84px;right:84px;top:500px;display:grid;grid-template-columns:1fr 1fr;gap:20px">
+      ${[["03_tag_preta_detalhe", "Face preta"], ["04_tag_branca_detalhe", "Face branca"]].map(([ft, t]) => `<div style="position:relative;border-radius:32px;overflow:hidden;aspect-ratio:1"><img src="${FOTO(ft)}" style="width:100%;height:100%;object-fit:cover;display:block"><span class="chip" style="position:absolute;left:18px;bottom:18px;background:#fff">${t}</span></div>`).join("")}
+    </div>
+    <p style="position:absolute;left:84px;right:84px;top:990px">Vire o cartão para combinar com o seu espaço. A base de madeira já vem junto.</p>
+    <div class="foot"><span class="pill" style="background:var(--azul);color:#fff;font-size:28px;white-space:nowrap">R$ 19,90 com base inclusa</span><span>mstag.com.br</span></div>
+  </div>`,
+]);
+
+/* 14 · Como pedir (carrossel) */
+{
+  const n = 3;
+  const passos = [["card", "Escolha no site", "Monte o pedido em mstag.com.br e finalize pelo WhatsApp."], ["link", "A gente confirma o seu link", "Perfil do Google, Instagram, cardápio… o que a plaquinha vai abrir."], ["clock", "Produção em até 3 dias úteis", "Já sai com o seu link gravado no chip e no QR."], ["truck", "Chega pronta", "Envio para todo o Brasil. É só colocar no balcão."]];
+  post("14-como-pedir", [
+    `<div class="art" style="background:var(--prof);color:#fff">${pager(0, n, true)}${logo("claro", 44)}
+      <h1 style="margin-top:110px;font-size:104px">Do clique ao balcão em 4 passos.</h1>
+      <p style="margin-top:36px;font-size:38px;color:var(--lav)">Sem instalar nada, sem configurar nada.</p>
+      <div style="position:absolute;left:84px;right:84px;top:680px;display:flex;align-items:center;justify-content:space-between">
+        ${["card", "link", "clock", "truck"].map((i, k) => `${k ? `<span style="flex:1;height:4px;margin:0 14px;background:rgba(255,255,255,.3)"></span>` : ""}<span style="flex:none;width:130px;height:130px;border-radius:50%;background:#fff;color:var(--prof);display:grid;place-items:center"><span style="width:60px;height:60px;display:block">${I[i]}</span></span>`).join("")}
+      </div>
+      ${onda("#fff", "#C9D1F4")}<div class="swipe swipe--claro" style="bottom:300px">Arraste ${I.arrow}</div></div>`,
+    `<div class="art" style="background:#fff">${pager(1, n)}
+      <div class="eyebrow blue">Como funciona o pedido</div>
+      <div style="position:relative;margin-top:80px;display:grid;gap:64px">
+        <div style="position:absolute;left:43px;top:40px;bottom:40px;width:4px;background:var(--lav)"></div>
+        ${passos.map(([i, a, b], k) => `<div style="position:relative;display:flex;gap:30px;align-items:flex-start"><span style="flex:none;width:90px;height:90px;border-radius:50%;background:var(--azul);color:#fff;display:grid;place-items:center;box-shadow:0 0 0 10px #fff"><span style="width:44px;height:44px;display:block">${I[i]}</span></span><div style="padding-top:6px"><div class="eyebrow muted" style="font-size:20px">Passo ${k + 1}</div><h3 style="margin-top:6px">${a}</h3><p class="muted" style="margin-top:8px;font-size:30px">${b}</p></div></div>`).join("")}
+      </div>${rodape()}</div>`,
+    `<div class="art" style="background:#F6F3EE">${pager(2, n)}
+      <img src="${FOTO("08_base_madeira_perspectiva")}" style="position:absolute;left:0;top:300px;width:1080px;-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 16%)">
+      <div class="eyebrow blue">Pronto pra começar?</div>
+      <h2 style="margin-top:22px;font-size:80px">Seu balcão já tem o lugar certo.</h2>
+      <p class="muted" style="margin-top:20px;position:relative">A base de madeira já vem junto no Cartão NFC Google (R$ 19,90).</p>
+      <div style="position:absolute;left:84px;right:84px;bottom:150px;background:var(--tinta);color:#fff;border-radius:28px;padding:32px 36px;display:flex;justify-content:space-between;align-items:center;font-size:32px;font-weight:700"><span>Peça em mstag.com.br</span><span style="color:#9fb2ff;font-size:26px">WhatsApp (41) 98469-9726</span></div>
+      ${rodape()}</div>`,
+  ]);
+}
+
+/* 15 · Dicas para ganhar avaliações (carrossel) */
+{
+  const n = 5;
+  const dica = (i, num, titulo, texto) => `<div class="art" style="background:#fff">${pager(i, n)}
+    <div style="position:absolute;left:84px;right:84px;top:150px;bottom:190px;display:flex;flex-direction:column;justify-content:center">
+    <div style="font-size:380px;font-weight:700;line-height:.8;letter-spacing:-.06em;color:var(--azul)">${num}</div>
+    <h2 style="margin-top:60px;font-size:86px">${titulo}</h2>
+    <p class="muted" style="margin-top:34px;font-size:40px">${texto}</p></div>
+    ${rodape()}</div>`;
+  post("15-dicas-avaliacoes", [
+    `<div class="art" style="background:var(--nevoa)">${pager(0, n)}${logo("escuro", 44)}
+      <div style="margin-top:110px;font-size:60px">${stars(5)}</div>
+      <h1 style="margin-top:30px;font-size:100px">3 jeitos de ganhar mais avaliações no Google.</h1>
+      <p style="margin-top:30px;font-size:40px" class="muted">Sem implorar pro cliente.</p>
+      <div style="position:absolute;right:110px;top:760px">${phone(TELA.review, 300, 6)}</div>
+      <div class="swipe" style="left:84px;right:auto;bottom:90px">Arraste ${I.arrow}</div></div>`,
+    dica(1, "1", "Peça na hora certa.", "O melhor momento é logo depois de um elogio: “adorei”, “ficou lindo”, “voltamos sempre”. A pessoa já está com vontade de falar bem."),
+    dica(2, "2", "Deixe a um toque de distância.", "Se avaliar dá trabalho, fica pra depois (e o depois não chega). Uma plaquinha no caixa resolve: aproximou o celular, abriu as estrelas."),
+    dica(3, "3", "Responda todas.", "Agradeça as boas e responda as críticas com calma. Quem lê percebe que tem gente cuidando do negócio, e isso também conta."),
+    `<div class="art" style="background:var(--prof);color:#fff">${pager(4, n, true)}
+      <div class="eyebrow" style="color:var(--lav)">A dica 2 a gente resolve</div>
+      <h2 style="margin-top:22px;font-size:76px">Plaquinha de avaliação no seu balcão.</h2>
+      <div style="position:absolute;left:84px;top:470px;display:grid;gap:22px">
+        ${[["Cartão NFC Google + base", "R$ 19,90", false], ["Placa Avaliação Google", "R$ 69,90", true]].map(([a, b, ex]) => `<div style="width:560px;background:rgba(255,255,255,.1);border-radius:26px;padding:28px 32px"><b style="font-size:30px">${a}</b><div style="margin-top:8px;font-size:56px;font-weight:700;white-space:nowrap">${b}</div>${ex ? `<div style="margin-top:12px">${selo(true)}</div>` : ""}</div>`).join("")}
+        <div class="pill" style="margin-top:20px;background:#fff;color:var(--azul);justify-self:start">Peça em mstag.com.br</div>
+      </div>
+      <div style="position:absolute;right:70px;top:480px;transform:rotate(5deg)">${classica("azul", 300)}</div>
+      <div class="foot foot--claro">${logo("claro", 40)}<span>mstag.com.br</span></div></div>`,
+  ]);
+}
+
+/* 16 · Tipográfico R$ 19,90 */
+post("16-menos-que-um-almoco", [
+  `<div class="art" style="background:var(--prof);color:#fff">
+    ${logo("claro", 44)}
+    <div style="margin-top:150px;font-size:46px;font-weight:700;color:var(--lav)">Custa menos que um almoço.</div>
+    <div style="margin-top:20px;font-size:210px;font-weight:700;letter-spacing:-.06em;line-height:.9">R$<br>19,90</div>
+    <div style="margin-top:44px;font-size:34px">${stars(5)}</div>
+    <div style="margin-top:20px;font-size:46px;font-weight:700;width:560px;line-height:1.1">E pede avaliação no seu balcão todo santo dia.</div>
+    <img src="${FOTO("02_tag_branca_com_base")}" style="position:absolute;right:64px;top:560px;width:370px;border-radius:36px;transform:rotate(4deg);box-shadow:0 30px 60px rgba(0,0,0,.3)">
+    <div class="foot foot--claro"><span style="font-weight:500;font-size:26px;opacity:.85">Cartão NFC Google + base de madeira</span><span>mstag.com.br</span></div>
+  </div>`,
+]);
 
 /* ---------- render ---------- */
 const only = process.argv[2];

@@ -260,3 +260,136 @@ Ficou alguma dúvida? Deixa aqui nos comentários ou chama no WhatsApp (41) 9846
 
 #mstag #PlaquinhaNFC #NFC #QRCode #AvaliacaoGoogle #CardapioDigital #PerguntasFrequentes #PequenosNegocios #Empreendedorismo #MarketingLocal
 ```
+
+---
+
+## 11 · Sex 16/10 · 11:30 · Plaquinha WhatsApp
+
+**Formato:** post único · `11-whatsapp.png`
+
+```
+Pedido no WhatsApp sem digitar número. 💬
+
+A Plaquinha NFC WhatsApp abre a conversa com o seu negócio com a mensagem já escrita. O cliente aproxima o celular e só aperta enviar. Sem salvar contato, sem errar número, sem "me passa seu zap".
+
+Perfeita para pedidos, reservas, orçamentos e agendamentos.
+
+⭐ Preço exclusivo do site: R$ 54,90
+Acrílico 3 mm · 10 × 10 cm · NFC + QR code
+
+Peça em mstag.com.br
+
+#mstag #WhatsAppBusiness #PlaquinhaNFC #Delivery #Pedidos #Agendamento #Restaurante #Hamburgueria #SalaoDeBeleza #Clinica #PequenosNegocios #Empreendedorismo
+```
+
+---
+
+## 12 · Sáb 17/10 · 10:00 · Enquete: qual cor?
+
+**Formato:** post único · `12-qual-cor.png`
+
+```
+Qual combina com o seu balcão? Comenta 1, 2 ou 3 👇
+
+1️⃣ Preto e azul
+2️⃣ Azul
+3️⃣ Preto e cinza
+
+É a nossa Placa Avaliação Google da Linha Clássica, o design mais pedido da mstag: o cliente aproxima o celular ou aponta a câmera e cai direto nas 5 estrelas do seu perfil.
+
+⭐ Preço exclusivo do site: de R$ 79,90 por R$ 69,90
+10 × 10 cm (preto e azul ou azul) ou 10 × 15 cm (as 3 cores)
+NFC + QR code dinâmico
+
+Escolheu? Monte o seu pedido em mstag.com.br
+
+#mstag #AvaliacaoGoogle #PlaquinhaNFC #DecoracaoComercial #Balcao #Loja #Restaurante #Cafeteria #Barbearia #PequenosNegocios #Empreendedorismo
+```
+
+---
+
+## 13 · Seg 19/10 · 11:30 · Cartão dupla face
+
+**Formato:** post único · `13-dupla-face.png`
+
+```
+Um cartão. Dois visuais. 🖤🤍
+
+O Cartão NFC Avaliação Google tem uma face preta e outra branca. Balcão escuro? Vira pro branco. Ambiente claro? Vira pro preto. Você escolhe o que combina com o seu espaço.
+
+✅ Base de madeira inclusa, sem custo extra
+✅ Use em pé na base, deitado no balcão ou na mão do atendente
+✅ Chega com o link do seu perfil gravado
+
+💰 R$ 19,90
+
+Peça em mstag.com.br ou no WhatsApp (41) 98469-9726
+
+#mstag #AvaliacaoGoogle #CartaoNFC #PlaquinhaNFC #GoogleMeuNegocio #PequenosNegocios #Empreendedorismo #Cafeteria #Restaurante #Estetica #MarketingLocal
+```
+
+---
+
+## 14 · Qua 21/10 · 11:30 · Como pedir em 4 passos
+
+**Formato:** carrossel · `14-como-pedir-1.png` a `-3.png`
+
+```
+Do clique ao balcão em 4 passos. Sem instalar nada, sem configurar nada. 🚀
+
+1️⃣ Escolha no site: monte o pedido em mstag.com.br e finalize pelo WhatsApp.
+2️⃣ A gente confirma o seu link: perfil do Google, Instagram, cardápio… o que a plaquinha vai abrir.
+3️⃣ Produção em até 3 dias úteis, já com o seu link gravado no chip e no QR.
+4️⃣ Chega pronta, em qualquer lugar do Brasil. É só colocar no balcão.
+
+Pagamento por Pix ou cartão, frete calculado pelo CEP.
+
+Bora? 👉 mstag.com.br
+
+#mstag #PlaquinhaNFC #AvaliacaoGoogle #CardapioDigital #ComoFunciona #PequenosNegocios #Empreendedorismo #Comercio #Varejo #MarketingLocal
+```
+
+---
+
+## 15 · Sex 23/10 · 11:30 · 3 jeitos de ganhar avaliações
+
+**Formato:** carrossel · `15-dicas-avaliacoes-1.png` a `-5.png`
+
+```
+3 jeitos de ganhar mais avaliações no Google (sem implorar pro cliente) ⭐
+
+1️⃣ Peça na hora certa
+Logo depois de um elogio: "adorei", "ficou lindo", "voltamos sempre". A pessoa já está com vontade de falar bem.
+
+2️⃣ Deixe a um toque de distância
+Se avaliar dá trabalho, fica pra depois, e o depois não chega. Uma plaquinha no caixa resolve: aproximou o celular, abriu as estrelas.
+
+3️⃣ Responda todas
+Agradeça as boas e responda as críticas com calma. Quem lê percebe que tem gente cuidando do negócio.
+
+A dica 2 a gente resolve:
+• Cartão NFC Google + base: R$ 19,90
+• Placa Avaliação Google: R$ 69,90 ⭐ preço exclusivo do site
+
+Salva este post pra lembrar depois 📌 e peça a sua em mstag.com.br
+
+#mstag #AvaliacaoGoogle #GoogleMeuNegocio #DicasDeMarketing #MarketingLocal #SEOLocal #AtendimentoAoCliente #PequenosNegocios #Empreendedorismo #Comercio
+```
+
+---
+
+## 16 · Sáb 24/10 · 10:00 · Menos que um almoço
+
+**Formato:** post único · `16-menos-que-um-almoco.png`
+
+```
+Custa menos que um almoço. E pede avaliação no seu balcão todo santo dia. ⭐
+
+R$ 19,90 pelo Cartão NFC Avaliação Google com base de madeira. Dupla face (preto e branco), chega com o link do seu perfil gravado e funciona em iPhone e Android, sem app.
+
+Um investimento de uma vez, trabalhando pra você todos os dias.
+
+Peça em mstag.com.br
+
+#mstag #AvaliacaoGoogle #CartaoNFC #PlaquinhaNFC #CustoBeneficio #PequenosNegocios #Empreendedorismo #Comercio #Restaurante #SalaoDeBeleza #MarketingLocal
+```

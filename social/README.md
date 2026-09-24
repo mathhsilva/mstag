@@ -1,6 +1,6 @@
 # Posts do Instagram · mstag
 
-10 posts prontos para o @mstagbr, 4 por semana (segunda, quarta, sexta e sábado), todos com o mesmo objetivo: vender as plaquinhas.
+16 posts prontos para o @mstagbr, 4 por semana (segunda, quarta, sexta e sábado), cobrindo 4 semanas (28/09 a 24/10), todos com o mesmo objetivo: vender as plaquinhas.
 Esta pasta **não** vai para a Hostinger (veja "Publicar na Hostinger" no README principal).
 
 - `posts/`: as artes em 1080 × 1350 (formato retrato 4:5 do feed).
@@ -21,6 +21,12 @@ Esta pasta **não** vai para a Hostinger (veja "Publicar na Hostinger" no README
 | 08 | Sáb 10/10 · 10:00 | Oferta | Google + Instagram + WhatsApp | Kit Negócio · R$ 159,90 |
 | 09 | Seg 12/10 · 11:30 | Celular + placa | Quem entra na loja, sai seguindo | Plaquinha Instagram · R$ 54,90 (exclusivo do site) |
 | 10 | Qua 14/10 · 11:30 | Carrossel (6) FAQ | As 5 dúvidas antes de comprar | Todos |
+| 11 | Sex 16/10 · 11:30 | Celular + placa | Pedido no WhatsApp sem digitar número | Plaquinha WhatsApp · R$ 54,90 (exclusivo do site) |
+| 12 | Sáb 17/10 · 10:00 | Enquete (comenta 1, 2 ou 3) | Qual combina com o seu balcão? | Placa Avaliação Google · R$ 69,90 (exclusivo do site) |
+| 13 | Seg 19/10 · 11:30 | Duas fotos | Um cartão, dois visuais | Cartão NFC Google + base · R$ 19,90 |
+| 14 | Qua 21/10 · 11:30 | Carrossel (3) passo a passo | Do clique ao balcão em 4 passos | Todos |
+| 15 | Sex 23/10 · 11:30 | Carrossel (5) de dicas | 3 jeitos de ganhar mais avaliações | Cartão R$ 19,90 e Placa R$ 69,90 |
+| 16 | Sáb 24/10 · 10:00 | Tipográfico | Custa menos que um almoço | Cartão NFC Google + base · R$ 19,90 |
 
 A ordem alterna estilos (foto, carrossel, humor, oferta) e produtos (avaliação, cardápio, minisite, Instagram) para o feed não ficar repetitivo.
 

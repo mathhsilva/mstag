@@ -500,7 +500,7 @@
               return '<button type="button" class="color" data-ccor="' + c.id + '" aria-label="' + esc(c.rotulo) + '">' + amostra(c) + "</button>";
             }).join("") + '</div><span class="opt__note" id="notaCorClassica"></span></div>' +
         "</div>" +
-        '<div class="product__buy"><div class="price"><s id="precoDeClassica"></s><b id="precoClassica"></b><small id="parcelaClassica"></small></div>' +
+        '<div class="product__buy"><div class="price">' + (CLASSICA.exclusivoSite ? SELO_SITE : "") + '<s id="precoDeClassica"></s><b id="precoClassica"></b><small id="parcelaClassica"></small></div>' +
           '<button class="btn btn--primary add-btn" type="button" data-add-classica>' + ICON.plus + "Adicionar</button></div>" +
         '<a class="muted small" href="' + HOME + '#personalize" data-personalizar="classica" style="font-weight:700">Adicionar o meu link e nome</a>' +
       "</div></article>";
@@ -565,6 +565,10 @@
     if (animar && !reduzMovimento) { slot.classList.remove("swap"); void slot.offsetWidth; slot.classList.add("swap"); }
   }
 
+  var SELO_SITE = '<span class="price__tag">' +
+    '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.5 9.6 5l3.9.4-2.9 2.6.8 3.8L8 9.9l-3.4 1.9.8-3.8L2.5 5.4 6.4 5z" fill="currentColor"/></svg>' +
+    "Preço exclusivo do site</span>";
+
   function iniciarProdutos() {
     var lista = $("#listaProdutos");
     if (!lista) return;
@@ -585,6 +589,7 @@
           "<h3>" + esc(p.nome) + "</h3>" +
           "<p>" + esc(p.resumo) + "</p>" +
           '<div class="product__buy"><div class="price">' +
+            (p.exclusivoSite && !off ? SELO_SITE : "") +
             (p.precoDe ? "<s>" + preco(p.precoDe) + "</s>" : "") +
             "<b>" + preco(p.preco) + "</b>" +
             "<small>" + (off ? "Voltamos a vender em breve" : "ou 3× de " + preco(p.preco / 3)) + "</small></div>" +
@@ -689,7 +694,7 @@
     $("#grupoTech").hidden = classica;
     $("#grupoClassica").hidden = !classica;
 
-    var box = $("#previewPlate"), valor, valorDe, legenda, chavePrevia;
+    var box = $("#previewPlate"), valor, valorDe, exclusivo, legenda, chavePrevia;
     if (classica) {
       if (!corDisponivel(v.tam, v.ccor)) {
         v.ccor = Object.keys(CLASSICA.imagens[v.tam])[0];
@@ -705,6 +710,7 @@
       box.classList.toggle("is-tall", v.tam === "10x15");
       valor = t.preco;
       valorDe = t.precoDe;
+      exclusivo = CLASSICA.exclusivoSite;
       legenda = "Linha Clássica · " + t.rotulo + " · logo e QR finais na produção";
       chavePrevia = "c" + v.tam + v.ccor;
     } else {
@@ -713,6 +719,7 @@
       box.classList.toggle("is-tall", v.modelo === "multilink");
       valor = p.preco;
       valorDe = p.precoDe;
+      exclusivo = p.exclusivoSite;
       legenda = "Linha Tech · prévia ilustrativa · " + p.medida;
       chavePrevia = "t" + v.modelo + v.cor;
     }
@@ -723,6 +730,8 @@
     $("#cfgPreco").textContent = preco(valor);
     var de = $("#cfgPrecoDe");
     if (de) de.textContent = valorDe ? preco(valorDe) : "";
+    var tag = $("#cfgExclusivo");
+    if (tag) tag.hidden = !exclusivo;
     $("#previewCaption").textContent = legenda;
     var ph = { google: "Ex.: link do seu perfil no Google", instagram: "Ex.: @cafedapraca", whatsapp: "Ex.: (11) 98765-4321", multilink: "Ex.: seus links, a gente monta a página" };
     $("#cfgLink").placeholder = classica ? ph.google : ph[v.modelo];

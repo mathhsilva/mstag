@@ -38,6 +38,7 @@ window.CLASSICA = {
   nome: "Avaliação Google · Linha Clássica",
   resumo: "O nosso design mais pedido. Aproximou o celular ou apontou a câmera, o cliente cai direto na tela de 5 estrelas do seu perfil.",
   selo: "Mais vendida",
+  exclusivoSite: true, // mostra o selo "Preço exclusivo do site" perto do preço
   material: "acrílico 3 mm · NFC + QR dinâmico",
   tamanhos: [
     { id: "10x10", rotulo: "10 × 10 cm", uso: "Balcão e caixa", preco: 69.9, precoDe: 79.9 },
@@ -92,6 +93,7 @@ window.CARTAO_GOOGLE = {
 window.PRODUTOS = [
   {
     id: "google",
+    exclusivoSite: true,
     nome: "Avaliação Google · Linha Tech",
     resumo: "Visual minimalista com o nome do seu negócio em destaque. Um toque e o cliente já está nas estrelas.",
     preco: 69.9,
@@ -101,6 +103,7 @@ window.PRODUTOS = [
   },
   {
     id: "instagram",
+    exclusivoSite: true,
     nome: "Plaquinha NFC Instagram",
     resumo: "Um toque abre seu perfil pronto para seguir. Ideal para balcão e provador.",
     preco: 54.9,
@@ -109,6 +112,7 @@ window.PRODUTOS = [
   },
   {
     id: "whatsapp",
+    exclusivoSite: true,
     nome: "Plaquinha NFC WhatsApp",
     resumo: "Abre a conversa com uma mensagem já escrita. Seu cliente só aperta enviar.",
     preco: 54.9,

@@ -623,6 +623,13 @@ section[id] { scroll-margin-top: 76px; }
 .price { display: grid; line-height: 1.1; }
 .price s { font-size: 13px; color: var(--ink-soft); }
 .price s:empty { display: none; }
+.price__tag {
+  justify-self: start; display: inline-flex; align-items: center; gap: 5px; margin-bottom: 6px;
+  padding: 3px 9px 3px 7px; border-radius: 999px; background: var(--cobalt-soft); color: var(--cobalt);
+  font-size: 11.5px; font-weight: 800; letter-spacing: 0.01em; line-height: 1.4; white-space: nowrap;
+}
+.price__tag svg { width: 12px; height: 12px; flex: none; }
+.price__tag--inv { background: rgba(91, 109, 255, 0.18); color: #B7C0FF; }
 .config__price s { font-size: 14px; color: #8E99B6; }
 .config__price s:empty { display: none; }
 .product__badge--off { background: var(--ink-soft); }

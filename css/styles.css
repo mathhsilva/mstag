@@ -461,7 +461,7 @@ section[id] { scroll-margin-top: 76px; }
 .step__n { position: absolute; top: 22px; right: 24px; font-size: 13px; color: var(--ink-soft); }
 .step__n::before { content: "passo "; }
 .step__art { height: 92px; margin-bottom: 8px; display: flex; align-items: center; }
-.step__art svg { height: 100%; width: auto; }
+.step__art svg, .step__art img { height: 100%; width: auto; }
 .step h3 { font-size: 19px; font-weight: 800; letter-spacing: -0.01em; }
 .step p { color: var(--ink-soft); font-size: 15.5px; }
 .s-fill { fill: var(--ink); }

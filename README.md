@@ -84,7 +84,9 @@ cartao-nfc-avaliacao-google/   cardapio-digital-nfc/
 
 Não envie `tools/`, `README.md` nem `.git` (o `.htaccess` bloqueia esses caminhos caso sejam enviados sem querer).
 
-Pelo Gerenciador de Arquivos: compacte os itens acima num `.zip`, envie para o `public_html` e use **Extrair**. O `.htaccess` começa com ponto e fica oculto no Windows e no Mac; confira se ele foi junto (no Gerenciador de Arquivos da Hostinger ele aparece normalmente).
+Pelo Gerenciador de Arquivos: compacte os itens acima num `.zip`, envie para o `public_html` e use **Extrair**. No Windows, selecione os itens, clique com o botão direito e use **Compactar para arquivo ZIP** (ou "Enviar para > Pasta compactada"). Esse método inclui as pastas no `.zip`; um `.zip` sem as pastas pode fazer as imagens de `assets/` não aparecerem.
+
+Depois de extrair, confira: as pastas (`assets`, `assets/logo`, `assets/placas`...) precisam ter permissão **755** e os arquivos **644**. Um teste rápido é abrir `https://mstag.com.br/assets/logo/mstag-preto-azul.png` no navegador: a logo tem que aparecer. O `.htaccess` começa com ponto e fica oculto no Windows e no Mac; confira se ele foi junto (no Gerenciador de Arquivos da Hostinger ele aparece normalmente).
 
 O que o `.htaccess` faz:
 

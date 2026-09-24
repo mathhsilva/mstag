@@ -6,6 +6,7 @@
  * Atualiza:
  *   index.html           dados estruturados (JSON-LD), tabela "Quanto custa" e links dos guias no rodapé
  *   <slug>/index.html    uma página de busca para cada item de tools/paginas.mjs
+ *   404.html             página "não encontrada" (usada pelo .htaccess)
  *   sitemap.xml  robots.txt  llms.txt
  */
 import fs from "node:fs";
@@ -390,6 +391,49 @@ ${paraSubpasta(rodape, p.slug)}
   return { ...p, endereco, min, itens, faq, descricaoFinal: sub(p.descricao) };
 }
 const geradas = PAGINAS.map(gerarPagina);
+
+/* ---------- Página 404 (usada pelo .htaccess) ---------- */
+// Pode ser exibida em qualquer endereço, então usa caminhos a partir da raiz do site
+function paraRaiz(trecho) {
+  return trecho
+    .replace(/(src|href)="(?!https?:|#|\/|mailto:|tel:|data:)([^"]+)"/g, '$1="/$2"')
+    .replace(/href="#([^"]+)"/g, 'href="/#$1"');
+}
+gravar("404.html", `${cabeca}  <title>Página não encontrada | ${esc(LOJA.nome)}</title>
+  <meta name="robots" content="noindex, follow">
+  <meta name="theme-color" content="#0B1220">
+  <link rel="icon" href="/assets/logo/favicon.png" type="image/png">
+${fontes}  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<!-- Página gerada por tools/seo.mjs. Edite lá e rode: node tools/seo.mjs -->
+<body data-home="/">
+${paraRaiz(topo)}
+  <main>
+    <section class="section">
+      <div class="wrap">
+        <header class="section__head">
+          <p class="eyebrow">Erro 404</p>
+          <h1 class="nf__title">Essa página não existe ou mudou de lugar</h1>
+          <p class="section__lead">Pode ter sido um link antigo ou um erro de digitação. As plaquinhas continuam aqui.</p>
+          <div class="hero__ctas">
+            <a class="btn btn--primary" href="/#produtos">Ver as plaquinhas ${SETA}</a>
+            <a class="btn btn--ghost" href="/">Ir para a página inicial</a>
+          </div>
+        </header>
+        <p class="eyebrow">Talvez você esteja procurando</p>
+        <div class="related nf__related">
+${PAGINAS.map((r) => `          <a class="related__card" href="/${r.slug}/"><b>${esc(r.menu)}</b><span>${esc(r.resumo)}</span>${SETA}</a>`).join("\n")}
+        </div>
+      </div>
+    </section>
+  </main>
+
+${paraRaiz(rodape)}
+  <script src="/js/config.js"></script>
+  <script src="/js/main.js"></script>
+</body>
+</html>
+`);
 
 /* ---------- sitemap, robots, llms ---------- */
 gravar("sitemap.xml", `<?xml version="1.0" encoding="UTF-8"?>

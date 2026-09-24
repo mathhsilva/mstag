@@ -1,0 +1,87 @@
+# ==================================================================
+#  mstag · configuração do servidor (Hostinger / Apache / LiteSpeed)
+#  Coloque este arquivo na raiz do public_html, junto com o index.html.
+# ==================================================================
+
+# ---------- Básico ----------
+Options -Indexes
+DirectoryIndex index.html
+AddDefaultCharset UTF-8
+AddCharset UTF-8 .html .css .js .mjs .txt .xml .json .svg
+ErrorDocument 404 /404.html
+
+<IfModule mod_mime.c>
+  AddType image/webp .webp
+  AddType image/svg+xml .svg
+  AddType text/javascript .js .mjs
+  AddType text/plain .txt
+  AddType application/xml .xml
+  AddType application/manifest+json .webmanifest
+</IfModule>
+
+# ---------- Redirecionamentos ----------
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # 1) Sem "www": www.mstag.com.br -> https://mstag.com.br (endereço oficial do SEO)
+  RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+  RewriteRule ^ https://%1%{REQUEST_URI} [R=301,L,NE]
+
+  # 2) Sempre HTTPS (a segunda condição evita loop quando o CDN da Hostinger está ligado)
+  RewriteCond %{HTTPS} off
+  RewriteCond %{HTTP:X-Forwarded-Proto} !https
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L,NE]
+
+  # 3) /index.html e /pasta/index.html viram / e /pasta/ (evita página duplicada no Google)
+  RewriteCond %{THE_REQUEST} \s/+((?:[^\s?]*/)?)index\.html[\s?] [NC]
+  RewriteRule ^ https://%{HTTP_HOST}/%1 [R=301,L,NE]
+
+  # 4) Páginas de busca sem a barra final ganham a barra (ex.: /plaquinha-nfc -> /plaquinha-nfc/)
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteCond %{REQUEST_URI} !/$
+  RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1/ [R=301,L]
+
+  # 5) Arquivos de trabalho que não devem ficar públicos, caso sejam enviados sem querer
+  RewriteRule ^(?:tools(?:/|$)|README\.md$|\.git(?:/|$)|node_modules(?:/|$)) - [R=404,L]
+</IfModule>
+
+# Bloqueia arquivos ocultos (.git, .env etc.), mas libera o .well-known (usado pelo SSL)
+<IfModule mod_rewrite.c>
+  RewriteCond %{REQUEST_URI} !^/\.well-known/
+  RewriteRule (?:^|/)\. - [R=404,L]
+</IfModule>
+
+# ---------- Compressão (site mais rápido) ----------
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml text/javascript
+  AddOutputFilterByType DEFLATE application/javascript application/json application/xml application/ld+json image/svg+xml
+</IfModule>
+
+# ---------- Cache ----------
+# HTML: o navegador sempre confere se há versão nova (preços e textos aparecem na hora)
+# CSS e JS: 1 hora (o config.js tem os preços)
+# Imagens: 30 dias
+<IfModule mod_headers.c>
+  <FilesMatch "\.(html)$">
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
+  <FilesMatch "\.(css|js|mjs)$">
+    Header set Cache-Control "public, max-age=3600, must-revalidate"
+  </FilesMatch>
+  <FilesMatch "\.(webp|png|jpe?g|gif|svg|ico)$">
+    Header set Cache-Control "public, max-age=2592000"
+  </FilesMatch>
+  <FilesMatch "\.(txt|xml)$">
+    Header set Cache-Control "public, max-age=3600"
+  </FilesMatch>
+
+  # ---------- Segurança ----------
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=()"
+
+  # Ative depois de confirmar que o HTTPS funciona em todas as páginas (tire o # da linha abaixo).
+  # Obriga o navegador a usar sempre HTTPS por 1 ano; difícil de desfazer, por isso vem desligado.
+  # Header always set Strict-Transport-Security "max-age=31536000"
+</IfModule>

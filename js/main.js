@@ -773,8 +773,10 @@
   /* ------------------------------------------------------------
      Utilidades
      ------------------------------------------------------------ */
+  // Usa o endereço oficial api.whatsapp.com/send direto: o atalho wa.me passa por um
+  // redirecionamento que, em alguns aparelhos e no WhatsApp Web/Desktop, troca emojis por "�".
   function whatsLink(msg) {
-    return "https://wa.me/" + String(LOJA.whatsapp || "").replace(/\D/g, "") + "?text=" + encodeURIComponent(msg);
+    return "https://api.whatsapp.com/send?phone=" + String(LOJA.whatsapp || "").replace(/\D/g, "") + "&text=" + encodeURIComponent(msg);
   }
 
   var toastTimer;

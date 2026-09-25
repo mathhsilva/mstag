@@ -250,8 +250,10 @@ function gerarPagina(p) {
   <meta name="twitter:description" content="${esc(sub(p.descricao))}">
   <meta name="twitter:image" content="${url(og)}">
   <meta name="theme-color" content="#0B1220">
-  <link rel="icon" href="../assets/logo/favicon.png" type="image/png">
-  <link rel="apple-touch-icon" href="../assets/logo/favicon.png">
+  <link rel="icon" href="../favicon.ico" sizes="48x48">
+  <link rel="icon" href="../assets/logo/favicon-192.png" type="image/png" sizes="192x192">
+  <link rel="apple-touch-icon" href="../assets/logo/apple-touch-icon.png">
+  <link rel="manifest" href="../site.webmanifest">
 ${fontes}  <link rel="stylesheet" href="../css/styles.css">
 ${ld}</head>
 <!-- Página gerada por tools/seo.mjs a partir de tools/paginas.mjs. Edite lá e rode: node tools/seo.mjs -->
@@ -403,7 +405,10 @@ function paraRaiz(trecho) {
 gravar("404.html", `${cabeca}  <title>Página não encontrada | ${esc(LOJA.nome)}</title>
   <meta name="robots" content="noindex, follow">
   <meta name="theme-color" content="#0B1220">
-  <link rel="icon" href="/assets/logo/favicon.png" type="image/png">
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="icon" href="/assets/logo/favicon-192.png" type="image/png" sizes="192x192">
+  <link rel="apple-touch-icon" href="/assets/logo/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
 ${fontes}  <link rel="stylesheet" href="/css/styles.css">
 </head>
 <!-- Página gerada por tools/seo.mjs. Edite lá e rode: node tools/seo.mjs -->

@@ -76,7 +76,8 @@ Ele regenera as páginas de busca, os dados estruturados, as tabelas de preços,
 Envie para a pasta `public_html` **somente** estes itens:
 
 ```
-.htaccess   404.html   index.html   robots.txt   sitemap.xml   llms.txt
+.htaccess   404.html   index.html   favicon.ico   site.webmanifest
+robots.txt   sitemap.xml   llms.txt
 css/   js/   assets/
 plaquinha-avaliacao-google/   plaquinha-nfc/   plaquinha-nfc-instagram/
 cartao-nfc-avaliacao-google/   cardapio-digital-nfc/

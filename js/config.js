@@ -41,8 +41,8 @@ window.CLASSICA = {
   exclusivoSite: true, // mostra o selo "Preço exclusivo do site" perto do preço
   material: "acrílico 3 mm · NFC + QR dinâmico",
   tamanhos: [
-    { id: "10x10", rotulo: "10 × 10 cm", uso: "Balcão e caixa", preco: 69.9, precoDe: 79.9 },
-    { id: "10x15", rotulo: "10 × 15 cm", uso: "Parede e mesa", preco: 69.9, precoDe: 79.9 },
+    { id: "10x10", rotulo: "10 × 10 cm", uso: "Balcão e caixa", preco: 79.99 },
+    { id: "10x15", rotulo: "10 × 15 cm em L", uso: "Em pé no balcão e mesa", preco: 89.99 },
   ],
   cores: [
     { id: "preto-azul", rotulo: "Preto e azul", amostra: ["#121212", "#3057FF"] },
@@ -96,8 +96,7 @@ window.PRODUTOS = [
     exclusivoSite: true,
     nome: "Avaliação Google · Linha Tech",
     resumo: "Visual minimalista com o nome do seu negócio em destaque. Um toque e o cliente já está nas estrelas.",
-    preco: 69.9,
-    precoDe: 79.9,
+    preco: 79.99,
     medida: "10 × 10 cm · acrílico 3 mm",
     visual: { modelo: "google", cor: "dark" },
   },
@@ -106,7 +105,7 @@ window.PRODUTOS = [
     exclusivoSite: true,
     nome: "Plaquinha NFC Instagram",
     resumo: "Um toque abre seu perfil pronto para seguir. Ideal para balcão e provador.",
-    preco: 54.9,
+    preco: 79.99,
     medida: "10 × 10 cm · acrílico 3 mm",
     visual: { modelo: "instagram", cor: "light" },
   },
@@ -115,7 +114,7 @@ window.PRODUTOS = [
     exclusivoSite: true,
     nome: "Plaquinha NFC WhatsApp",
     resumo: "Abre a conversa com uma mensagem já escrita. Seu cliente só aperta enviar.",
-    preco: 54.9,
+    preco: 79.99,
     medida: "10 × 10 cm · acrílico 3 mm",
     visual: { modelo: "whatsapp", cor: "dark" },
   },
@@ -123,7 +122,7 @@ window.PRODUTOS = [
     id: "multilink",
     nome: "Display de Mesa NFC Multi-link",
     resumo: "Uma página com cardápio, Wi-Fi, Pix, Instagram e WhatsApp. Troque os links quando quiser.",
-    preco: 79.9,
+    preco: 89.99,
     selo: "Para restaurantes",
     medida: "10 × 15 cm · em pé, com base",
     visual: { modelo: "multilink", cor: "clear" },
@@ -142,8 +141,8 @@ window.PRODUTOS = [
     nome: "Kit Negócio · 3 plaquinhas NFC",
     resumo: "Google + Instagram + WhatsApp com o mesmo visual. O combo que mais gira no balcão.",
     preco: 159.9,
-    precoDe: 179.7, // soma das três avulsas: 69,90 + 54,90 + 54,90
-    selo: "Economize R$ 19,80",
+    precoDe: 239.97, // soma das três avulsas: 3 × 79,99
+    selo: "Economize R$ 80,07",
     medida: "3 × 10 × 10 cm · acrílico 3 mm",
     visual: { modelo: "kit", cor: "dark" },
   },

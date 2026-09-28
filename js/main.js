@@ -351,7 +351,34 @@
         '<span class="line__price">' + preco(c.preco * c.qtd) + "</span></div></div></div>";
     }).join("");
     $("#totalCarrinho").textContent = preco(total());
+
+    // A partir de 5 unidades: sem preços, só o contato para empresas e revendedores
+    var atacado = unidades() >= LIMITE_ATACADO;
+    drawer.classList.toggle("drawer--atacado", atacado);
+    $("#checkoutAtacado").hidden = !atacado;
+    $("#checkoutVarejo").hidden = atacado;
+    if (atacado) $("#falarAtacado").href = whatsLink(mensagemAtacado());
     atualizarLinkPedido();
+  }
+
+  /* ---------- Pedidos a partir de 5 unidades ---------- */
+  var LIMITE_ATACADO = 5;
+  // Cada kit conta como 3 plaquinhas
+  function unidades() {
+    return carrinho.reduce(function (s, c) { return s + c.qtd * (c.id === "kit" ? 3 : 1); }, 0);
+  }
+  function mensagemAtacado() {
+    var L = ["Olá! 👋 Vim pelo site da *" + (LOJA.nome || "loja") + "* e quero consultar os preços para empresas e revendedores.", "", "📦 *ITENS DE INTERESSE*", ""];
+    carrinho.forEach(function (c, i) {
+      L.push("*" + (i + 1) + ". " + c.titulo + "*");
+      L.push("   ▫️ Quantidade: " + c.qtd);
+      detalhes(c).forEach(function (d) { L.push("   ▫️ " + d[0] + ": " + d[1]); });
+      L.push("");
+    });
+    L.push("🔢 *Total:* " + unidades() + " unidades");
+    L.push("");
+    L.push("Pode me passar as condições? 😊");
+    return L.join("\n");
   }
 
   /* ---------- Fechamento do pedido pelo WhatsApp ---------- */
@@ -500,7 +527,7 @@
               return '<button type="button" class="color" data-ccor="' + c.id + '" aria-label="' + esc(c.rotulo) + '">' + amostra(c) + "</button>";
             }).join("") + '</div><span class="opt__note" id="notaCorClassica"></span></div>' +
         "</div>" +
-        '<div class="product__buy"><div class="price">' + (CLASSICA.exclusivoSite ? SELO_SITE : "") + '<s id="precoDeClassica"></s><b id="precoClassica"></b><small id="parcelaClassica"></small></div>' +
+        '<div class="product__buy"><div class="price">' + (CLASSICA.exclusivoSite ? SELO_SITE : "") + '<s id="precoDeClassica"></s><b id="precoClassica"></b><small id="parcelaClassica"></small>' + FRETE + '</div>' +
           '<button class="btn btn--primary add-btn" type="button" data-add-classica>' + ICON.plus + "Adicionar</button></div>" +
         '<a class="muted small" href="' + HOME + '#personalize" data-personalizar="classica" style="font-weight:700">Adicionar o meu link e nome</a>' +
       "</div></article>";
@@ -527,7 +554,7 @@
           '<svg viewBox="0 0 24 24"><path d="M4 9h13l-3-3M20 15H7l3 3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>' +
           '<span class="faces__card faces__card--light">' + ICON.google + "</span><small>Frente e verso</small></div>" +
         '<ul class="ticks">' + CARTAO.destaques.map(function (d) { return "<li>" + esc(d) + "</li>"; }).join("") + "</ul>" +
-        '<div class="product__buy"><div class="price"><b>' + preco(CARTAO.preco) + "</b><small>" + esc(CARTAO.inclui || "no Pix ou no cartão") + "</small></div>" +
+        '<div class="product__buy"><div class="price"><b>' + preco(CARTAO.preco) + "</b><small>" + esc(CARTAO.inclui || "no Pix ou no cartão") + "</small>" + FRETE + "</div>" +
           '<button class="btn btn--primary add-btn" type="button" data-add-cartao>' + ICON.plus + "Adicionar</button></div>" +
       "</div></article>";
   }
@@ -565,6 +592,7 @@
     if (animar && !reduzMovimento) { slot.classList.remove("swap"); void slot.offsetWidth; slot.classList.add("swap"); }
   }
 
+  var FRETE = '<small class="price__frete">+ frete calculado à parte</small>';
   var SELO_SITE = '<span class="price__tag">' +
     '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.5 9.6 5l3.9.4-2.9 2.6.8 3.8L8 9.9l-3.4 1.9.8-3.8L2.5 5.4 6.4 5z" fill="currentColor"/></svg>' +
     "Preço exclusivo do site</span>";
@@ -592,7 +620,7 @@
             (p.exclusivoSite && !off ? SELO_SITE : "") +
             (p.precoDe ? "<s>" + preco(p.precoDe) + "</s>" : "") +
             "<b>" + preco(p.preco) + "</b>" +
-            "<small>" + (off ? "Voltamos a vender em breve" : "ou 3× de " + preco(p.preco / 3)) + "</small></div>" +
+            "<small>" + (off ? "Voltamos a vender em breve" : "ou 3× de " + preco(p.preco / 3)) + "</small>" + (off ? "" : FRETE) + "</div>" +
             (off
               ? '<button class="btn add-btn add-btn--off" type="button" disabled>Indisponível</button>'
               : '<button class="btn btn--primary add-btn" type="button" data-add="' + p.id + '">' + ICON.plus + "Adicionar</button>") +

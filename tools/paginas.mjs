@@ -234,7 +234,7 @@ export const PAGINAS = [
         html: `<div class="lp-table-wrap"><table class="lp-table">
 <thead><tr><th scope="col"></th><th scope="col">Cartão NFC</th><th scope="col">Placa Clássica</th></tr></thead>
 <tbody>
-<tr><th scope="row">Formato</th><td>Cartão, em pé na base de madeira</td><td>Placa de acrílico 10 × 10 ou 10 × 15 cm</td></tr>
+<tr><th scope="row">Formato</th><td>Cartão, em pé na base de madeira</td><td>Placa de acrílico 10 × 10 cm ou 10 × 15 cm em L</td></tr>
 <tr><th scope="row">Cores</th><td>Dupla face: preta e branca</td><td>Preto e azul, azul, preto e cinza</td></tr>
 <tr><th scope="row">Leitura</th><td>NFC</td><td>NFC e QR code dinâmico</td></tr>
 <tr><th scope="row">Melhor para</th><td>Balcão, mesa e atendimento na mão</td><td>Balcão, parede e recepção</td></tr>

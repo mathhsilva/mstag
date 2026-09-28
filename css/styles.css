@@ -623,6 +623,8 @@ section[id] { scroll-margin-top: 76px; }
 .price { display: grid; line-height: 1.1; }
 .price s { font-size: 13px; color: var(--ink-soft); }
 .price s:empty { display: none; }
+.price .price__frete { margin-top: 1px; font-size: 12px; color: var(--ink-soft); opacity: 0.85; }
+.config__frete { font-size: 12.5px; color: #8E99B6; margin-top: 2px; }
 .price__tag {
   justify-self: start; display: inline-flex; align-items: center; gap: 5px; margin-bottom: 6px;
   padding: 3px 9px 3px 7px; border-radius: 999px; background: var(--cobalt-soft); color: var(--cobalt);
@@ -641,6 +643,13 @@ section[id] { scroll-margin-top: 76px; }
 .add-btn { min-height: 44px; padding: 10px 16px; font-size: 14.5px; }
 .add-btn svg { width: 16px; height: 16px; }
 
+.atacado-faixa {
+  margin-top: 20px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px 24px;
+  padding: 18px 22px; border-radius: var(--r-md); background: var(--card); border: 1px dashed #BFC8DA;
+}
+.atacado-faixa div { display: grid; gap: 2px; }
+.atacado-faixa b { font-size: 16px; }
+.atacado-faixa span { font-size: 14.5px; color: var(--ink-soft); }
 /* Config */
 .config { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 6vw, 80px); align-items: center; }
 .config__preview { display: grid; gap: 14px; justify-items: center; }
@@ -786,6 +795,10 @@ section[id] { scroll-margin-top: 76px; }
 .drawer__body { overflow-y: auto; padding: 16px 22px; display: grid; gap: 12px; align-content: start; }
 .drawer__foot { padding: 18px 22px calc(18px + env(safe-area-inset-bottom, 0px)); border-top: 1px solid var(--line); display: grid; gap: 12px; background: var(--card); }
 .drawer__foot .field > label { font-size: 13.5px; }
+.drawer--atacado .line__price { display: none; }
+.atacado { display: grid; gap: 14px; text-align: center; }
+.atacado__titulo { font-family: var(--f-display); font-weight: 600; font-size: 19px; line-height: 1.25; letter-spacing: -0.015em; }
+.checkout-varejo { display: grid; gap: 12px; }
 .checkout { display: grid; grid-template-columns: 1fr 0.8fr; gap: 12px; }
 .checkout .field { gap: 6px; align-content: start; }
 .checkout .input { min-height: 46px; padding-block: 10px; }

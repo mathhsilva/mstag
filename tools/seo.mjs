@@ -322,6 +322,13 @@ ${s.html.split("\n").map((l) => "          " + l).join("\n")}
           <p class="section__lead">Todos chegam com o seu link gravado e testado. Monte o carrinho e finalize pelo WhatsApp.</p>
         </header>
         <div class="grid-products" id="listaProdutos" data-mostrar="${p.mostrar.join(",")}"></div>
+        <div class="atacado-faixa">
+          <div>
+            <b>Vai comprar 5 unidades ou mais?</b>
+            <span>Consulte os preços para empresas e revendedores.</span>
+          </div>
+          <a class="btn btn--whats" data-whats="Olá! 👋 Quero consultar os preços da mstag para empresas e revendedores (a partir de 5 unidades)." href="#" target="_blank" rel="noopener">Falar no WhatsApp</a>
+        </div>
       </div>
     </section>
 
@@ -331,7 +338,8 @@ ${s.html.split("\n").map((l) => "          " + l).join("\n")}
           <p class="eyebrow">Preços</p>
           <h2>Quanto custa</h2>
           <p class="guide__answer">Os modelos desta página vão de ${brl(min)} a ${brl(Math.max(...itens.map((c) => c.preco)))} por unidade, já com o seu link gravado no NFC e no QR code.</p>
-          <p>O frete é calculado pelo seu CEP no atendimento pelo WhatsApp, e o pagamento pode ser feito por Pix ou cartão. Enviamos para todo o Brasil.</p>
+          <p>O frete é calculado separadamente, pelo seu CEP, no atendimento pelo WhatsApp. O pagamento pode ser feito por Pix ou cartão, e enviamos para todo o Brasil.</p>
+          <p>Vai comprar 5 unidades ou mais? Consulte os preços para empresas e revendedores pelo WhatsApp.</p>
         </div>
         <aside class="price-card" aria-label="Tabela de preços">
 ${tabelaPrecos(itens)}          <a class="btn btn--primary btn--block" href="#produtos">Escolher o meu modelo</a>

@@ -5,12 +5,18 @@ Site estático (HTML + CSS + JS puro, sem build). É só abrir o `index.html` ou
 ## O que tem no site
 
 - **Demonstração interativa no topo**: o celular encosta na plaquinha e a tela abre Google, Instagram, WhatsApp, cardápio, Wi-Fi ou Pix.
-- **Duas linhas de produto**: a **Clássica** (fotos reais das placas da mstag, com escolha de tamanho 10 × 10 / 10 × 15 e cor) e a **Tech** (plaquinhas desenhadas pelo próprio site).
+- **Duas linhas de produto**: a **Clássica** (fotos reais das placas da mstag, com escolha de tamanho 10 × 10 / 10 × 15 em L e cor) e a **Tech** (plaquinhas desenhadas pelo próprio site).
 - **Catálogo** com preço, parcelamento e botão de adicionar ao carrinho.
 - **Personalizador** com prévia ao vivo (modelo, acabamento, nome do negócio e link).
 - **Carrinho** salvo no navegador, que fecha o pedido pelo **WhatsApp** com a mensagem já montada (itens, detalhes, subtotal e nome do cliente).
 - Seções de como funciona, comparação, para quem é, garantias, perguntas frequentes e CTA final.
 - Responsivo, acessível pelo teclado e respeita "reduzir movimento".
+
+## Preços e pedidos em quantidade
+
+- Plaquinhas 10 × 10 cm: R$ 79,99. Plaquinhas 10 × 15 cm em L (Clássica 10 × 15 e display de mesa): R$ 89,99.
+- O frete é sempre calculado à parte, pelo CEP, no WhatsApp.
+- A partir de 5 unidades no carrinho (cada kit conta como 3), o site esconde os preços e mostra só "Consulte os preços para empresas e revendedores" com o botão do WhatsApp. O limite fica em `LIMITE_ATACADO`, no `js/main.js`.
 
 ## Onde editar
 

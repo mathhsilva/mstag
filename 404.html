@@ -107,6 +107,14 @@
       </header>
       <div class="drawer__body" id="itensCarrinho"></div>
       <footer class="drawer__foot" id="rodapeCarrinho">
+        <div class="atacado" id="checkoutAtacado" hidden>
+          <b class="atacado__titulo">Consulte os preços para empresas e revendedores</b>
+          <a class="btn btn--whats btn--lg btn--block" id="falarAtacado" href="#" target="_blank" rel="noopener">
+            <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 4a12 12 0 0 0-10.4 18L4 28l6.2-1.6A12 12 0 1 0 16 4Z" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/></svg>
+            Falar no WhatsApp
+          </a>
+        </div>
+        <div class="checkout-varejo" id="checkoutVarejo">
         <div class="checkout">
           <div class="field">
             <label for="clienteNome">Seu nome</label>
@@ -124,11 +132,12 @@
           <span>Subtotal</span>
           <b id="totalCarrinho">R$ 0,00</b>
         </div>
-        <p class="muted small">O frete é calculado pelo seu CEP e informado no WhatsApp.</p>
+        <p class="muted small">Frete calculado separadamente, pelo seu CEP, e informado no WhatsApp.</p>
         <a class="btn btn--whats btn--lg btn--block" id="finalizar" href="#" target="_blank" rel="noopener">
           <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 4a12 12 0 0 0-10.4 18L4 28l6.2-1.6A12 12 0 1 0 16 4Z" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/></svg>
           Finalizar pedido no WhatsApp
         </a>
+        </div>
       </footer>
     </aside>
   </div>

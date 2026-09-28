@@ -339,8 +339,8 @@ export const PAGINAS = [
     },
     passosTitulo: "Como funciona a revenda, do pedido à venda",
     passos: [
-      ["Faça o seu pedido", "Pelo WhatsApp, a partir de 6 unidades. O preço de cada plaquinha depende da faixa de quantidade do pedido."],
-      ["Ative a sua conta no app", "Escaneie uma plaquinha do lote: o app mostra que ela ainda não tem dono. Faça o cadastro pelo link e a gente vincula o lote ao e-mail que você cadastrou."],
+      ["Faça o seu pedido", "Pelo WhatsApp, a partir de 6 unidades, e informe o e-mail que você vai usar no app. O preço de cada plaquinha depende da faixa de quantidade do pedido."],
+      ["Ative a sua conta pelo e-mail", "Criamos a sua conta com o lote já vinculado e enviamos um link de ativação para o seu e-mail. Você cria a sua senha e já vê todas as plaquinhas do lote no app."],
       ["Venda e configure na hora", "Na frente do cliente, escaneie a plaquinha, abra o painel em app.mstag.com.br e coloque o link dele: Google, Instagram, WhatsApp ou cardápio."],
     ],
     secoes: [
@@ -358,7 +358,7 @@ export const PAGINAS = [
       {
         eyebrow: "O app",
         titulo: "O app mstag faz o trabalho pesado",
-        html: `<p>Todas as plaquinhas do seu lote ficam na sua conta em <a href="https://app.mstag.com.br" target="_blank" rel="noopener">app.mstag.com.br</a>. Você não precisa de gravador de NFC nem de nenhum aplicativo extra.</p>
+        html: `<p>Todas as plaquinhas do seu lote já chegam vinculadas à sua conta em <a href="https://app.mstag.com.br" target="_blank" rel="noopener">app.mstag.com.br</a>. Você não precisa de gravador de NFC nem de nenhum aplicativo extra.</p>
 <ol class="lp-ol">
 <li>Fechou uma venda? Escaneie a plaquinha com o seu celular, na frente do cliente.</li>
 <li>O painel do app abre direto naquela plaquinha.</li>
@@ -381,7 +381,8 @@ export const PAGINAS = [
     faq: [
       ["Qual é o pedido mínimo para revender?", "O pedido mínimo é de 6 unidades. A partir de 15 e de 30 unidades por pedido, o preço de revenda de cada plaquinha fica menor."],
       ["Quais plaquinhas posso revender?", "A plaquinha 10 × 10 cm e a plaquinha 10 × 15 cm em L. Cada tamanho tem o seu preço de revenda em cada faixa de quantidade."],
-      ["Como as plaquinhas ficam ligadas à minha conta?", "Quando você escaneia uma plaquinha do lote pela primeira vez, o app mostra que ela ainda não tem dono e oferece o cadastro. Depois do cadastro, a gente vincula o lote ao e-mail que você cadastrou."],
+      ["Como as plaquinhas ficam ligadas à minha conta?", "Quando o pedido é confirmado, a gente cria a sua conta com o lote já vinculado e envia um e-mail com um link de ativação. Você cria a sua própria senha e entra em app.mstag.com.br com todas as plaquinhas do lote na conta. Não precisa escanear nada para ativar."],
+      ["O link de ativação expirou. E agora?", "Por segurança, o link de ativação vale por 48 horas e nenhuma senha é enviada por e-mail. Se ele expirar, chame a gente no WhatsApp que enviamos um novo link."],
       ["Como configuro a plaquinha do meu cliente?", "Escaneie a plaquinha, abra o painel em app.mstag.com.br e coloque o link que o cliente quer. Dá para fazer na hora, na frente dele."],
       ["Por quanto devo vender?", "Você define o seu preço de venda. Como referência, no site da mstag a plaquinha 10 × 10 cm sai por R$ 79,99 e a 10 × 15 cm em L por R$ 89,99."],
       ["O meu cliente precisa baixar algum aplicativo?", "Não. O cliente dele só aproxima o celular ou aponta a câmera no QR code. O app é só para você, revendedor, configurar as plaquinhas."],

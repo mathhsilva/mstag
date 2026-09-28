@@ -312,4 +312,81 @@ export const PAGINAS = [
     ],
     relacionados: ["plaquinha-avaliacao-google", "plaquinha-nfc", "plaquinha-nfc-instagram"],
   },
+  {
+    slug: "revenda-plaquinha-nfc",
+    menu: "Seja revendedor",
+    semLoja: true,
+    titulo: "Revenda Plaquinha NFC: seja um revendedor mstag | mstag",
+    descricao: "Revenda plaquinhas NFC de avaliação Google, Instagram e WhatsApp. Compre a partir de 6 unidades com preço de revenda e configure cada placa na hora pelo app mstag.",
+    resumo: "Compre com preço de revenda a partir de 6 unidades e configure as placas na hora pelo app.",
+    kicker: "Programa de revenda mstag",
+    h1: "Revenda plaquinhas NFC e <em>ganhe na diferença</em>",
+    lead: "Compre um lote com preço de revenda a partir de 6 unidades, venda para os negócios da sua região e configure cada plaquinha na frente do cliente, pelo app mstag. Você define o preço de venda.",
+    destaques: ["Pedido a partir de 6 unidades", "Quanto mais compra, menor o preço", "Configure na hora pelo app"],
+    visual: { tipo: "duo", placa: { modelo: "instagram", cor: "light" } },
+    mostrar: [],
+    cta: {
+      topo: [
+        { texto: "Quero revender", whats: "Olá! 👋 Quero ser revendedor mstag. Pode me passar os preços de revenda?" },
+        { texto: "Acessar o app", href: "https://app.mstag.com.br" },
+      ],
+      finalTitulo: "Vamos vender juntos?",
+      finalTexto: "Chame a gente no WhatsApp para receber os preços de revenda de cada faixa e fazer o seu primeiro pedido.",
+      final: [
+        { texto: "Quero revender", whats: "Olá! 👋 Quero ser revendedor mstag. Pode me passar os preços de revenda?" },
+        { texto: "Acessar o app", href: "https://app.mstag.com.br" },
+      ],
+    },
+    passosTitulo: "Como funciona a revenda, do pedido à venda",
+    passos: [
+      ["Faça o seu pedido", "Pelo WhatsApp, a partir de 6 unidades. O preço de cada plaquinha depende da faixa de quantidade do pedido."],
+      ["Ative a sua conta no app", "Escaneie uma plaquinha do lote: o app mostra que ela ainda não tem dono. Faça o cadastro pelo link e a gente vincula o lote ao e-mail que você cadastrou."],
+      ["Venda e configure na hora", "Na frente do cliente, escaneie a plaquinha, abra o painel em app.mstag.com.br e coloque o link dele: Google, Instagram, WhatsApp ou cardápio."],
+    ],
+    secoes: [
+      {
+        eyebrow: "Preço de revenda",
+        titulo: "Quanto mais você compra, menor o preço",
+        html: `<p>O preço de revenda de cada plaquinha depende da quantidade de unidades no pedido. São três faixas, para a plaquinha 10 × 10 cm e para a 10 × 15 cm em L:</p>
+<ul class="lp-grid-list lp-faixas">
+<li><span class="lp-faixas__q">6 a 14</span><b>unidades por pedido</b><span>Primeira faixa, para começar a revender.</span></li>
+<li><span class="lp-faixas__q">15 a 29</span><b>unidades por pedido</b><span>Preço de revenda menor por plaquinha.</span></li>
+<li><span class="lp-faixas__q">30 ou mais</span><b>unidades por pedido</b><span>O menor preço de revenda.</span></li>
+</ul>
+<p>Os valores de cada faixa são passados pelo WhatsApp. O preço de venda para o seu cliente é você quem define. Como referência, no nosso site a plaquinha 10 × 10 cm sai por R$ 79,99 e a 10 × 15 cm em L por R$ 89,99.</p>`,
+      },
+      {
+        eyebrow: "O app",
+        titulo: "O app mstag faz o trabalho pesado",
+        html: `<p>Todas as plaquinhas do seu lote ficam na sua conta em <a href="https://app.mstag.com.br" target="_blank" rel="noopener">app.mstag.com.br</a>. Você não precisa de gravador de NFC nem de nenhum aplicativo extra.</p>
+<ol class="lp-ol">
+<li>Fechou uma venda? Escaneie a plaquinha com o seu celular, na frente do cliente.</li>
+<li>O painel do app abre direto naquela plaquinha.</li>
+<li>Coloque o link que o cliente quer: avaliação no Google, Instagram, WhatsApp, cardápio ou outro.</li>
+<li>Pronto: o cliente aproxima o celular e já testa ali mesmo, com você.</li>
+</ol>
+<p>Configurar na hora, na frente do cliente, passa confiança e fecha a venda sem idas e vindas.</p>`,
+      },
+      {
+        eyebrow: "Para quem é",
+        titulo: "Para quem já vende para negócios locais",
+        html: `<ul class="lp-grid-list">
+<li><b>Agências e social media</b><span>Mais um serviço para oferecer aos clientes que você já atende.</span></li>
+<li><b>Gráficas e comunicação visual</b><span>Um produto que combina com cartões, banners e cardápios.</span></li>
+<li><b>Representantes comerciais</b><span>Leve na visita e feche a venda ali mesmo.</span></li>
+<li><b>Vendas porta a porta</b><span>Demonstração na hora: o cliente aproxima o celular e entende.</span></li>
+</ul>`,
+      },
+    ],
+    faq: [
+      ["Qual é o pedido mínimo para revender?", "O pedido mínimo é de 6 unidades. A partir de 15 e de 30 unidades por pedido, o preço de revenda de cada plaquinha fica menor."],
+      ["Quais plaquinhas posso revender?", "A plaquinha 10 × 10 cm e a plaquinha 10 × 15 cm em L. Cada tamanho tem o seu preço de revenda em cada faixa de quantidade."],
+      ["Como as plaquinhas ficam ligadas à minha conta?", "Quando você escaneia uma plaquinha do lote pela primeira vez, o app mostra que ela ainda não tem dono e oferece o cadastro. Depois do cadastro, a gente vincula o lote ao e-mail que você cadastrou."],
+      ["Como configuro a plaquinha do meu cliente?", "Escaneie a plaquinha, abra o painel em app.mstag.com.br e coloque o link que o cliente quer. Dá para fazer na hora, na frente dele."],
+      ["Por quanto devo vender?", "Você define o seu preço de venda. Como referência, no site da mstag a plaquinha 10 × 10 cm sai por R$ 79,99 e a 10 × 15 cm em L por R$ 89,99."],
+      ["O meu cliente precisa baixar algum aplicativo?", "Não. O cliente dele só aproxima o celular ou aponta a câmera no QR code. O app é só para você, revendedor, configurar as plaquinhas."],
+      ["Como recebo o meu lote?", "Enviamos para todo o Brasil. O frete é calculado pelo seu CEP no atendimento pelo WhatsApp."],
+    ],
+    relacionados: ["plaquinha-avaliacao-google", "plaquinha-nfc", "cartao-nfc-avaliacao-google"],
+  },
 ];

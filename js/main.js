@@ -340,7 +340,7 @@
     if (!carrinho.length) {
       body.innerHTML = '<div class="empty"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.4 11.2a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.5L21 8H6.2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>' +
         "<b>Seu carrinho está vazio</b><span>Escolha uma plaquinha para começar.</span>" +
-        '<a class="btn btn--primary" href="#produtos" data-fechar>Ver produtos</a></div>';
+        '<a class="btn btn--primary" href="' + ($("#produtos") ? "" : HOME) + '#produtos" data-fechar>Ver produtos</a></div>';
       return;
     }
     body.innerHTML = carrinho.map(function (c, i) {

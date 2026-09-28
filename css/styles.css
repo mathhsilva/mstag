@@ -504,6 +504,11 @@ button, input { font: inherit; color: inherit; }
 .lp-grid-list li { display: grid; gap: 4px; align-content: start; padding: 18px; border-radius: var(--r-md); background: var(--paper-2); border: 1px solid var(--line); }
 .lp-grid-list b { color: var(--ink); font-size: 16px; }
 .lp-grid-list span { font-size: 14.5px; }
+.lp-grid-list.lp-faixas { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.lp-faixas .lp-faixas__q { font-family: var(--f-display); font-weight: 600; font-size: 24px; letter-spacing: -0.02em; color: var(--cobalt); line-height: 1.1; }
+@media (max-width: 620px) { .lp-grid-list.lp-faixas { grid-template-columns: 1fr; } }
+.atacado-faixa__revenda { display: inline-block; margin-top: 4px; font-size: 14px; font-weight: 700; color: var(--cobalt); text-decoration: none; }
+@media (hover: hover) and (pointer: fine) { .atacado-faixa__revenda:hover { text-decoration: underline; } }
 .lp-callout { padding: 20px 22px; border-radius: var(--r-md); background: var(--paper-2); border: 1px solid var(--line); box-shadow: inset 4px 0 0 var(--signal); }
 .lp-callout b { color: var(--ink); display: block; margin-bottom: 6px; }
 .lp-callout ul { margin: 0; padding-left: 20px; display: grid; gap: 6px; }

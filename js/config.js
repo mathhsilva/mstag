@@ -38,7 +38,7 @@ window.CLASSICA = {
   nome: "Avaliação Google · Linha Clássica",
   resumo: "O nosso design mais pedido. Aproximou o celular ou apontou a câmera, o cliente cai direto na tela de 5 estrelas do seu perfil.",
   selo: "Mais vendida",
-  exclusivoSite: true, // mostra o selo "Preço exclusivo do site" perto do preço
+  // exclusivoSite: true  -> mostra o selo "Preço exclusivo do site" perto do preço (desligado)
   material: "acrílico 3 mm · NFC + QR dinâmico",
   tamanhos: [
     { id: "10x10", rotulo: "10 × 10 cm", uso: "Balcão e caixa", preco: 79.99 },
@@ -93,7 +93,6 @@ window.CARTAO_GOOGLE = {
 window.PRODUTOS = [
   {
     id: "google",
-    exclusivoSite: true,
     nome: "Avaliação Google · Linha Tech",
     resumo: "Visual minimalista com o nome do seu negócio em destaque. Um toque e o cliente já está nas estrelas.",
     preco: 79.99,
@@ -102,7 +101,6 @@ window.PRODUTOS = [
   },
   {
     id: "instagram",
-    exclusivoSite: true,
     nome: "Plaquinha NFC Instagram",
     resumo: "Um toque abre seu perfil pronto para seguir. Ideal para balcão e provador.",
     preco: 79.99,
@@ -111,7 +109,6 @@ window.PRODUTOS = [
   },
   {
     id: "whatsapp",
-    exclusivoSite: true,
     nome: "Plaquinha NFC WhatsApp",
     resumo: "Abre a conversa com uma mensagem já escrita. Seu cliente só aperta enviar.",
     preco: 79.99,
@@ -140,9 +137,9 @@ window.PRODUTOS = [
     id: "kit",
     nome: "Kit Negócio · 3 plaquinhas NFC",
     resumo: "Google + Instagram + WhatsApp com o mesmo visual. O combo que mais gira no balcão.",
-    preco: 159.9,
+    preco: 189,
     precoDe: 239.97, // soma das três avulsas: 3 × 79,99
-    selo: "Economize R$ 80,07",
+    selo: "Economize R$ 50,97",
     medida: "3 × 10 × 10 cm · acrílico 3 mm",
     visual: { modelo: "kit", cor: "dark" },
   },

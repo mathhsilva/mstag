@@ -16,6 +16,8 @@ Site estático (HTML + CSS + JS puro, sem build). É só abrir o `index.html` ou
 
 - Plaquinhas 10 × 10 cm: R$ 79,99. Plaquinhas 10 × 15 cm em L (Clássica 10 × 15 e display de mesa): R$ 89,99.
 - O frete é sempre calculado à parte, pelo CEP, no WhatsApp.
+- Kit (3 plaquinhas): R$ 189,00.
+- Revenda: a partir de 6 unidades, em 3 faixas (6–14, 15–29, 30+). Os valores das faixas são passados só pelo WhatsApp e não aparecem no site.
 - A partir de 5 unidades no carrinho (cada kit conta como 3), o site esconde os preços e mostra só "Consulte os preços para empresas e revendedores" com o botão do WhatsApp. O limite fica em `LIMITE_ATACADO`, no `js/main.js`.
 
 ## Onde editar
@@ -62,6 +64,7 @@ Além da página principal, o site tem páginas focadas em cada busca importante
 | `/plaquinha-nfc-instagram/` | plaquinha NFC Instagram |
 | `/cartao-nfc-avaliacao-google/` | cartão NFC avaliação Google |
 | `/cardapio-digital-nfc/` | cardápio digital NFC / QR code na mesa |
+| `/revenda-plaquinha-nfc/` | revenda de plaquinha NFC (programa de revendedores, sem loja) |
 
 O conteúdo delas fica em **`tools/paginas.mjs`** (textos, perguntas, produtos exibidos e arte do topo). Não edite os `index.html` das pastas: eles são gerados. Para criar uma página nova, copie um bloco em `tools/paginas.mjs`, troque o `slug` e o texto e rode o gerador.
 

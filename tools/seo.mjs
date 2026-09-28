@@ -205,8 +205,14 @@ const CHECK = '<svg viewBox="0 0 20 20" aria-hidden="true"><path d="m5 10.5 3 3 
 const SETA = '<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11m-4-4 4 4-4 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 
 function gerarPagina(p) {
-  const itens = doGrupo(p.mostrar);
-  const min = Math.min(...itens.map((c) => c.preco));
+  // semLoja: página sem grade de produtos e sem tabela de preços (ex.: revenda)
+  const loja = !p.semLoja;
+  const itens = loja ? doGrupo(p.mostrar) : [];
+  const min = itens.length ? Math.min(...itens.map((c) => c.preco)) : 0;
+  const cta = p.cta || {};
+  const botao = (b, cls) => b.whats
+    ? `<a class="btn ${cls}" data-whats="${esc(b.whats)}" href="#" target="_blank" rel="noopener">${esc(b.texto)}</a>`
+    : `<a class="btn ${cls}" href="${esc(b.href)}"${/^https?:/.test(b.href) ? ' target="_blank" rel="noopener"' : ""}>${esc(b.texto)}${b.seta ? " " + SETA : ""}</a>`;
   const sub = (t) => t.replace(/\{PRECO_MIN\}/g, brl(min));
   const endereco = url(p.slug + "/");
   const og = fs.existsSync(path.join(raiz, `assets/og/${p.slug}.jpg`)) ? `assets/og/${p.slug}.jpg` : "assets/og-image.jpg";
@@ -226,7 +232,7 @@ function gerarPagina(p) {
         { "@type": "ListItem", position: 2, name: p.menu, item: endereco },
       ],
     },
-    listaLD(p.menu, itens),
+    ...(itens.length ? [listaLD(p.menu, itens)] : []),
     faqLD(faq),
   ]);
 
@@ -258,7 +264,7 @@ ${fontes}  <link rel="stylesheet" href="../css/styles.css">
 ${ld}</head>
 <!-- Página gerada por tools/seo.mjs a partir de tools/paginas.mjs. Edite lá e rode: node tools/seo.mjs -->
 <body data-home="../">
-${paraSubpasta(topo, p.slug)}
+${loja ? paraSubpasta(topo, p.slug) : paraSubpasta(topo, p.slug).replace(/href="#produtos"/g, 'href="../#produtos"')}
   <main>
     <nav class="crumbs wrap" aria-label="Você está em">
       <ol>
@@ -276,8 +282,8 @@ ${paraSubpasta(topo, p.slug)}
           </h1>
           <p class="hero__lead">${p.lead}</p>
           <div class="hero__ctas">
-            <a class="btn btn--primary" href="#produtos">Ver modelos e preços ${SETA}</a>
-            <a class="btn btn--ghost" data-whats="Olá! Vim pela página &quot;${esc(p.menu)}&quot; e quero saber mais." href="#" target="_blank" rel="noopener">Falar no WhatsApp</a>
+            ${cta.topo ? botao(cta.topo[0], "btn--primary") : `<a class="btn btn--primary" href="#produtos">Ver modelos e preços ${SETA}</a>`}
+            ${cta.topo ? botao(cta.topo[1], "btn--ghost") : `<a class="btn btn--ghost" data-whats="Olá! Vim pela página &quot;${esc(p.menu)}&quot; e quero saber mais." href="#" target="_blank" rel="noopener">Falar no WhatsApp</a>`}
           </div>
           <ul class="hero__proof">
 ${p.destaques.map((d) => `            <li>${CHECK}${esc(d)}</li>`).join("\n")}
@@ -292,7 +298,7 @@ ${faixaSpecs}
       <div class="wrap">
         <header class="section__head">
           <p class="eyebrow">Como funciona</p>
-          <h2>Do pedido ao balcão em três passos</h2>
+          <h2>${esc(p.passosTitulo || "Do pedido ao balcão em três passos")}</h2>
         </header>
         <ol class="steps steps--text">
 ${p.passos.map(([t, d], i) => `          <li class="step"><span class="step__n mono">${i + 1}</span><h3>${esc(t)}</h3><p>${esc(d)}</p></li>`).join("\n")}
@@ -312,7 +318,7 @@ ${s.html.split("\n").map((l) => "          " + l).join("\n")}
       </div>
     </section>
 `).join("\n")}
-    <section class="section" id="produtos">
+${loja ? `    <section class="section" id="produtos">
       <div class="wrap">
         <header class="section__head section__head--row">
           <div>
@@ -326,6 +332,7 @@ ${s.html.split("\n").map((l) => "          " + l).join("\n")}
           <div>
             <b>Vai comprar 5 unidades ou mais?</b>
             <span>Consulte os preços para empresas e revendedores.</span>
+            <a class="atacado-faixa__revenda" href="../revenda-plaquinha-nfc/">Quer revender? Conheça o programa de revenda →</a>
           </div>
           <a class="btn btn--whats" data-whats="Olá! 👋 Quero consultar os preços da mstag para empresas e revendedores (a partir de 5 unidades)." href="#" target="_blank" rel="noopener">Falar no WhatsApp</a>
         </div>
@@ -346,7 +353,7 @@ ${tabelaPrecos(itens)}          <a class="btn btn--primary btn--block" href="#pr
         </aside>
       </div>
     </section>
-
+` : ""}
     <section class="section" id="duvidas">
       <div class="wrap faq">
         <header class="section__head">
@@ -381,11 +388,11 @@ ${relacionados.map((r) => `          <a class="related__card" href="../${r.slug}
         <div class="final">
           <div class="final__waves" aria-hidden="true"><i></i><i></i><i></i></div>
           <img class="final__logo" src="../assets/logo/mstag-branco-azul.png" alt="mstag" width="608" height="160" loading="lazy">
-          <h2>Pronto para colocar no balcão?</h2>
-          <p>Escolha o modelo, mande o seu link e receba a plaquinha gravada e testada.</p>
+          <h2>${esc(cta.finalTitulo || "Pronto para colocar no balcão?")}</h2>
+          <p>${esc(cta.finalTexto || "Escolha o modelo, mande o seu link e receba a plaquinha gravada e testada.")}</p>
           <div class="hero__ctas">
-            <a class="btn btn--light btn--lg" href="#produtos">Comprar agora</a>
-            <a class="btn btn--outline-light btn--lg" href="../">Ver todos os produtos</a>
+            ${cta.final ? botao(cta.final[0], "btn--light btn--lg") : `<a class="btn btn--light btn--lg" href="#produtos">Comprar agora</a>`}
+            ${cta.final ? botao(cta.final[1], "btn--outline-light btn--lg") : `<a class="btn btn--outline-light btn--lg" href="../">Ver todos os produtos</a>`}
           </div>
         </div>
       </div>

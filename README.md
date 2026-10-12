@@ -70,6 +70,8 @@ O conteúdo delas fica em **`tools/paginas.mjs`** (textos, perguntas, produtos e
 
 Cada página tem uma imagem de compartilhamento própria em `assets/og/`. Se mudar o título de uma página, gere de novo com `node tools/og.mjs` (precisa do Playwright; as instruções estão no topo do arquivo).
 
+As plaquinhas da Linha Tech e o Kit não têm foto (são desenhadas pelo site), mas o Google exige uma imagem em todo produto dos dados estruturados. Por isso as fotos deles ficam em `assets/produtos/<id>.webp`, geradas a partir do próprio catálogo com `node tools/produtos.mjs` (também usa o Playwright). Rode de novo se mudar o visual de uma plaquinha ou criar um produto novo na Linha Tech, e depois rode o `node tools/seo.mjs`.
+
 **Sempre que mudar preços, produtos, perguntas ou páginas**, rode:
 
 ```bash
@@ -118,8 +120,10 @@ assets/logo/       logos (preto, preto+azul, azul, branco+azul, branco) e favico
 tools/seo.mjs     gerador de SEO e das páginas de busca (node tools/seo.mjs)
 tools/paginas.mjs conteúdo das páginas de busca
 tools/og.mjs      imagens de compartilhamento das páginas (opcional)
+tools/produtos.mjs fotos da Linha Tech e do Kit para os dados estruturados
 <slug>/index.html páginas de busca geradas
 assets/og/        imagens de compartilhamento
+assets/produtos/  fotos geradas da Linha Tech e do Kit
 .htaccess         configuração do servidor (Hostinger)
 404.html          página "não encontrada" (gerada)
 robots.txt  sitemap.xml  llms.txt

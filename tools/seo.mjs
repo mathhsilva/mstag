@@ -56,7 +56,9 @@ for (const p of PRODUTOS) {
   catalogo.push({
     // no catálogo de busca, todo nome leva "NFC" (é assim que as pessoas pesquisam)
     id: p.id, grupo: p.id, nome: /NFC/.test(p.nome) ? p.nome : /^(Plaquinha|Display|Kit)/.test(p.nome) ? p.nome.replace(/^(\S+)/, "$1 NFC") : "Plaquinha NFC " + p.nome,
-    detalhe: p.medida, descricao: p.resumo, preco: p.preco, precoDe: p.precoDe, imagem: null,
+    detalhe: p.medida, descricao: p.resumo, preco: p.preco, precoDe: p.precoDe,
+    // foto gerada por tools/produtos.mjs (o Google exige "image" em todo Product)
+    imagem: fs.existsSync(path.join(raiz, `assets/produtos/${p.id}.webp`)) ? `assets/produtos/${p.id}.webp` : null,
   });
 }
 catalogo.sort((a, b) => a.preco - b.preco);

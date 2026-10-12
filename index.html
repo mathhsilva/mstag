@@ -53,6 +53,15 @@
         "areaServed": "BR",
         "availableLanguage": "pt-BR"
       },
+      "hasMerchantReturnPolicy": {
+        "@type": "MerchantReturnPolicy",
+        "applicableCountry": "BR",
+        "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+        "merchantReturnDays": 7,
+        "returnMethod": "https://schema.org/ReturnByMail",
+        "returnFees": "https://schema.org/ReturnFeesCustomerResponsibility",
+        "refundType": "https://schema.org/FullRefund"
+      },
       "parentOrganization": {
         "@type": "Organization",
         "name": "Hinnovation",
@@ -142,12 +151,243 @@
               "seller": {
                 "@id": "https://mstag.com.br/#empresa"
               },
-              "shippingDetails": {
-                "@type": "OfferShippingDetails",
-                "shippingDestination": {
-                  "@type": "DefinedRegion",
-                  "addressCountry": "BR"
+              "shippingDetails": [
+                {
+                  "@type": "OfferShippingDetails",
+                  "shippingLabel": "Sul",
+                  "shippingDestination": {
+                    "@type": "DefinedRegion",
+                    "addressCountry": "BR",
+                    "addressRegion": [
+                      "PR",
+                      "SC",
+                      "RS"
+                    ]
+                  },
+                  "shippingRate": {
+                    "@type": "MonetaryAmount",
+                    "maxValue": 25,
+                    "currency": "BRL"
+                  },
+                  "deliveryTime": {
+                    "@type": "ShippingDeliveryTime",
+                    "businessDays": {
+                      "@type": "OpeningHoursSpecification",
+                      "dayOfWeek": [
+                        "https://schema.org/Monday",
+                        "https://schema.org/Tuesday",
+                        "https://schema.org/Wednesday",
+                        "https://schema.org/Thursday",
+                        "https://schema.org/Friday"
+                      ]
+                    },
+                    "handlingTime": {
+                      "@type": "QuantitativeValue",
+                      "minValue": 3,
+                      "maxValue": 4,
+                      "unitCode": "DAY"
+                    },
+                    "transitTime": {
+                      "@type": "QuantitativeValue",
+                      "minValue": 2,
+                      "maxValue": 4,
+                      "unitCode": "DAY"
+                    }
+                  }
+                },
+                {
+                  "@type": "OfferShippingDetails",
+                  "shippingLabel": "Sudeste",
+                  "shippingDestination": {
+                    "@type": "DefinedRegion",
+                    "addressCountry": "BR",
+                    "addressRegion": [
+                      "SP",
+                      "RJ",
+                      "MG",
+                      "ES"
+                    ]
+                  },
+                  "shippingRate": {
+                    "@type": "MonetaryAmount",
+                    "maxValue": 30,
+                    "currency": "BRL"
+                  },
+                  "deliveryTime": {
+                    "@type": "ShippingDeliveryTime",
+                    "businessDays": {
+                      "@type": "OpeningHoursSpecification",
+                      "dayOfWeek": [
+                        "https://schema.org/Monday",
+                        "https://schema.org/Tuesday",
+                        "https://schema.org/Wednesday",
+                        "https://schema.org/Thursday",
+                        "https://schema.org/Friday"
+                      ]
+                    },
+                    "handlingTime": {
+                      "@type": "QuantitativeValue",
+                      "minValue": 3,
+                      "maxValue": 4,
+                      "unitCode": "DAY"
+                    },
+                    "transitTime": {
+                      "@type": "QuantitativeValue",
+                      "minValue": 3,
+                      "maxValue": 5,
+                      "unitCode": "DAY"
+                    }
+                  }
+                },
+                {
+                  "@type": "OfferShippingDetails",
+                  "shippingLabel": "Centro-Oeste",
+                  "shippingDestination": {
+                    "@type": "DefinedRegion",
+                    "addressCountry": "BR",
+                    "addressRegion": [
+                      "DF",
+                      "GO",
+                      "MT",
+                      "MS"
+                    ]
+                  },
+                  "shippingRate": {
+                    "@type": "MonetaryAmount",
+                    "maxValue": 40,
+                    "currency": "BRL"
+                  },
+                  "deliveryTime": {
+                    "@type": "ShippingDeliveryTime",
+                    "businessDays": {
+                      "@type": "OpeningHoursSpecification",
+                      "dayOfWeek": [
+                        "https://schema.org/Monday",
+                        "https://schema.org/Tuesday",
+                        "https://schema.org/Wednesday",
+                        "https://schema.org/Thursday",
+                        "https://schema.org/Friday"
+                      ]
+                    },
+                    "handlingTime": {
+                      "@type": "QuantitativeValue",
+                      "minValue": 3,
+                      "maxValue": 4,
+                      "unitCode": "DAY"
+                    },
+                    "transitTime": {
+                      "@type": "QuantitativeValue",
+                      "minValue": 3,
+                      "maxValue": 6,
+                      "unitCode": "DAY"
+                    }
+                  }
+                },
+                {
+                  "@type": "OfferShippingDetails",
+                  "shippingLabel": "Nordeste",
+                  "shippingDestination": {
+                    "@type": "DefinedRegion",
+                    "addressCountry": "BR",
+                    "addressRegion": [
+                      "BA",
+                      "SE",
+                      "AL",
+                      "PE",
+                      "PB",
+                      "RN",
+                      "CE",
+                      "PI",
+                      "MA"
+                    ]
+                  },
+                  "shippingRate": {
+                    "@type": "MonetaryAmount",
+                    "maxValue": 45,
+                    "currency": "BRL"
+                  },
+                  "deliveryTime": {
+                    "@type": "ShippingDeliveryTime",
+                    "businessDays": {
+                      "@type": "OpeningHoursSpecification",
+                      "dayOfWeek": [
+                        "https://schema.org/Monday",
+                        "https://schema.org/Tuesday",
+                        "https://schema.org/Wednesday",
+                        "https://schema.org/Thursday",
+                        "https://schema.org/Friday"
+                      ]
+                    },
+                    "handlingTime": {
+                      "@type": "QuantitativeValue",
+                      "minValue": 3,
+                      "maxValue": 4,
+                      "unitCode": "DAY"
+                    },
+                    "transitTime": {
+                      "@type": "QuantitativeValue",
+                      "minValue": 4,
+                      "maxValue": 8,
+                      "unitCode": "DAY"
+                    }
+                  }
+                },
+                {
+                  "@type": "OfferShippingDetails",
+                  "shippingLabel": "Norte",
+                  "shippingDestination": {
+                    "@type": "DefinedRegion",
+                    "addressCountry": "BR",
+                    "addressRegion": [
+                      "TO",
+                      "PA",
+                      "AP",
+                      "AM",
+                      "RR",
+                      "AC",
+                      "RO"
+                    ]
+                  },
+                  "shippingRate": {
+                    "@type": "MonetaryAmount",
+                    "maxValue": 45,
+                    "currency": "BRL"
+                  },
+                  "deliveryTime": {
+                    "@type": "ShippingDeliveryTime",
+                    "businessDays": {
+                      "@type": "OpeningHoursSpecification",
+                      "dayOfWeek": [
+                        "https://schema.org/Monday",
+                        "https://schema.org/Tuesday",
+                        "https://schema.org/Wednesday",
+                        "https://schema.org/Thursday",
+                        "https://schema.org/Friday"
+                      ]
+                    },
+                    "handlingTime": {
+                      "@type": "QuantitativeValue",
+                      "minValue": 3,
+                      "maxValue": 4,
+                      "unitCode": "DAY"
+                    },
+                    "transitTime": {
+                      "@type": "QuantitativeValue",
+                      "minValue": 5,
+                      "maxValue": 9,
+                      "unitCode": "DAY"
+                    }
+                  }
                 }
+              ],
+              "hasMerchantReturnPolicy": {
+                "@type": "MerchantReturnPolicy",
+                "applicableCountry": "BR",
+                "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+                "merchantReturnDays": 7,
+                "returnMethod": "https://schema.org/ReturnByMail",
+                "returnFees": "https://schema.org/ReturnFeesCustomerResponsibility",
+                "refundType": "https://schema.org/FullRefund"
               }
             }
           }
@@ -175,12 +415,243 @@
               "seller": {
                 "@id": "https://mstag.com.br/#empresa"
               },
-              "shippingDetails": {
-                "@type": "OfferShippingDetails",
-                "shippingDestination": {
-                  "@type": "DefinedRegion",
-                  "addressCountry": "BR"
+              "shippingDetails": [
+                {
+                  "@type": "OfferShippingDetails",
+                  "shippingLabel": "Sul",
+                  "shippingDestination": {
+                    "@type": "DefinedRegion",
+                    "addressCountry": "BR",
+                    "addressRegion": [
+                      "PR",
+                      "SC",
+                      "RS"
+                    ]
+                  },
+                  "shippingRate": {
+                    "@type": "MonetaryAmount",
+                    "maxValue": 25,
+                    "currency": "BRL"
+                  },
+                  "deliveryTime": {
+                    "@type": "ShippingDeliveryTime",
+                    "businessDays": {
+                      "@type": "OpeningHoursSpecification",
+                      "dayOfWeek": [
+                        "https://schema.org/Monday",
+                        "https://schema.org/Tuesday",
+                        "https://schema.org/Wednesday",
+                        "https://schema.org/Thursday",
+                        "https://schema.org/Friday"
+                      ]
+                    },
+                    "handlingTime": {
+                      "@type": "QuantitativeValue",
+                      "minValue": 3,
+                      "maxValue": 4,
+                      "unitCode": "DAY"
+                    },
+                    "transitTime": {
+                      "@type": "QuantitativeValue",
+                      "minValue": 2,
+                      "maxValue": 4,
+                      "unitCode": "DAY"
+                    }
+                  }
+                },
+                {
+                  "@type": "OfferShippingDetails",
+                  "shippingLabel": "Sudeste",
+                  "shippingDestination": {
+                    "@type": "DefinedRegion",
+                    "addressCountry": "BR",
+                    "addressRegion": [
+                      "SP",
+                      "RJ",
+                      "MG",
+                      "ES"
+                    ]
+                  },
+                  "shippingRate": {
+                    "@type": "MonetaryAmount",
+                    "maxValue": 30,
+                    "currency": "BRL"
+                  },
+                  "deliveryTime": {
+                    "@type": "ShippingDeliveryTime",
+                    "businessDays": {
+                      "@type": "OpeningHoursSpecification",
+                      "dayOfWeek": [
+                        "https://schema.org/Monday",
+                        "https://schema.org/Tuesday",
+                        "https://schema.org/Wednesday",
+                        "https://schema.org/Thursday",
+                        "https://schema.org/Friday"
+                      ]
+                    },
+                    "handlingTime": {
+                      "@type": "QuantitativeValue",
+                      "minValue": 3,
+                      "maxValue": 4,
+                      "unitCode": "DAY"
+                    },
+                    "transitTime": {
+                      "@type": "QuantitativeValue",
+                      "minValue": 3,
+                      "maxValue": 5,
+                      "unitCode": "DAY"
+                    }
+                  }
+                },
+                {
+                  "@type": "OfferShippingDetails",
+                  "shippingLabel": "Centro-Oeste",
+                  "shippingDestination": {
+                    "@type": "DefinedRegion",
+                    "addressCountry": "BR",
+                    "addressRegion": [
+                      "DF",
+                      "GO",
+                      "MT",
+                      "MS"
+                    ]
+                  },
+                  "shippingRate": {
+                    "@type": "MonetaryAmount",
+                    "maxValue": 40,
+                    "currency": "BRL"
+                  },
+                  "deliveryTime": {
+                    "@type": "ShippingDeliveryTime",
+                    "businessDays": {
+                      "@type": "OpeningHoursSpecification",
+                      "dayOfWeek": [
+                        "https://schema.org/Monday",
+                        "https://schema.org/Tuesday",
+                        "https://schema.org/Wednesday",
+                        "https://schema.org/Thursday",
+                        "https://schema.org/Friday"
+                      ]
+                    },
+                    "handlingTime": {
+                      "@type": "QuantitativeValue",
+                      "minValue": 3,
+                      "maxValue": 4,
+                      "unitCode": "DAY"
+                    },
+                    "transitTime": {
+                      "@type": "QuantitativeValue",
+                      "minValue": 3,
+                      "maxValue": 6,
+                      "unitCode": "DAY"
+                    }
+                  }
+                },
+                {
+                  "@type": "OfferShippingDetails",
+                  "shippingLabel": "Nordeste",
+                  "shippingDestination": {
+                    "@type": "DefinedRegion",
+                    "addressCountry": "BR",
+                    "addressRegion": [
+                      "BA",
+                      "SE",
+                      "AL",
+                      "PE",
+                      "PB",
+                      "RN",
+                      "CE",
+                      "PI",
+                      "MA"
+                    ]
+                  },
+                  "shippingRate": {
+                    "@type": "MonetaryAmount",
+                    "maxValue": 45,
+                    "currency": "BRL"
+                  },
+                  "deliveryTime": {
+                    "@type": "ShippingDeliveryTime",
+                    "businessDays": {
+                      "@type": "OpeningHoursSpecification",
+                      "dayOfWeek": [
+                        "https://schema.org/Monday",
+                        "https://schema.org/Tuesday",
+                        "https://schema.org/Wednesday",
+                        "https://schema.org/Thursday",
+                        "https://schema.org/Friday"
+                      ]
+                    },
+                    "handlingTime": {
+                      "@type": "QuantitativeValue",
+                      "minValue": 3,
+                      "maxValue": 4,
+                      "unitCode": "DAY"
+                    },
+                    "transitTime": {
+                      "@type": "QuantitativeValue",
+                      "minValue": 4,
+                      "maxValue": 8,
+                      "unitCode": "DAY"
+                    }
+                  }
+                },
+                {
+                  "@type": "OfferShippingDetails",
+                  "shippingLabel": "Norte",
+                  "shippingDestination": {
+                    "@type": "DefinedRegion",
+                    "addressCountry": "BR",
+                    "addressRegion": [
+                      "TO",
+                      "PA",
+                      "AP",
+                      "AM",
+                      "RR",
+                      "AC",
+                      "RO"
+                    ]
+                  },
+                  "shippingRate": {
+                    "@type": "MonetaryAmount",
+                    "maxValue": 45,
+                    "currency": "BRL"
+                  },
+                  "deliveryTime": {
+                    "@type": "ShippingDeliveryTime",
+                    "businessDays": {
+                      "@type": "OpeningHoursSpecification",
+                      "dayOfWeek": [
+                        "https://schema.org/Monday",
+                        "https://schema.org/Tuesday",
+                        "https://schema.org/Wednesday",
+                        "https://schema.org/Thursday",
+                        "https://schema.org/Friday"
+                      ]
+                    },
+                    "handlingTime": {
+                      "@type": "QuantitativeValue",
+                      "minValue": 3,
+                      "maxValue": 4,
+                      "unitCode": "DAY"
+                    },
+                    "transitTime": {
+                      "@type": "QuantitativeValue",
+                      "minValue": 5,
+                      "maxValue": 9,
+                      "unitCode": "DAY"
+                    }
+                  }
                 }
+              ],
+              "hasMerchantReturnPolicy": {
+                "@type": "MerchantReturnPolicy",
+                "applicableCountry": "BR",
+                "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+                "merchantReturnDays": 7,
+                "returnMethod": "https://schema.org/ReturnByMail",
+                "returnFees": "https://schema.org/ReturnFeesCustomerResponsibility",
+                "refundType": "https://schema.org/FullRefund"
               }
             }
           }
@@ -208,12 +679,243 @@
               "seller": {
                 "@id": "https://mstag.com.br/#empresa"
               },
-              "shippingDetails": {
-                "@type": "OfferShippingDetails",
-                "shippingDestination": {
-                  "@type": "DefinedRegion",
-                  "addressCountry": "BR"
+              "shippingDetails": [
+                {
+                  "@type": "OfferShippingDetails",
+                  "shippingLabel": "Sul",
+                  "shippingDestination": {
+                    "@type": "DefinedRegion",
+                    "addressCountry": "BR",
+                    "addressRegion": [
+                      "PR",
+                      "SC",
+                      "RS"
+                    ]
+                  },
+                  "shippingRate": {
+                    "@type": "MonetaryAmount",
+                    "maxValue": 25,
+                    "currency": "BRL"
+                  },
+                  "deliveryTime": {
+                    "@type": "ShippingDeliveryTime",
+                    "businessDays": {
+                      "@type": "OpeningHoursSpecification",
+                      "dayOfWeek": [
+                        "https://schema.org/Monday",
+                        "https://schema.org/Tuesday",
+                        "https://schema.org/Wednesday",
+                        "https://schema.org/Thursday",
+                        "https://schema.org/Friday"
+                      ]
+                    },
+                    "handlingTime": {
+                      "@type": "QuantitativeValue",
+                      "minValue": 3,
+                      "maxValue": 4,
+                      "unitCode": "DAY"
+                    },
+                    "transitTime": {
+                      "@type": "QuantitativeValue",
+                      "minValue": 2,
+                      "maxValue": 4,
+                      "unitCode": "DAY"
+                    }
+                  }
+                },
+                {
+                  "@type": "OfferShippingDetails",
+                  "shippingLabel": "Sudeste",
+                  "shippingDestination": {
+                    "@type": "DefinedRegion",
+                    "addressCountry": "BR",
+                    "addressRegion": [
+                      "SP",
+                      "RJ",
+                      "MG",
+                      "ES"
+                    ]
+                  },
+                  "shippingRate": {
+                    "@type": "MonetaryAmount",
+                    "maxValue": 30,
+                    "currency": "BRL"
+                  },
+                  "deliveryTime": {
+                    "@type": "ShippingDeliveryTime",
+                    "businessDays": {
+                      "@type": "OpeningHoursSpecification",
+                      "dayOfWeek": [
+                        "https://schema.org/Monday",
+                        "https://schema.org/Tuesday",
+                        "https://schema.org/Wednesday",
+                        "https://schema.org/Thursday",
+                        "https://schema.org/Friday"
+                      ]
+                    },
+                    "handlingTime": {
+                      "@type": "QuantitativeValue",
+                      "minValue": 3,
+                      "maxValue": 4,
+                      "unitCode": "DAY"
+                    },
+                    "transitTime": {
+                      "@type": "QuantitativeValue",
+                      "minValue": 3,
+                      "maxValue": 5,
+                      "unitCode": "DAY"
+                    }
+                  }
+                },
+                {
+                  "@type": "OfferShippingDetails",
+                  "shippingLabel": "Centro-Oeste",
+                  "shippingDestination": {
+                    "@type": "DefinedRegion",
+                    "addressCountry": "BR",
+                    "addressRegion": [
+                      "DF",
+                      "GO",
+                      "MT",
+                      "MS"
+                    ]
+                  },
+                  "shippingRate": {
+                    "@type": "MonetaryAmount",
+                    "maxValue": 40,
+                    "currency": "BRL"
+                  },
+                  "deliveryTime": {
+                    "@type": "ShippingDeliveryTime",
+                    "businessDays": {
+                      "@type": "OpeningHoursSpecification",
+                      "dayOfWeek": [
+                        "https://schema.org/Monday",
+                        "https://schema.org/Tuesday",
+                        "https://schema.org/Wednesday",
+                        "https://schema.org/Thursday",
+                        "https://schema.org/Friday"
+                      ]
+                    },
+                    "handlingTime": {
+                      "@type": "QuantitativeValue",
+                      "minValue": 3,
+                      "maxValue": 4,
+                      "unitCode": "DAY"
+                    },
+                    "transitTime": {
+                      "@type": "QuantitativeValue",
+                      "minValue": 3,
+                      "maxValue": 6,
+                      "unitCode": "DAY"
+                    }
+                  }
+                },
+                {
+                  "@type": "OfferShippingDetails",
+                  "shippingLabel": "Nordeste",
+                  "shippingDestination": {
+                    "@type": "DefinedRegion",
+                    "addressCountry": "BR",
+                    "addressRegion": [
+                      "BA",
+                      "SE",
+                      "AL",
+                      "PE",
+                      "PB",
+                      "RN",
+                      "CE",
+                      "PI",
+                      "MA"
+                    ]
+                  },
+                  "shippingRate": {
+                    "@type": "MonetaryAmount",
+                    "maxValue": 45,
+                    "currency": "BRL"
+                  },
+                  "deliveryTime": {
+                    "@type": "ShippingDeliveryTime",
+                    "businessDays": {
+                      "@type": "OpeningHoursSpecification",
+                      "dayOfWeek": [
+                        "https://schema.org/Monday",
+                        "https://schema.org/Tuesday",
+                        "https://schema.org/Wednesday",
+                        "https://schema.org/Thursday",
+                        "https://schema.org/Friday"
+                      ]
+                    },
+                    "handlingTime": {
+                      "@type": "QuantitativeValue",
+                      "minValue": 3,
+                      "maxValue": 4,
+                      "unitCode": "DAY"
+                    },
+                    "transitTime": {
+                      "@type": "QuantitativeValue",
+                      "minValue": 4,
+                      "maxValue": 8,
+                      "unitCode": "DAY"
+                    }
+                  }
+                },
+                {
+                  "@type": "OfferShippingDetails",
+                  "shippingLabel": "Norte",
+                  "shippingDestination": {
+                    "@type": "DefinedRegion",
+                    "addressCountry": "BR",
+                    "addressRegion": [
+                      "TO",
+                      "PA",
+                      "AP",
+                      "AM",
+                      "RR",
+                      "AC",
+                      "RO"
+                    ]
+                  },
+                  "shippingRate": {
+                    "@type": "MonetaryAmount",
+                    "maxValue": 45,
+                    "currency": "BRL"
+                  },
+                  "deliveryTime": {
+                    "@type": "ShippingDeliveryTime",
+                    "businessDays": {
+                      "@type": "OpeningHoursSpecification",
+                      "dayOfWeek": [
+                        "https://schema.org/Monday",
+                        "https://schema.org/Tuesday",
+                        "https://schema.org/Wednesday",
+                        "https://schema.org/Thursday",
+                        "https://schema.org/Friday"
+                      ]
+                    },
+                    "handlingTime": {
+                      "@type": "QuantitativeValue",
+                      "minValue": 3,
+                      "maxValue": 4,
+                      "unitCode": "DAY"
+                    },
+                    "transitTime": {
+                      "@type": "QuantitativeValue",
+                      "minValue": 5,
+                      "maxValue": 9,
+                      "unitCode": "DAY"
+                    }
+                  }
                 }
+              ],
+              "hasMerchantReturnPolicy": {
+                "@type": "MerchantReturnPolicy",
+                "applicableCountry": "BR",
+                "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+                "merchantReturnDays": 7,
+                "returnMethod": "https://schema.org/ReturnByMail",
+                "returnFees": "https://schema.org/ReturnFeesCustomerResponsibility",
+                "refundType": "https://schema.org/FullRefund"
               }
             }
           }
@@ -241,12 +943,243 @@
               "seller": {
                 "@id": "https://mstag.com.br/#empresa"
               },
-              "shippingDetails": {
-                "@type": "OfferShippingDetails",
-                "shippingDestination": {
-                  "@type": "DefinedRegion",
-                  "addressCountry": "BR"
+              "shippingDetails": [
+                {
+                  "@type": "OfferShippingDetails",
+                  "shippingLabel": "Sul",
+                  "shippingDestination": {
+                    "@type": "DefinedRegion",
+                    "addressCountry": "BR",
+                    "addressRegion": [
+                      "PR",
+                      "SC",
+                      "RS"
+                    ]
+                  },
+                  "shippingRate": {
+                    "@type": "MonetaryAmount",
+                    "maxValue": 25,
+                    "currency": "BRL"
+                  },
+                  "deliveryTime": {
+                    "@type": "ShippingDeliveryTime",
+                    "businessDays": {
+                      "@type": "OpeningHoursSpecification",
+                      "dayOfWeek": [
+                        "https://schema.org/Monday",
+                        "https://schema.org/Tuesday",
+                        "https://schema.org/Wednesday",
+                        "https://schema.org/Thursday",
+                        "https://schema.org/Friday"
+                      ]
+                    },
+                    "handlingTime": {
+                      "@type": "QuantitativeValue",
+                      "minValue": 3,
+                      "maxValue": 4,
+                      "unitCode": "DAY"
+                    },
+                    "transitTime": {
+                      "@type": "QuantitativeValue",
+                      "minValue": 2,
+                      "maxValue": 4,
+                      "unitCode": "DAY"
+                    }
+                  }
+                },
+                {
+                  "@type": "OfferShippingDetails",
+                  "shippingLabel": "Sudeste",
+                  "shippingDestination": {
+                    "@type": "DefinedRegion",
+                    "addressCountry": "BR",
+                    "addressRegion": [
+                      "SP",
+                      "RJ",
+                      "MG",
+                      "ES"
+                    ]
+                  },
+                  "shippingRate": {
+                    "@type": "MonetaryAmount",
+                    "maxValue": 30,
+                    "currency": "BRL"
+                  },
+                  "deliveryTime": {
+                    "@type": "ShippingDeliveryTime",
+                    "businessDays": {
+                      "@type": "OpeningHoursSpecification",
+                      "dayOfWeek": [
+                        "https://schema.org/Monday",
+                        "https://schema.org/Tuesday",
+                        "https://schema.org/Wednesday",
+                        "https://schema.org/Thursday",
+                        "https://schema.org/Friday"
+                      ]
+                    },
+                    "handlingTime": {
+                      "@type": "QuantitativeValue",
+                      "minValue": 3,
+                      "maxValue": 4,
+                      "unitCode": "DAY"
+                    },
+                    "transitTime": {
+                      "@type": "QuantitativeValue",
+                      "minValue": 3,
+                      "maxValue": 5,
+                      "unitCode": "DAY"
+                    }
+                  }
+                },
+                {
+                  "@type": "OfferShippingDetails",
+                  "shippingLabel": "Centro-Oeste",
+                  "shippingDestination": {
+                    "@type": "DefinedRegion",
+                    "addressCountry": "BR",
+                    "addressRegion": [
+                      "DF",
+                      "GO",
+                      "MT",
+                      "MS"
+                    ]
+                  },
+                  "shippingRate": {
+                    "@type": "MonetaryAmount",
+                    "maxValue": 40,
+                    "currency": "BRL"
+                  },
+                  "deliveryTime": {
+                    "@type": "ShippingDeliveryTime",
+                    "businessDays": {
+                      "@type": "OpeningHoursSpecification",
+                      "dayOfWeek": [
+                        "https://schema.org/Monday",
+                        "https://schema.org/Tuesday",
+                        "https://schema.org/Wednesday",
+                        "https://schema.org/Thursday",
+                        "https://schema.org/Friday"
+                      ]
+                    },
+                    "handlingTime": {
+                      "@type": "QuantitativeValue",
+                      "minValue": 3,
+                      "maxValue": 4,
+                      "unitCode": "DAY"
+                    },
+                    "transitTime": {
+                      "@type": "QuantitativeValue",
+                      "minValue": 3,
+                      "maxValue": 6,
+                      "unitCode": "DAY"
+                    }
+                  }
+                },
+                {
+                  "@type": "OfferShippingDetails",
+                  "shippingLabel": "Nordeste",
+                  "shippingDestination": {
+                    "@type": "DefinedRegion",
+                    "addressCountry": "BR",
+                    "addressRegion": [
+                      "BA",
+                      "SE",
+                      "AL",
+                      "PE",
+                      "PB",
+                      "RN",
+                      "CE",
+                      "PI",
+                      "MA"
+                    ]
+                  },
+                  "shippingRate": {
+                    "@type": "MonetaryAmount",
+                    "maxValue": 45,
+                    "currency": "BRL"
+                  },
+                  "deliveryTime": {
+                    "@type": "ShippingDeliveryTime",
+                    "businessDays": {
+                      "@type": "OpeningHoursSpecification",
+                      "dayOfWeek": [
+                        "https://schema.org/Monday",
+                        "https://schema.org/Tuesday",
+                        "https://schema.org/Wednesday",
+                        "https://schema.org/Thursday",
+                        "https://schema.org/Friday"
+                      ]
+                    },
+                    "handlingTime": {
+                      "@type": "QuantitativeValue",
+                      "minValue": 3,
+                      "maxValue": 4,
+                      "unitCode": "DAY"
+                    },
+                    "transitTime": {
+                      "@type": "QuantitativeValue",
+                      "minValue": 4,
+                      "maxValue": 8,
+                      "unitCode": "DAY"
+                    }
+                  }
+                },
+                {
+                  "@type": "OfferShippingDetails",
+                  "shippingLabel": "Norte",
+                  "shippingDestination": {
+                    "@type": "DefinedRegion",
+                    "addressCountry": "BR",
+                    "addressRegion": [
+                      "TO",
+                      "PA",
+                      "AP",
+                      "AM",
+                      "RR",
+                      "AC",
+                      "RO"
+                    ]
+                  },
+                  "shippingRate": {
+                    "@type": "MonetaryAmount",
+                    "maxValue": 45,
+                    "currency": "BRL"
+                  },
+                  "deliveryTime": {
+                    "@type": "ShippingDeliveryTime",
+                    "businessDays": {
+                      "@type": "OpeningHoursSpecification",
+                      "dayOfWeek": [
+                        "https://schema.org/Monday",
+                        "https://schema.org/Tuesday",
+                        "https://schema.org/Wednesday",
+                        "https://schema.org/Thursday",
+                        "https://schema.org/Friday"
+                      ]
+                    },
+                    "handlingTime": {
+                      "@type": "QuantitativeValue",
+                      "minValue": 3,
+                      "maxValue": 4,
+                      "unitCode": "DAY"
+                    },
+                    "transitTime": {
+                      "@type": "QuantitativeValue",
+                      "minValue": 5,
+                      "maxValue": 9,
+                      "unitCode": "DAY"
+                    }
+                  }
                 }
+              ],
+              "hasMerchantReturnPolicy": {
+                "@type": "MerchantReturnPolicy",
+                "applicableCountry": "BR",
+                "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+                "merchantReturnDays": 7,
+                "returnMethod": "https://schema.org/ReturnByMail",
+                "returnFees": "https://schema.org/ReturnFeesCustomerResponsibility",
+                "refundType": "https://schema.org/FullRefund"
               }
             }
           }
@@ -274,12 +1207,243 @@
               "seller": {
                 "@id": "https://mstag.com.br/#empresa"
               },
-              "shippingDetails": {
-                "@type": "OfferShippingDetails",
-                "shippingDestination": {
-                  "@type": "DefinedRegion",
-                  "addressCountry": "BR"
+              "shippingDetails": [
+                {
+                  "@type": "OfferShippingDetails",
+                  "shippingLabel": "Sul",
+                  "shippingDestination": {
+                    "@type": "DefinedRegion",
+                    "addressCountry": "BR",
+                    "addressRegion": [
+                      "PR",
+                      "SC",
+                      "RS"
+                    ]
+                  },
+                  "shippingRate": {
+                    "@type": "MonetaryAmount",
+                    "maxValue": 25,
+                    "currency": "BRL"
+                  },
+                  "deliveryTime": {
+                    "@type": "ShippingDeliveryTime",
+                    "businessDays": {
+                      "@type": "OpeningHoursSpecification",
+                      "dayOfWeek": [
+                        "https://schema.org/Monday",
+                        "https://schema.org/Tuesday",
+                        "https://schema.org/Wednesday",
+                        "https://schema.org/Thursday",
+                        "https://schema.org/Friday"
+                      ]
+                    },
+                    "handlingTime": {
+                      "@type": "QuantitativeValue",
+                      "minValue": 3,
+                      "maxValue": 4,
+                      "unitCode": "DAY"
+                    },
+                    "transitTime": {
+                      "@type": "QuantitativeValue",
+                      "minValue": 2,
+                      "maxValue": 4,
+                      "unitCode": "DAY"
+                    }
+                  }
+                },
+                {
+                  "@type": "OfferShippingDetails",
+                  "shippingLabel": "Sudeste",
+                  "shippingDestination": {
+                    "@type": "DefinedRegion",
+                    "addressCountry": "BR",
+                    "addressRegion": [
+                      "SP",
+                      "RJ",
+                      "MG",
+                      "ES"
+                    ]
+                  },
+                  "shippingRate": {
+                    "@type": "MonetaryAmount",
+                    "maxValue": 30,
+                    "currency": "BRL"
+                  },
+                  "deliveryTime": {
+                    "@type": "ShippingDeliveryTime",
+                    "businessDays": {
+                      "@type": "OpeningHoursSpecification",
+                      "dayOfWeek": [
+                        "https://schema.org/Monday",
+                        "https://schema.org/Tuesday",
+                        "https://schema.org/Wednesday",
+                        "https://schema.org/Thursday",
+                        "https://schema.org/Friday"
+                      ]
+                    },
+                    "handlingTime": {
+                      "@type": "QuantitativeValue",
+                      "minValue": 3,
+                      "maxValue": 4,
+                      "unitCode": "DAY"
+                    },
+                    "transitTime": {
+                      "@type": "QuantitativeValue",
+                      "minValue": 3,
+                      "maxValue": 5,
+                      "unitCode": "DAY"
+                    }
+                  }
+                },
+                {
+                  "@type": "OfferShippingDetails",
+                  "shippingLabel": "Centro-Oeste",
+                  "shippingDestination": {
+                    "@type": "DefinedRegion",
+                    "addressCountry": "BR",
+                    "addressRegion": [
+                      "DF",
+                      "GO",
+                      "MT",
+                      "MS"
+                    ]
+                  },
+                  "shippingRate": {
+                    "@type": "MonetaryAmount",
+                    "maxValue": 40,
+                    "currency": "BRL"
+                  },
+                  "deliveryTime": {
+                    "@type": "ShippingDeliveryTime",
+                    "businessDays": {
+                      "@type": "OpeningHoursSpecification",
+                      "dayOfWeek": [
+                        "https://schema.org/Monday",
+                        "https://schema.org/Tuesday",
+                        "https://schema.org/Wednesday",
+                        "https://schema.org/Thursday",
+                        "https://schema.org/Friday"
+                      ]
+                    },
+                    "handlingTime": {
+                      "@type": "QuantitativeValue",
+                      "minValue": 3,
+                      "maxValue": 4,
+                      "unitCode": "DAY"
+                    },
+                    "transitTime": {
+                      "@type": "QuantitativeValue",
+                      "minValue": 3,
+                      "maxValue": 6,
+                      "unitCode": "DAY"
+                    }
+                  }
+                },
+                {
+                  "@type": "OfferShippingDetails",
+                  "shippingLabel": "Nordeste",
+                  "shippingDestination": {
+                    "@type": "DefinedRegion",
+                    "addressCountry": "BR",
+                    "addressRegion": [
+                      "BA",
+                      "SE",
+                      "AL",
+                      "PE",
+                      "PB",
+                      "RN",
+                      "CE",
+                      "PI",
+                      "MA"
+                    ]
+                  },
+                  "shippingRate": {
+                    "@type": "MonetaryAmount",
+                    "maxValue": 45,
+                    "currency": "BRL"
+                  },
+                  "deliveryTime": {
+                    "@type": "ShippingDeliveryTime",
+                    "businessDays": {
+                      "@type": "OpeningHoursSpecification",
+                      "dayOfWeek": [
+                        "https://schema.org/Monday",
+                        "https://schema.org/Tuesday",
+                        "https://schema.org/Wednesday",
+                        "https://schema.org/Thursday",
+                        "https://schema.org/Friday"
+                      ]
+                    },
+                    "handlingTime": {
+                      "@type": "QuantitativeValue",
+                      "minValue": 3,
+                      "maxValue": 4,
+                      "unitCode": "DAY"
+                    },
+                    "transitTime": {
+                      "@type": "QuantitativeValue",
+                      "minValue": 4,
+                      "maxValue": 8,
+                      "unitCode": "DAY"
+                    }
+                  }
+                },
+                {
+                  "@type": "OfferShippingDetails",
+                  "shippingLabel": "Norte",
+                  "shippingDestination": {
+                    "@type": "DefinedRegion",
+                    "addressCountry": "BR",
+                    "addressRegion": [
+                      "TO",
+                      "PA",
+                      "AP",
+                      "AM",
+                      "RR",
+                      "AC",
+                      "RO"
+                    ]
+                  },
+                  "shippingRate": {
+                    "@type": "MonetaryAmount",
+                    "maxValue": 45,
+                    "currency": "BRL"
+                  },
+                  "deliveryTime": {
+                    "@type": "ShippingDeliveryTime",
+                    "businessDays": {
+                      "@type": "OpeningHoursSpecification",
+                      "dayOfWeek": [
+                        "https://schema.org/Monday",
+                        "https://schema.org/Tuesday",
+                        "https://schema.org/Wednesday",
+                        "https://schema.org/Thursday",
+                        "https://schema.org/Friday"
+                      ]
+                    },
+                    "handlingTime": {
+                      "@type": "QuantitativeValue",
+                      "minValue": 3,
+                      "maxValue": 4,
+                      "unitCode": "DAY"
+                    },
+                    "transitTime": {
+                      "@type": "QuantitativeValue",
+                      "minValue": 5,
+                      "maxValue": 9,
+                      "unitCode": "DAY"
+                    }
+                  }
                 }
+              ],
+              "hasMerchantReturnPolicy": {
+                "@type": "MerchantReturnPolicy",
+                "applicableCountry": "BR",
+                "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+                "merchantReturnDays": 7,
+                "returnMethod": "https://schema.org/ReturnByMail",
+                "returnFees": "https://schema.org/ReturnFeesCustomerResponsibility",
+                "refundType": "https://schema.org/FullRefund"
               }
             }
           }
@@ -307,12 +1471,243 @@
               "seller": {
                 "@id": "https://mstag.com.br/#empresa"
               },
-              "shippingDetails": {
-                "@type": "OfferShippingDetails",
-                "shippingDestination": {
-                  "@type": "DefinedRegion",
-                  "addressCountry": "BR"
+              "shippingDetails": [
+                {
+                  "@type": "OfferShippingDetails",
+                  "shippingLabel": "Sul",
+                  "shippingDestination": {
+                    "@type": "DefinedRegion",
+                    "addressCountry": "BR",
+                    "addressRegion": [
+                      "PR",
+                      "SC",
+                      "RS"
+                    ]
+                  },
+                  "shippingRate": {
+                    "@type": "MonetaryAmount",
+                    "maxValue": 25,
+                    "currency": "BRL"
+                  },
+                  "deliveryTime": {
+                    "@type": "ShippingDeliveryTime",
+                    "businessDays": {
+                      "@type": "OpeningHoursSpecification",
+                      "dayOfWeek": [
+                        "https://schema.org/Monday",
+                        "https://schema.org/Tuesday",
+                        "https://schema.org/Wednesday",
+                        "https://schema.org/Thursday",
+                        "https://schema.org/Friday"
+                      ]
+                    },
+                    "handlingTime": {
+                      "@type": "QuantitativeValue",
+                      "minValue": 3,
+                      "maxValue": 4,
+                      "unitCode": "DAY"
+                    },
+                    "transitTime": {
+                      "@type": "QuantitativeValue",
+                      "minValue": 2,
+                      "maxValue": 4,
+                      "unitCode": "DAY"
+                    }
+                  }
+                },
+                {
+                  "@type": "OfferShippingDetails",
+                  "shippingLabel": "Sudeste",
+                  "shippingDestination": {
+                    "@type": "DefinedRegion",
+                    "addressCountry": "BR",
+                    "addressRegion": [
+                      "SP",
+                      "RJ",
+                      "MG",
+                      "ES"
+                    ]
+                  },
+                  "shippingRate": {
+                    "@type": "MonetaryAmount",
+                    "maxValue": 30,
+                    "currency": "BRL"
+                  },
+                  "deliveryTime": {
+                    "@type": "ShippingDeliveryTime",
+                    "businessDays": {
+                      "@type": "OpeningHoursSpecification",
+                      "dayOfWeek": [
+                        "https://schema.org/Monday",
+                        "https://schema.org/Tuesday",
+                        "https://schema.org/Wednesday",
+                        "https://schema.org/Thursday",
+                        "https://schema.org/Friday"
+                      ]
+                    },
+                    "handlingTime": {
+                      "@type": "QuantitativeValue",
+                      "minValue": 3,
+                      "maxValue": 4,
+                      "unitCode": "DAY"
+                    },
+                    "transitTime": {
+                      "@type": "QuantitativeValue",
+                      "minValue": 3,
+                      "maxValue": 5,
+                      "unitCode": "DAY"
+                    }
+                  }
+                },
+                {
+                  "@type": "OfferShippingDetails",
+                  "shippingLabel": "Centro-Oeste",
+                  "shippingDestination": {
+                    "@type": "DefinedRegion",
+                    "addressCountry": "BR",
+                    "addressRegion": [
+                      "DF",
+                      "GO",
+                      "MT",
+                      "MS"
+                    ]
+                  },
+                  "shippingRate": {
+                    "@type": "MonetaryAmount",
+                    "maxValue": 40,
+                    "currency": "BRL"
+                  },
+                  "deliveryTime": {
+                    "@type": "ShippingDeliveryTime",
+                    "businessDays": {
+                      "@type": "OpeningHoursSpecification",
+                      "dayOfWeek": [
+                        "https://schema.org/Monday",
+                        "https://schema.org/Tuesday",
+                        "https://schema.org/Wednesday",
+                        "https://schema.org/Thursday",
+                        "https://schema.org/Friday"
+                      ]
+                    },
+                    "handlingTime": {
+                      "@type": "QuantitativeValue",
+                      "minValue": 3,
+                      "maxValue": 4,
+                      "unitCode": "DAY"
+                    },
+                    "transitTime": {
+                      "@type": "QuantitativeValue",
+                      "minValue": 3,
+                      "maxValue": 6,
+                      "unitCode": "DAY"
+                    }
+                  }
+                },
+                {
+                  "@type": "OfferShippingDetails",
+                  "shippingLabel": "Nordeste",
+                  "shippingDestination": {
+                    "@type": "DefinedRegion",
+                    "addressCountry": "BR",
+                    "addressRegion": [
+                      "BA",
+                      "SE",
+                      "AL",
+                      "PE",
+                      "PB",
+                      "RN",
+                      "CE",
+                      "PI",
+                      "MA"
+                    ]
+                  },
+                  "shippingRate": {
+                    "@type": "MonetaryAmount",
+                    "maxValue": 45,
+                    "currency": "BRL"
+                  },
+                  "deliveryTime": {
+                    "@type": "ShippingDeliveryTime",
+                    "businessDays": {
+                      "@type": "OpeningHoursSpecification",
+                      "dayOfWeek": [
+                        "https://schema.org/Monday",
+                        "https://schema.org/Tuesday",
+                        "https://schema.org/Wednesday",
+                        "https://schema.org/Thursday",
+                        "https://schema.org/Friday"
+                      ]
+                    },
+                    "handlingTime": {
+                      "@type": "QuantitativeValue",
+                      "minValue": 3,
+                      "maxValue": 4,
+                      "unitCode": "DAY"
+                    },
+                    "transitTime": {
+                      "@type": "QuantitativeValue",
+                      "minValue": 4,
+                      "maxValue": 8,
+                      "unitCode": "DAY"
+                    }
+                  }
+                },
+                {
+                  "@type": "OfferShippingDetails",
+                  "shippingLabel": "Norte",
+                  "shippingDestination": {
+                    "@type": "DefinedRegion",
+                    "addressCountry": "BR",
+                    "addressRegion": [
+                      "TO",
+                      "PA",
+                      "AP",
+                      "AM",
+                      "RR",
+                      "AC",
+                      "RO"
+                    ]
+                  },
+                  "shippingRate": {
+                    "@type": "MonetaryAmount",
+                    "maxValue": 45,
+                    "currency": "BRL"
+                  },
+                  "deliveryTime": {
+                    "@type": "ShippingDeliveryTime",
+                    "businessDays": {
+                      "@type": "OpeningHoursSpecification",
+                      "dayOfWeek": [
+                        "https://schema.org/Monday",
+                        "https://schema.org/Tuesday",
+                        "https://schema.org/Wednesday",
+                        "https://schema.org/Thursday",
+                        "https://schema.org/Friday"
+                      ]
+                    },
+                    "handlingTime": {
+                      "@type": "QuantitativeValue",
+                      "minValue": 3,
+                      "maxValue": 4,
+                      "unitCode": "DAY"
+                    },
+                    "transitTime": {
+                      "@type": "QuantitativeValue",
+                      "minValue": 5,
+                      "maxValue": 9,
+                      "unitCode": "DAY"
+                    }
+                  }
                 }
+              ],
+              "hasMerchantReturnPolicy": {
+                "@type": "MerchantReturnPolicy",
+                "applicableCountry": "BR",
+                "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+                "merchantReturnDays": 7,
+                "returnMethod": "https://schema.org/ReturnByMail",
+                "returnFees": "https://schema.org/ReturnFeesCustomerResponsibility",
+                "refundType": "https://schema.org/FullRefund"
               }
             }
           }
@@ -340,12 +1735,243 @@
               "seller": {
                 "@id": "https://mstag.com.br/#empresa"
               },
-              "shippingDetails": {
-                "@type": "OfferShippingDetails",
-                "shippingDestination": {
-                  "@type": "DefinedRegion",
-                  "addressCountry": "BR"
+              "shippingDetails": [
+                {
+                  "@type": "OfferShippingDetails",
+                  "shippingLabel": "Sul",
+                  "shippingDestination": {
+                    "@type": "DefinedRegion",
+                    "addressCountry": "BR",
+                    "addressRegion": [
+                      "PR",
+                      "SC",
+                      "RS"
+                    ]
+                  },
+                  "shippingRate": {
+                    "@type": "MonetaryAmount",
+                    "maxValue": 25,
+                    "currency": "BRL"
+                  },
+                  "deliveryTime": {
+                    "@type": "ShippingDeliveryTime",
+                    "businessDays": {
+                      "@type": "OpeningHoursSpecification",
+                      "dayOfWeek": [
+                        "https://schema.org/Monday",
+                        "https://schema.org/Tuesday",
+                        "https://schema.org/Wednesday",
+                        "https://schema.org/Thursday",
+                        "https://schema.org/Friday"
+                      ]
+                    },
+                    "handlingTime": {
+                      "@type": "QuantitativeValue",
+                      "minValue": 3,
+                      "maxValue": 4,
+                      "unitCode": "DAY"
+                    },
+                    "transitTime": {
+                      "@type": "QuantitativeValue",
+                      "minValue": 2,
+                      "maxValue": 4,
+                      "unitCode": "DAY"
+                    }
+                  }
+                },
+                {
+                  "@type": "OfferShippingDetails",
+                  "shippingLabel": "Sudeste",
+                  "shippingDestination": {
+                    "@type": "DefinedRegion",
+                    "addressCountry": "BR",
+                    "addressRegion": [
+                      "SP",
+                      "RJ",
+                      "MG",
+                      "ES"
+                    ]
+                  },
+                  "shippingRate": {
+                    "@type": "MonetaryAmount",
+                    "maxValue": 30,
+                    "currency": "BRL"
+                  },
+                  "deliveryTime": {
+                    "@type": "ShippingDeliveryTime",
+                    "businessDays": {
+                      "@type": "OpeningHoursSpecification",
+                      "dayOfWeek": [
+                        "https://schema.org/Monday",
+                        "https://schema.org/Tuesday",
+                        "https://schema.org/Wednesday",
+                        "https://schema.org/Thursday",
+                        "https://schema.org/Friday"
+                      ]
+                    },
+                    "handlingTime": {
+                      "@type": "QuantitativeValue",
+                      "minValue": 3,
+                      "maxValue": 4,
+                      "unitCode": "DAY"
+                    },
+                    "transitTime": {
+                      "@type": "QuantitativeValue",
+                      "minValue": 3,
+                      "maxValue": 5,
+                      "unitCode": "DAY"
+                    }
+                  }
+                },
+                {
+                  "@type": "OfferShippingDetails",
+                  "shippingLabel": "Centro-Oeste",
+                  "shippingDestination": {
+                    "@type": "DefinedRegion",
+                    "addressCountry": "BR",
+                    "addressRegion": [
+                      "DF",
+                      "GO",
+                      "MT",
+                      "MS"
+                    ]
+                  },
+                  "shippingRate": {
+                    "@type": "MonetaryAmount",
+                    "maxValue": 40,
+                    "currency": "BRL"
+                  },
+                  "deliveryTime": {
+                    "@type": "ShippingDeliveryTime",
+                    "businessDays": {
+                      "@type": "OpeningHoursSpecification",
+                      "dayOfWeek": [
+                        "https://schema.org/Monday",
+                        "https://schema.org/Tuesday",
+                        "https://schema.org/Wednesday",
+                        "https://schema.org/Thursday",
+                        "https://schema.org/Friday"
+                      ]
+                    },
+                    "handlingTime": {
+                      "@type": "QuantitativeValue",
+                      "minValue": 3,
+                      "maxValue": 4,
+                      "unitCode": "DAY"
+                    },
+                    "transitTime": {
+                      "@type": "QuantitativeValue",
+                      "minValue": 3,
+                      "maxValue": 6,
+                      "unitCode": "DAY"
+                    }
+                  }
+                },
+                {
+                  "@type": "OfferShippingDetails",
+                  "shippingLabel": "Nordeste",
+                  "shippingDestination": {
+                    "@type": "DefinedRegion",
+                    "addressCountry": "BR",
+                    "addressRegion": [
+                      "BA",
+                      "SE",
+                      "AL",
+                      "PE",
+                      "PB",
+                      "RN",
+                      "CE",
+                      "PI",
+                      "MA"
+                    ]
+                  },
+                  "shippingRate": {
+                    "@type": "MonetaryAmount",
+                    "maxValue": 45,
+                    "currency": "BRL"
+                  },
+                  "deliveryTime": {
+                    "@type": "ShippingDeliveryTime",
+                    "businessDays": {
+                      "@type": "OpeningHoursSpecification",
+                      "dayOfWeek": [
+                        "https://schema.org/Monday",
+                        "https://schema.org/Tuesday",
+                        "https://schema.org/Wednesday",
+                        "https://schema.org/Thursday",
+                        "https://schema.org/Friday"
+                      ]
+                    },
+                    "handlingTime": {
+                      "@type": "QuantitativeValue",
+                      "minValue": 3,
+                      "maxValue": 4,
+                      "unitCode": "DAY"
+                    },
+                    "transitTime": {
+                      "@type": "QuantitativeValue",
+                      "minValue": 4,
+                      "maxValue": 8,
+                      "unitCode": "DAY"
+                    }
+                  }
+                },
+                {
+                  "@type": "OfferShippingDetails",
+                  "shippingLabel": "Norte",
+                  "shippingDestination": {
+                    "@type": "DefinedRegion",
+                    "addressCountry": "BR",
+                    "addressRegion": [
+                      "TO",
+                      "PA",
+                      "AP",
+                      "AM",
+                      "RR",
+                      "AC",
+                      "RO"
+                    ]
+                  },
+                  "shippingRate": {
+                    "@type": "MonetaryAmount",
+                    "maxValue": 45,
+                    "currency": "BRL"
+                  },
+                  "deliveryTime": {
+                    "@type": "ShippingDeliveryTime",
+                    "businessDays": {
+                      "@type": "OpeningHoursSpecification",
+                      "dayOfWeek": [
+                        "https://schema.org/Monday",
+                        "https://schema.org/Tuesday",
+                        "https://schema.org/Wednesday",
+                        "https://schema.org/Thursday",
+                        "https://schema.org/Friday"
+                      ]
+                    },
+                    "handlingTime": {
+                      "@type": "QuantitativeValue",
+                      "minValue": 3,
+                      "maxValue": 4,
+                      "unitCode": "DAY"
+                    },
+                    "transitTime": {
+                      "@type": "QuantitativeValue",
+                      "minValue": 5,
+                      "maxValue": 9,
+                      "unitCode": "DAY"
+                    }
+                  }
                 }
+              ],
+              "hasMerchantReturnPolicy": {
+                "@type": "MerchantReturnPolicy",
+                "applicableCountry": "BR",
+                "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+                "merchantReturnDays": 7,
+                "returnMethod": "https://schema.org/ReturnByMail",
+                "returnFees": "https://schema.org/ReturnFeesCustomerResponsibility",
+                "refundType": "https://schema.org/FullRefund"
               }
             }
           }
@@ -373,12 +1999,243 @@
               "seller": {
                 "@id": "https://mstag.com.br/#empresa"
               },
-              "shippingDetails": {
-                "@type": "OfferShippingDetails",
-                "shippingDestination": {
-                  "@type": "DefinedRegion",
-                  "addressCountry": "BR"
+              "shippingDetails": [
+                {
+                  "@type": "OfferShippingDetails",
+                  "shippingLabel": "Sul",
+                  "shippingDestination": {
+                    "@type": "DefinedRegion",
+                    "addressCountry": "BR",
+                    "addressRegion": [
+                      "PR",
+                      "SC",
+                      "RS"
+                    ]
+                  },
+                  "shippingRate": {
+                    "@type": "MonetaryAmount",
+                    "maxValue": 25,
+                    "currency": "BRL"
+                  },
+                  "deliveryTime": {
+                    "@type": "ShippingDeliveryTime",
+                    "businessDays": {
+                      "@type": "OpeningHoursSpecification",
+                      "dayOfWeek": [
+                        "https://schema.org/Monday",
+                        "https://schema.org/Tuesday",
+                        "https://schema.org/Wednesday",
+                        "https://schema.org/Thursday",
+                        "https://schema.org/Friday"
+                      ]
+                    },
+                    "handlingTime": {
+                      "@type": "QuantitativeValue",
+                      "minValue": 3,
+                      "maxValue": 4,
+                      "unitCode": "DAY"
+                    },
+                    "transitTime": {
+                      "@type": "QuantitativeValue",
+                      "minValue": 2,
+                      "maxValue": 4,
+                      "unitCode": "DAY"
+                    }
+                  }
+                },
+                {
+                  "@type": "OfferShippingDetails",
+                  "shippingLabel": "Sudeste",
+                  "shippingDestination": {
+                    "@type": "DefinedRegion",
+                    "addressCountry": "BR",
+                    "addressRegion": [
+                      "SP",
+                      "RJ",
+                      "MG",
+                      "ES"
+                    ]
+                  },
+                  "shippingRate": {
+                    "@type": "MonetaryAmount",
+                    "maxValue": 30,
+                    "currency": "BRL"
+                  },
+                  "deliveryTime": {
+                    "@type": "ShippingDeliveryTime",
+                    "businessDays": {
+                      "@type": "OpeningHoursSpecification",
+                      "dayOfWeek": [
+                        "https://schema.org/Monday",
+                        "https://schema.org/Tuesday",
+                        "https://schema.org/Wednesday",
+                        "https://schema.org/Thursday",
+                        "https://schema.org/Friday"
+                      ]
+                    },
+                    "handlingTime": {
+                      "@type": "QuantitativeValue",
+                      "minValue": 3,
+                      "maxValue": 4,
+                      "unitCode": "DAY"
+                    },
+                    "transitTime": {
+                      "@type": "QuantitativeValue",
+                      "minValue": 3,
+                      "maxValue": 5,
+                      "unitCode": "DAY"
+                    }
+                  }
+                },
+                {
+                  "@type": "OfferShippingDetails",
+                  "shippingLabel": "Centro-Oeste",
+                  "shippingDestination": {
+                    "@type": "DefinedRegion",
+                    "addressCountry": "BR",
+                    "addressRegion": [
+                      "DF",
+                      "GO",
+                      "MT",
+                      "MS"
+                    ]
+                  },
+                  "shippingRate": {
+                    "@type": "MonetaryAmount",
+                    "maxValue": 40,
+                    "currency": "BRL"
+                  },
+                  "deliveryTime": {
+                    "@type": "ShippingDeliveryTime",
+                    "businessDays": {
+                      "@type": "OpeningHoursSpecification",
+                      "dayOfWeek": [
+                        "https://schema.org/Monday",
+                        "https://schema.org/Tuesday",
+                        "https://schema.org/Wednesday",
+                        "https://schema.org/Thursday",
+                        "https://schema.org/Friday"
+                      ]
+                    },
+                    "handlingTime": {
+                      "@type": "QuantitativeValue",
+                      "minValue": 3,
+                      "maxValue": 4,
+                      "unitCode": "DAY"
+                    },
+                    "transitTime": {
+                      "@type": "QuantitativeValue",
+                      "minValue": 3,
+                      "maxValue": 6,
+                      "unitCode": "DAY"
+                    }
+                  }
+                },
+                {
+                  "@type": "OfferShippingDetails",
+                  "shippingLabel": "Nordeste",
+                  "shippingDestination": {
+                    "@type": "DefinedRegion",
+                    "addressCountry": "BR",
+                    "addressRegion": [
+                      "BA",
+                      "SE",
+                      "AL",
+                      "PE",
+                      "PB",
+                      "RN",
+                      "CE",
+                      "PI",
+                      "MA"
+                    ]
+                  },
+                  "shippingRate": {
+                    "@type": "MonetaryAmount",
+                    "maxValue": 45,
+                    "currency": "BRL"
+                  },
+                  "deliveryTime": {
+                    "@type": "ShippingDeliveryTime",
+                    "businessDays": {
+                      "@type": "OpeningHoursSpecification",
+                      "dayOfWeek": [
+                        "https://schema.org/Monday",
+                        "https://schema.org/Tuesday",
+                        "https://schema.org/Wednesday",
+                        "https://schema.org/Thursday",
+                        "https://schema.org/Friday"
+                      ]
+                    },
+                    "handlingTime": {
+                      "@type": "QuantitativeValue",
+                      "minValue": 3,
+                      "maxValue": 4,
+                      "unitCode": "DAY"
+                    },
+                    "transitTime": {
+                      "@type": "QuantitativeValue",
+                      "minValue": 4,
+                      "maxValue": 8,
+                      "unitCode": "DAY"
+                    }
+                  }
+                },
+                {
+                  "@type": "OfferShippingDetails",
+                  "shippingLabel": "Norte",
+                  "shippingDestination": {
+                    "@type": "DefinedRegion",
+                    "addressCountry": "BR",
+                    "addressRegion": [
+                      "TO",
+                      "PA",
+                      "AP",
+                      "AM",
+                      "RR",
+                      "AC",
+                      "RO"
+                    ]
+                  },
+                  "shippingRate": {
+                    "@type": "MonetaryAmount",
+                    "maxValue": 45,
+                    "currency": "BRL"
+                  },
+                  "deliveryTime": {
+                    "@type": "ShippingDeliveryTime",
+                    "businessDays": {
+                      "@type": "OpeningHoursSpecification",
+                      "dayOfWeek": [
+                        "https://schema.org/Monday",
+                        "https://schema.org/Tuesday",
+                        "https://schema.org/Wednesday",
+                        "https://schema.org/Thursday",
+                        "https://schema.org/Friday"
+                      ]
+                    },
+                    "handlingTime": {
+                      "@type": "QuantitativeValue",
+                      "minValue": 3,
+                      "maxValue": 4,
+                      "unitCode": "DAY"
+                    },
+                    "transitTime": {
+                      "@type": "QuantitativeValue",
+                      "minValue": 5,
+                      "maxValue": 9,
+                      "unitCode": "DAY"
+                    }
+                  }
                 }
+              ],
+              "hasMerchantReturnPolicy": {
+                "@type": "MerchantReturnPolicy",
+                "applicableCountry": "BR",
+                "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+                "merchantReturnDays": 7,
+                "returnMethod": "https://schema.org/ReturnByMail",
+                "returnFees": "https://schema.org/ReturnFeesCustomerResponsibility",
+                "refundType": "https://schema.org/FullRefund"
               }
             }
           }
@@ -730,7 +2587,7 @@
       <div class="wrap perks">
         <div class="perk">
           <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M5 10h15v12H5zM20 14h4.5l3 4v4H20" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="10" cy="23" r="2.5" fill="var(--paper)" stroke="currentColor" stroke-width="2"/><circle cx="23" cy="23" r="2.5" fill="var(--paper)" stroke="currentColor" stroke-width="2"/></svg>
-          <div><b>Envio para todo o Brasil</b><span data-loja="prazo">Produção em até 3 dias úteis</span></div>
+          <div><b>Envio para todo o Brasil</b><span data-loja="prazo">Produção em 3 a 4 dias úteis</span></div>
         </div>
         <div class="perk">
           <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 4 6 8v7c0 6.5 4.3 11 10 13 5.7-2 10-6.5 10-13V8z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="m11.5 16 3 3 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>

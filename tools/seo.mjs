@@ -25,7 +25,7 @@ const gravar = (f, txt) => {
 // Carrega a configuração da loja como o navegador carregaria
 const ctx = { window: {} };
 vm.runInNewContext(ler("js/config.js"), ctx);
-const { LOJA, CLASSICA, CARTAO_GOOGLE: CARTAO, PRODUTOS } = ctx.window;
+const { LOJA, CLASSICA, CARTAO_GOOGLE: CARTAO, PRODUTOS, ENVIO, DEVOLUCAO } = ctx.window;
 const SITE = LOJA.site.replace(/\/$/, "");
 const url = (p) => SITE + "/" + p.replace(/^\//, "");
 const hoje = new Date().toISOString().slice(0, 10);
@@ -67,6 +67,29 @@ const maior = catalogo[catalogo.length - 1].preco;
 const doGrupo = (grupos) => catalogo.filter((c) => grupos.includes(c.grupo));
 
 /* ---------- Blocos reutilizados ---------- */
+// Frete e prazo por região (js/config.js → ENVIO); repetidos em cada oferta porque
+// as páginas de busca não trazem o bloco da empresa
+const dias = ([min, max]) => ({ "@type": "QuantitativeValue", minValue: min, maxValue: max, unitCode: "DAY" });
+const diasUteis = { "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"].map((d) => "https://schema.org/" + d) };
+const envioLD = ENVIO
+  ? ENVIO.regioes.map((r) => ({
+      "@type": "OfferShippingDetails",
+      shippingLabel: r.nome,
+      shippingDestination: { "@type": "DefinedRegion", addressCountry: "BR", addressRegion: r.ufs },
+      shippingRate: { "@type": "MonetaryAmount", maxValue: r.freteMax, currency: "BRL" },
+      deliveryTime: { "@type": "ShippingDeliveryTime", businessDays: diasUteis, handlingTime: dias(ENVIO.producao), transitTime: dias(r.entrega) },
+    }))
+  : { "@type": "OfferShippingDetails", shippingDestination: { "@type": "DefinedRegion", addressCountry: "BR" } };
+const devolucaoLD = DEVOLUCAO && {
+  "@type": "MerchantReturnPolicy",
+  applicableCountry: "BR",
+  returnPolicyCategory: "https://schema.org/MerchantReturnFiniteReturnWindow",
+  merchantReturnDays: DEVOLUCAO.dias,
+  returnMethod: "https://schema.org/ReturnByMail",
+  returnFees: DEVOLUCAO.freteDeVoltaPeloCliente ? "https://schema.org/ReturnFeesCustomerResponsibility" : "https://schema.org/FreeReturn",
+  refundType: "https://schema.org/FullRefund",
+};
+
 function produtoLD(c) {
   return {
     "@type": "Product",
@@ -80,7 +103,8 @@ function produtoLD(c) {
       "@type": "Offer", price: c.preco.toFixed(2), priceCurrency: "BRL",
       availability: "https://schema.org/InStock", url: url("#produtos"),
       seller: { "@id": url("#empresa") },
-      shippingDetails: { "@type": "OfferShippingDetails", shippingDestination: { "@type": "DefinedRegion", addressCountry: "BR" } },
+      shippingDetails: envioLD,
+      ...(devolucaoLD ? { hasMerchantReturnPolicy: devolucaoLD } : {}),
     },
   };
 }
@@ -122,6 +146,7 @@ const org = {
   description: "A mstag vende plaquinhas e cartões NFC com QR code para avaliação no Google, Instagram, WhatsApp, cardápio, Wi-Fi e Pix, com envio para todo o Brasil.",
   sameAs: [`https://instagram.com/${LOJA.instagram}`],
   contactPoint: { "@type": "ContactPoint", contactType: "vendas", telephone: telefone, areaServed: "BR", availableLanguage: "pt-BR" },
+  ...(devolucaoLD ? { hasMerchantReturnPolicy: devolucaoLD } : {}),
   ...(LOJA.empresa ? { parentOrganization: { "@type": "Organization", name: LOJA.empresa.nome, url: LOJA.empresa.site } } : {}),
 };
 html = trocarEntre(html, "<!--SEO-JSONLD-START", "<!--SEO-JSONLD-END-->", scriptLD([

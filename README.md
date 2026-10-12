@@ -53,6 +53,10 @@ O site já sai preparado para aparecer em buscas como "plaquinha NFC", "plaquinh
 - Bloco "Guia rápido" com explicação e tabela de preços em texto, que buscadores e IAs leem sem precisar rodar JavaScript.
 - `robots.txt` (libera buscadores e robôs de IA), `sitemap.xml` e `llms.txt` (resumo da loja para IAs).
 
+### Frete, prazo e devolução (Google)
+
+Os dados de frete por região, prazos (produção + entrega, em dias úteis) e a política de devolução que vão para o Google ficam em `ENVIO` e `DEVOLUCAO`, no `js/config.js`. O `freteMax` é o valor máximo cobrado em cada região e precisa bater com o frete real. Depois de mudar, rode `node tools/seo.mjs`.
+
 ### Páginas de busca
 
 Além da página principal, o site tem páginas focadas em cada busca importante. Todas usam o mesmo topo, rodapé e carrinho:

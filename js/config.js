@@ -26,7 +26,29 @@ window.LOJA = {
   empresa: { nome: "Hinnovation", site: "https://hinnovation.com.br" },
   cidade: "Enviamos para todo o Brasil",
   frete: "Frete calculado no WhatsApp conforme o seu CEP",
-  prazo: "Produção em até 3 dias úteis",
+  prazo: "Produção em 3 a 4 dias úteis",
+};
+
+/*
+ * Frete, prazos e devolução informados ao Google (dados estruturados dos produtos).
+ * Não aparecem no site: o frete continua sendo calculado pelo CEP no WhatsApp.
+ * freteMax é o valor máximo cobrado na região (o Google mostra "frete até R$ X").
+ * Prazos em dias úteis. Depois de mudar, rode   node tools/seo.mjs
+ */
+window.ENVIO = {
+  producao: [3, 4],
+  regioes: [
+    { nome: "Sul", ufs: ["PR", "SC", "RS"], freteMax: 25, entrega: [2, 4] },
+    { nome: "Sudeste", ufs: ["SP", "RJ", "MG", "ES"], freteMax: 30, entrega: [3, 5] },
+    { nome: "Centro-Oeste", ufs: ["DF", "GO", "MT", "MS"], freteMax: 40, entrega: [3, 6] },
+    { nome: "Nordeste", ufs: ["BA", "SE", "AL", "PE", "PB", "RN", "CE", "PI", "MA"], freteMax: 45, entrega: [4, 8] },
+    { nome: "Norte", ufs: ["TO", "PA", "AP", "AM", "RR", "AC", "RO"], freteMax: 45, entrega: [5, 9] },
+  ],
+};
+window.DEVOLUCAO = {
+  dias: 7, // direito de arrependimento, contado a partir do recebimento
+  freteDeVoltaPeloCliente: true,
+  // o dinheiro é devolvido quando as peças chegam e são conferidas
 };
 
 /*

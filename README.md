@@ -126,3 +126,7 @@ robots.txt  sitemap.xml  llms.txt
 assets/placas/    fotos da Linha Clássica
 assets/cartao/    fotos do Cartão NFC Google
 ```
+
+## Posts do Instagram
+
+As artes dos posts (1080 × 1350) ficam em `instagram/`, uma pasta por post, com as legendas e o calendário em `instagram/LEGENDAS.md`. Para gerar de novo depois de mudar um texto ou preço, rode `node tools/posts.mjs` (precisa do Playwright, como o `tools/og.mjs`). A pasta `instagram/` não precisa ir para a hospedagem.

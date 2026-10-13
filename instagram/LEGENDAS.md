@@ -1,27 +1,27 @@
-# Instagram @mstagbr · 2 semanas de posts (19/10 a 31/10/2026)
+# Instagram @mstagbr · 2 semanas de posts (13/10 a 24/10/2026)
 
-10 posts, 5 por semana, sem repetir os temas que já estão no perfil. Artes em 1080 × 1350 (4:5) nas pastas `p01-...` a `p10-...`. Carrossel = poste as imagens na ordem `01.png`, `02.png`...
+10 posts, 5 por semana, agendados no Metricool (o primeiro às 12h, os demais às 10h), sem repetir os temas que já estão no perfil. Artes em 1080 × 1350 (4:5) nas pastas `p01-...` a `p10-...`. Carrossel = poste as imagens na ordem `01.png`, `02.png`...
 
 Preços conferidos com o `js/config.js` (out/2026): plaquinhas 10 × 10 R$ 79,99, 10 × 15 em L e display de mesa R$ 89,99, cartão NFC com base R$ 19,90.
 
 | Dia | Post | Formato | Tema |
 | --- | --- | --- | --- |
-| Seg 19/10 | p01 | Carrossel 4 | Funciona no iPhone? Onde encostar |
-| Qua 21/10 | p02 | Único | Quadrada (10 × 10) ou em L (10 × 15) |
-| Qui 22/10 | p03 | Único | Sem bateria, sem tomada, sem app |
-| Sex 23/10 | p04 | Carrossel 6 | 5 lugares onde a plaquinha trabalha sozinha |
-| Sáb 24/10 | p05 | Único | Barbearias e salões |
-| Seg 26/10 | p06 | Carrossel 4 | Mudou o link? A placa fica (QR dinâmico) |
-| Qua 28/10 | p07 | Único | Display de mesa: o que o garçom ouve a noite toda |
-| Qui 29/10 | p08 | Carrossel 5 | Como responder avaliações no Google |
-| Sex 30/10 | p09 | Carrossel 4 | Programa de revenda |
-| Sáb 31/10 | p10 | Único | 4 semanas pra Black Friday (27/11) |
+| Ter 13/10 | p01 | Carrossel 4 | Funciona no iPhone? Onde encostar |
+| Qua 14/10 | p02 | Único | Quadrada (10 × 10) ou em L (10 × 15) |
+| Qui 15/10 | p03 | Único | Sem bateria, sem tomada, sem app |
+| Sex 16/10 | p04 | Carrossel 6 | 5 lugares onde a plaquinha trabalha sozinha |
+| Sáb 17/10 | p05 | Único | Barbearias e salões |
+| Seg 19/10 | p06 | Carrossel 4 | Mudou o link? A placa fica (QR dinâmico) |
+| Qua 21/10 | p07 | Único | Display de mesa: o que o garçom ouve a noite toda |
+| Qui 22/10 | p08 | Carrossel 5 | Como responder avaliações no Google |
+| Sex 23/10 | p09 | Carrossel 4 | Programa de revenda |
+| Sáb 24/10 | p10 | Único | 5 semanas pra Black Friday (27/11) |
 
 ---
 
 ## Semana 1
 
-### p01 · Seg 19/10 · Carrossel · Funciona no iPhone?
+### p01 · Ter 13/10 · Carrossel · Funciona no iPhone?
 
 A pergunta que mais ouvimos no balcão: "funciona no meu celular?" 📱
 
@@ -39,7 +39,7 @@ Salva esse post pra mostrar pro cliente que ainda acha que "isso é coisa de cel
 
 ---
 
-### p02 · Qua 21/10 · Único · Quadrada ou em L?
+### p02 · Qua 14/10 · Único · Quadrada ou em L?
 
 Quadrada ou em L? Depende do seu balcão 👀
 
@@ -59,7 +59,7 @@ Comenta 📦 se a sua seria a quadrada ou 🅻 se seria a em L!
 
 ---
 
-### p03 · Qui 22/10 · Único · Sem bateria, sem tomada, sem app
+### p03 · Qui 15/10 · Único · Sem bateria, sem tomada, sem app
 
 "Mas precisa carregar?" Não 🔋❌
 
@@ -78,7 +78,7 @@ Coloca no balcão e esquece. Ela trabalha sozinha. 💙
 
 ---
 
-### p04 · Sex 23/10 · Carrossel · 5 lugares
+### p04 · Sex 16/10 · Carrossel · 5 lugares
 
 Não é só no caixa 👇 Os 5 lugares onde a plaquinha mais rende:
 
@@ -96,7 +96,7 @@ Qual desses lugares tem no seu negócio? Conta aqui 👇
 
 ---
 
-### p05 · Sáb 24/10 · Único · Barbearias e salões
+### p05 · Sáb 17/10 · Único · Barbearias e salões
 
 Corte aprovado no espelho ✂️ 5 estrelas no Google ⭐
 
@@ -114,7 +114,7 @@ Marca aqui aquele barbeiro ou cabeleireiro que merece uma plaquinha 👇
 
 ## Semana 2
 
-### p06 · Seg 26/10 · Carrossel · Mudou o link? A placa fica
+### p06 · Seg 19/10 · Carrossel · Mudou o link? A placa fica
 
 Trocou o @ do Instagram, o cardápio, o número do WhatsApp... e agora a placa no balcão aponta pro lugar errado? 😬
 
@@ -132,7 +132,7 @@ Compra uma vez, acompanha o seu negócio. 💙
 
 ---
 
-### p07 · Qua 28/10 · Único · O que o garçom ouve a noite toda
+### p07 · Qua 21/10 · Único · O que o garçom ouve a noite toda
 
 "Qual a senha do Wi-Fi?"
 "Tem cardápio?"
@@ -151,7 +151,7 @@ Marca o dono daquele lugar que você sempre pergunta a senha do Wi-Fi 👇
 
 ---
 
-### p08 · Qui 29/10 · Carrossel · Como responder avaliações
+### p08 · Qui 22/10 · Carrossel · Como responder avaliações
 
 Chegou avaliação no Google. E agora, responde? ✍️
 
@@ -170,7 +170,7 @@ E pra ter muita avaliação pra responder, a plaquinha pede por você no balcão
 
 ---
 
-### p09 · Sex 30/10 · Carrossel · Revenda
+### p09 · Sex 23/10 · Carrossel · Revenda
 
 Quer ganhar dinheiro vendendo plaquinha NFC? 💸
 
@@ -189,9 +189,9 @@ Ideal pra agências, social media, gráficas, representantes e quem vende porta 
 
 ---
 
-### p10 · Sáb 31/10 · Único · 4 semanas pra Black Friday
+### p10 · Sáb 24/10 · Único · 5 semanas pra Black Friday
 
-Faltam 4 semanas pra Black Friday (27/11) 🖤
+Faltam 5 semanas pra Black Friday (27/11) 🖤
 
 Em novembro muita gente pesquisa antes de comprar, e a primeira coisa que olha são as estrelas no Google. Dá tempo de chegar lá com o perfil cheio de avaliação nova, mas tem que começar agora.
 

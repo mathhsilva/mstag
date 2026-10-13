@@ -378,15 +378,15 @@ post("p09-revenda", [
 ]);
 
 /* P10 · post único · Black Friday */
-const dias = Array.from({ length: 28 }, (_, i) => i);
+const dias = Array.from({ length: 35 }, (_, i) => i); // 24/10 a 27/11: 34 dias + o dia da Black
 post("p10-black-friday", [
   { tema: "ink", rodape: pill("Cartão NFC Google + base · R$ 19,90", "pill--branca"), conteudo: `
 <div class="bloco">
   <span class="kicker">Black Friday · 27 de novembro</span>
-  <h1 class="h-lg">4 semanas.<br><em>Dá tempo de encher o Google de estrelas.</em></h1>
-  <p class="sub">Quem pesquisa antes de comprar olha as avaliações. Comece a pedir agora e chegue em novembro com o perfil cheio.</p>
+  <h1 class="h-lg">5 semanas.<br><em>Dá tempo de encher o Google de estrelas.</em></h1>
+  <p class="sub">Quem pesquisa antes de comprar olha as estrelas. Comece a pedir agora.</p>
 </div>
-<div class="calendario">${dias.map((i) => `<span class="${i < 27 ? "on" : "bf"}">${i < 27 ? ICON.star : "BF"}</span>`).join("")}</div>` },
+<div class="calendario">${dias.map((i) => `<span class="${i < 34 ? "on" : "bf"}">${i < 34 ? ICON.star : "BF"}</span>`).join("")}</div>` },
 ]);
 
 /* ------------------------------------------------------------
@@ -569,7 +569,7 @@ h1 em,h2 em{font-style:normal;color:var(--cob)}
 .quem div{background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.25);border-radius:26px;padding:30px}
 .quem b{display:block;font-family:"Space Grotesk";font-size:34px;letter-spacing:-.02em;line-height:1.1}
 .quem span{display:block;font-size:23px;margin-top:10px;opacity:.88;line-height:1.35}
-.calendario{position:relative;z-index:2;margin:auto 0 40px;display:grid;grid-template-columns:repeat(7,1fr);gap:14px}
+.calendario{position:relative;z-index:2;margin:auto auto 36px;width:720px;display:grid;grid-template-columns:repeat(7,1fr);gap:12px}
 .calendario span{aspect-ratio:1;border-radius:18px;display:grid;place-items:center;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1)}
 .calendario span svg{width:46%}
 .calendario .bf{background:var(--cob);border:0;font-family:"Space Grotesk";font-weight:700;font-size:34px;color:#fff}
